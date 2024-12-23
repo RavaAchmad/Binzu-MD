@@ -1,4 +1,4 @@
-## XMYULA-MD WhatsApp Bot
+## BINZU-MD WhatsApp Bot
 
 <div id="header" align="center">
   <img src="https://github.com/XM4ZE/DATABASE/blob/master/wallpaper/3d2470d056100ddb151b3bb30f9ec277_2149578633960802861.gif?raw=true" width="200" height="200"/>
@@ -7,6 +7,7 @@
 **Information:**
 - Have used multi auth sessions 
 - Using Qrcode on the terminal or using pairing code
+- Using Base From [XMYULA-MD](https://github.com/XM4ZE/XMYULA-MD)
 
 **Run script:**
 - Use Pairing Code: ```node . --pairing```
