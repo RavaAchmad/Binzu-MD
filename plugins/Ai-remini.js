@@ -1,5 +1,5 @@
 import uploadFile from '../lib/uploadFile.js';
-import { remini } from '../lib/scrape.js';
+import { remini, venchance } from '../lib/scrape.js';
 import fetch from 'node-fetch';
 // import waifu2x from 'waifu2x';
 import fs from 'fs';
@@ -10,15 +10,26 @@ let handler = async (m, {
 	usedPrefix,
 	command
 }) => {
+	if (!owner) return 'fitur sedang error, gunakan fitur lain!'
 	const q = m.quoted ? m.quoted : m;
 	const mime = (q.msg || q).mimetype || q.mediaType || '';
 	if (/^image/.test(mime) && !/webp/.test(mime)) {
 		const img = await q.download();
+		console.log(img)
 		const out = await uploadFile(img);
 		m.reply(wait);
 		try {
-			const api = await remini(out)
-			await conn.sendFile(m.chat, api, null, wm, m)
+			const api = await venchance.convert(img, 3)
+			.then(() => {
+				const convertedImagePath = uploadFile(api);
+				const image = { url: convertedImagePath }; 
+				const { url } = image;
+				conn.sendFile(m.chat, url, null, 'Gambar telah dikonversi!', m);
+			  console.log('Proses selesai!');
+			})
+			.catch((error) => {
+			  console.error('Terjadi kesalahan:', error.message);
+			});
 		} catch (e) {
 			console.log(e)
 			m.reply('menggunakan alternatif')
