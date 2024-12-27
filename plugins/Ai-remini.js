@@ -27,6 +27,7 @@ let handler = async (m, {
 				await conn.sendFile(m.chat, url, null, wm, m);
 			} catch (e) {
 				console.log(e)
+				m.reply('alternate 1')
 				try {
 					const api = await fetch(`https://api.botcahx.eu.org/api/tools/remini-v4?url=${out}&resolusi=16&apikey=${btc}`);
 					const image = await api.json();
@@ -34,6 +35,7 @@ let handler = async (m, {
 					conn.sendFile(m.chat, url, null, wm, m);
 				} catch (e) {
 					console.log(e)
+					m.reply('alternate 2')
 					try {
 						const api = await fetch(`https://api.botcahx.eu.org/api/tools/remini?url=${out}&apikey=${btc}`);
 						const image = await api.json();
