@@ -1,7 +1,7 @@
 ## BINZU-MD WhatsApp Bot
 
 <div id="header" align="center">
-  <img src="https://github.com/XM4ZE/DATABASE/blob/master/wallpaper/3d2470d056100ddb151b3bb30f9ec277_2149578633960802861.gif?raw=true" width="200" height="200"/>
+  <img src="https://c.tenor.com/a3JMl88PL0wAAAAd/tenor.gif" width="200" height="200"/>
 </div>
 
 **Information:**
