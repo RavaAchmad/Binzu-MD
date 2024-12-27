@@ -507,7 +507,7 @@
       "emas": 0,
       "emerald": 0,
       "esteh": 0,
-      "exp": 104162,
+      "exp": 104225,
       "expg": 0,
       "exphero": 0,
       "expired": 0,
@@ -4214,7 +4214,7 @@
       "emas": 0,
       "emerald": 0,
       "esteh": 0,
-      "exp": 220104,
+      "exp": 220113,
       "expg": 0,
       "exphero": 0,
       "expired": 0,
@@ -172226,6 +172226,12 @@
       "success": 2,
       "last": 1735266185764,
       "lastSuccess": 1735266185764
+    },
+    "owner-pengumuman.js": {
+      "total": 3,
+      "success": 3,
+      "last": 1735319417542,
+      "lastSuccess": 1735319417542
     }
   },
   "msgs": {},
