@@ -1,4 +1,4 @@
-const items = [ 'money', 'chip', 'diamond', 'bank', 'emerald', 'gold' ]
+const items = [ 'money', 'chip', 'diamond', 'bank', 'emerald', 'gold', 'limit' ]
 let handler = async (m, { conn, args, usedPrefix, DevMode }) => {
     let user = global.db.data.users[m.sender]
     let item = items.filter(v => v in user && typeof user[v] == 'number')

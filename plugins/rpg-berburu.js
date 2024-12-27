@@ -40,6 +40,7 @@ ${hewan1 ? `
 🐗 Babi Hutan: ${hewan10}` : ''} ${hewan11 ? `
 🐖 Babi: ${hewan11}` : ''} ${hewan12 ? `
 🐓 Ayam: ${hewan12}` : ''}
+bonus = mendapatkan 4 limit
 `.trim()
 
 		user.banteng += hewan1
@@ -54,6 +55,7 @@ ${hewan1 ? `
 		user.babihutan += hewan10
 		user.babi += hewan11
 		user.ayam += hewan12
+		user.limit += 5
 		
 		conn.misi[id] = [
         	kerja,

@@ -87,6 +87,7 @@ export default handler
 function reward(user = {}) {
     let rewards = {
         reward: {
+            limit: [1, 0, 4, 9, 0, 0, 1, 0, 9],
             money: 1027,
             exp: 9251,
             trash: 101,

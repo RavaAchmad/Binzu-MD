@@ -41,6 +41,7 @@ let handler = async (m, { conn }) => {
 ➕ ✨ Exp = [ ${rbrb5} ]
 ➕ 👮 Pelanggaran +1
 ➕ ☑️ Misi Berhasil = +1
+➕ ☑️ Limit = +1
 ➕  📥Total Misi Sebelumnya : ${order}
 `.trim()
 
@@ -48,7 +49,8 @@ let handler = async (m, { conn }) => {
         user.exp += rbrb5
         user.ojekk += 1
         user.warn += 1
-
+        user.limit += 1
+        
 		conn.misi[id] = [
         	kerja,
         setTimeout(() => {

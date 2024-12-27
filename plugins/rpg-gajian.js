@@ -7,7 +7,9 @@ let handler = async (m, { conn }) => {
   if (new Date - global.db.data.users[m.sender].lastclaim > 2700000) {
     global.db.data.users[m.sender].money += 50000
     global.db.data.users[m.sender].exp += 100
+    global.db.data.users[m.sender].limit += 5
     m.reply('Nih gaji lu +Rp50000')
+    m.reply('sekalian dah sama 5 limit semangat kerjanya ya!')
     global.db.data.users[m.sender].lastclaim = new Date * 1
   } else throw `Lu udah ambil jatah hari ini.\n\nTunggu ${cd1} Menit ${cd2} Detik!`
 }

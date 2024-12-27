@@ -13,7 +13,8 @@ let handler = async (m, { conn, command }) => {
         user.lastbansos = new Date * 1
       } else if (randomaku < randomkamu) {
         user.money += 3000000
-        conn.sendFile(m.chat, 'https://telegra.ph/file/d31fcc46b09ce7bf236a7.jpg', 'korupsi.jpg', `Kamu berhasil  korupsi dana bansos🕴️💰,  Dan Kamu mendapatkan 3 Juta rupiah💵`, m)
+        user.limit += 5
+        conn.sendFile(m.chat, 'https://telegra.ph/file/d31fcc46b09ce7bf236a7.jpg', 'korupsi.jpg', `Kamu berhasil  korupsi dana bansos🕴️💰,  Dan Kamu mendapatkan 3 Juta rupiah💵 dan 4 limit`, m)
         user.lastbansos = new Date * 1
       } else {
         m.reply(`Sorry Gan Lu g Berhasil Korupsi bansos Dan Tidak masuk penjara karna Kamu *melarikan diri🏃* ${wm}`)

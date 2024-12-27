@@ -4,8 +4,9 @@ let handler = async (m, { conn, usedPrefix, text }) => {
     if (new Date - global.db.data.users[m.sender].lastbonus < 86400000) throw `Kamu Sudah Ambil Bonus Hari Ini\nTunggu selama ${msToTime(time - new Date())} lagi`
 	let money = `${Math.floor(Math.random() * 50000000)}`.trim()
 	global.db.data.users[m.sender].money += money * 1
+  global.db.data.users[m.sender].limit += 20
 	global.db.data.users[m.sender].lastbonus = new Date * 1
-  m.reply(`Selamat Kamu Mendapatkan Bonus : \n+${money} Money`)
+  m.reply(`Selamat Kamu Mendapatkan Bonus : \n+${money} Money\n\nDan limit sebesar 20`)
 }
 handler.help = ['bonus']
 handler.tags = ['rpg', 'premium']

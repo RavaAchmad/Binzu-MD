@@ -2,6 +2,7 @@ const rewards = {
   exp: 9999,
   money: 4999,
   potion: 5,
+  limit: 10,
 }
 const cooldown = 79200000
 let handler = async (m, {usedPrefix}) => {

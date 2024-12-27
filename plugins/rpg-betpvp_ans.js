@@ -56,6 +56,7 @@ export async function before(m) {
 *👤 @${room.p2.split('@')[0]} :*    ${score2}
 
 ${room.win !== 'draw' ? `Pemenangnya adalah @${room.win.split('@')[0]} Dan mendapatkan ${room.taruhan * 1} ${room.type}` : `Draw Masing Masing Mendapatkan ${room.taruhan} ${room.type}`}
+Bonus mendapatkan 10 limit!
 `.trim(), m, { contextInfo: { mentionedJid: [room.p, room.p2] }})
             delete this.judipvp[room.id]
         }
