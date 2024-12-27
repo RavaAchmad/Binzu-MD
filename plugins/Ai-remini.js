@@ -18,26 +18,6 @@ let handler = async (m, {
 		console.log(img)
 		const out = await uploadFile(img);
 		m.reply(wait);
-		try {
-		// 	const api = await remini(out)
-
-		// }catch(e){
-		// 	console.log(e)
-		// 	try{  
-			const api = await venchance.convert(img, 3)
-			.then(() => {
-				const convertedImagePath = uploadFile(api);
-				const image = { url: convertedImagePath }; 
-				const { url } = image;
-				conn.sendFile(m.chat, url, null, 'Gambar telah dikonversi!', m);
-			  console.log('Proses selesai!');
-			})
-			.catch((error) => {
-			  console.error('Terjadi kesalahan:', error.message);
-			});
-		} catch (e) {
-			console.log(e)
-			m.reply('menggunakan alternatif')
 			try {
 				const api = await fetch(`https://api.botcahx.eu.org/api/tools/remini-v3?url=${out}&resolusi=4&apikey=ravaja`);
 				const image = await api.json();
@@ -65,7 +45,6 @@ let handler = async (m, {
 						console.log(e);
 						m.reply(eror)
 					}
-				}
 			}
 		}
 	} else {
