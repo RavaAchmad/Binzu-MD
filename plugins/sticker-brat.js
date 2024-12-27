@@ -1,6 +1,6 @@
-import { Sticker } from 'wa-sticker-formatter'
-    import fs from 'fs'
-
+import { Sticker } from 'wa-sticker-formatter';
+    import fs from 'fs';
+import fetch from 'node-fetch';
     var handler = async (m, {
      conn, 
      args, 
@@ -10,8 +10,9 @@ import { Sticker } from 'wa-sticker-formatter'
      }) => {
         text = text ? text : m.quoted && m.quoted.text ? m.quoted.text : m.quoted && m.quoted.caption ? m.quoted.caption : m.quoted && m.quoted.description ? m.quoted.description : ''
         if (!text) throw `Example : ${usedPrefix + command} Lagi Ruwet`
-        const res = `https://api.botcahx.eu.org/api/maker/brat?text=${encodeURIComponent(text.substring(0, 151))}&apikey=${btc}`
-        //var error = fs.readFileSync(`./tmp/emror.webp`)
+        console.log(text)
+        const res = `https://mannoffc-x.hf.space/brat?q=${encodeURIComponent(text.substring(0, 151))}`
+        // var error = fs.readFileSync(`./tmp/emror.webp`)
         try {
             if (command == 'brat') {
                 var stiker = await createSticker(res, false, '', '')
@@ -20,13 +21,13 @@ import { Sticker } from 'wa-sticker-formatter'
         } catch (e) {
             console.log(e)
             m.reply(e)
-            //await conn.sendFile(m.chat, error, 'error.webp', '', m)
+            // await conn.sendFile(m.chat, error, 'error.webp', '', m)
         }
     }
     
     handler.command = handler.help = ['brat']
     handler.tags = ['sticker']
-    handler.limit = true
+    handler.limit = 10
     export default handler
 
     async function createSticker(res, url, packName, authorName, quality) {

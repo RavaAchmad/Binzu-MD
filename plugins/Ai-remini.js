@@ -19,6 +19,11 @@ let handler = async (m, {
 		const out = await uploadFile(img);
 		m.reply(wait);
 		try {
+		// 	const api = await remini(out)
+
+		// }catch(e){
+		// 	console.log(e)
+		// 	try{  
 			const api = await venchance.convert(img, 3)
 			.then(() => {
 				const convertedImagePath = uploadFile(api);
@@ -75,3 +80,11 @@ handler.register = true;
 handler.limit = true;
 
 export default handler
+
+async function remini(url) {
+	var xzn = await fetch(API('xzn', 'api/remini', {
+		url
+	}, 'apikey'))
+	var wtf = xzn.json();
+	return wtf
+}
