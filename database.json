@@ -91,7 +91,7 @@
       "emas": 0,
       "emerald": 0,
       "esteh": 0,
-      "exp": 327,
+      "exp": 328,
       "expg": 0,
       "exphero": 0,
       "expired": 0,
@@ -507,7 +507,7 @@
       "emas": 0,
       "emerald": 0,
       "esteh": 0,
-      "exp": 111494,
+      "exp": 111999,
       "expg": 0,
       "exphero": 0,
       "expired": 0,
@@ -704,7 +704,7 @@
       "pasangan": "",
       "paus": 0,
       "pausbakar": 0,
-      "pc": 1735393369539,
+      "pc": 1735541563354,
       "pepesikan": 0,
       "pet": 5,
       "phonix": 0,
@@ -7548,7 +7548,7 @@
       "emas": 0,
       "emerald": 0,
       "esteh": 0,
-      "exp": 439,
+      "exp": 441,
       "expg": 0,
       "exphero": 0,
       "expired": 0,
@@ -12125,7 +12125,7 @@
       "emas": 0,
       "emerald": 3,
       "esteh": 0,
-      "exp": 248715,
+      "exp": 248760,
       "expg": 0,
       "exphero": 0,
       "expired": 0,
@@ -49926,7 +49926,7 @@
       "emas": 0,
       "emerald": 0,
       "esteh": 0,
-      "exp": 561,
+      "exp": 571,
       "expg": 0,
       "exphero": 0,
       "expired": 0,
@@ -50084,7 +50084,7 @@
       "leleb": 0,
       "lelebakar": 0,
       "leleg": 0,
-      "level": 0,
+      "level": 2,
       "limit": 90,
       "limitjoinfree": 0,
       "lion": 0,
@@ -174705,16 +174705,16 @@
   },
   "stats": {
     "yula-allmenu.js": {
-      "total": 126,
-      "success": 126,
-      "last": 1735397479689,
-      "lastSuccess": 1735397479689
+      "total": 127,
+      "success": 127,
+      "last": 1735542769723,
+      "lastSuccess": 1735542769723
     },
     "fun-tagbot.js": {
-      "total": 348,
-      "success": 342,
-      "last": 1735451563346,
-      "lastSuccess": 1735451563346
+      "total": 359,
+      "success": 353,
+      "last": 1735542982816,
+      "lastSuccess": 1735542982816
     },
     "yula-listmenu1.js": {
       "total": 42,
@@ -174729,10 +174729,10 @@
       "lastSuccess": 1735397540416
     },
     "downloader-ig.js": {
-      "total": 191,
-      "success": 171,
-      "last": 1735450286745,
-      "lastSuccess": 1735450286745
+      "total": 192,
+      "success": 172,
+      "last": 1735543456165,
+      "lastSuccess": 1735543456165
     },
     "sticker-sticker.js": {
       "total": 155,
@@ -174759,10 +174759,10 @@
       "lastSuccess": 1729474986748
     },
     "owner-gp.js": {
-      "total": 29,
-      "success": 28,
-      "last": 1735137406253,
-      "lastSuccess": 1735137406253
+      "total": 36,
+      "success": 35,
+      "last": 1735542089246,
+      "lastSuccess": 1735542089246
     },
     "owner-exec.js": {
       "total": 41,
@@ -174999,10 +174999,10 @@
       "lastSuccess": 1735136322608
     },
     "gc-settings.js": {
-      "total": 21,
-      "success": 19,
-      "last": 1735211140119,
-      "lastSuccess": 1729124807251
+      "total": 22,
+      "success": 20,
+      "last": 1735542168696,
+      "lastSuccess": 1735542168696
     },
     "internet-google.js": {
       "total": 3,
@@ -175443,10 +175443,10 @@
       "lastSuccess": 1735442691850
     },
     "rpg-bankcek.js": {
-      "total": 29,
-      "success": 29,
-      "last": 1735450008497,
-      "lastSuccess": 1735450008497
+      "total": 30,
+      "success": 30,
+      "last": 1735543066375,
+      "lastSuccess": 1735543066375
     },
     "rpg-kerja.js": {
       "total": 16,
