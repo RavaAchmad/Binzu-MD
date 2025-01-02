@@ -1,6 +1,6 @@
 import fetch from 'node-fetch';
 import search from 'yt-search';
-import { ytdls } from '../lib/scrape.js';
+import { ytdls, ddownr } from '../lib/scrape.js';
 // import { youtube } from 'btch-downloader';
 let handler = async (m, {
 	conn,
@@ -10,36 +10,8 @@ let handler = async (m, {
 }) => {
 	if (!(args[0] || '').match(new RegExp(/(?:https?:\/\/)?(?:youtu\.be\/|(?:www\.|m\.)?youtube\.com\/(?:watch|v|embed|shorts)(?:\.php)?(?:\?.*v=|\/))([a-zA-Z0-9\_-]+)/, 'gi'))) return m.reply(`Example: *${usedPrefix}${command}* https://youtu.be/pvlDjh_UgvA`)
 		try {
-				// let audioUrl;
-				// try {
-				// 	audioUrl = await youtube(text);
-				// } catch (e) {
-				// 	conn.reply(m.chat, 'Please wait...', m);
-				// 	audioUrl = await youtube(text);
-				// }
-
-	
-				// await conn.relayMessage(m.chat, {
-				// 	extendedTextMessage: {
-				// 		text: caption,
-				// 		contextInfo: {
-				// 			externalAdReply: {
-				// 				title: convert.title,
-				// 				mediaType: 1,
-				// 				previewType: 0,
-				// 				body: "Made by Botcahx",
-				// 				renderLargerThumbnail: true,
-				// 				thumbnailUrl: convert.image,
-				// 				sourceUrl: audioUrl.mp3
-				// 			}
-				// 		},
-				// 		mentions: [m.sender]
-				// 	}
-				// }, {});
-				// const yt = await (await fetch(`https://widipe.com/download/ytdl?url=${links}`)).json()
 				const yt = await ytdls(args[0])
 			const aurio = yt.result.audio.downloadLink
-		  //await conn.sendFile(m.chat, audioz, 'tiktok.mp3', m)
 			  await conn.sendMessage(m.chat, {         
 					audio: {
 						url: aurio
@@ -62,10 +34,9 @@ let handler = async (m, {
 			
 	  } catch (e) {
 		console.log(e);
-	   //conn.sendMessage('628121035575@s.whatsapp.net', `ner~ harap ganti cookie nya~\n\nAn error occurred while searching for the song: ${e.message}`, m);
 		  m.reply('Yahhh sinyalnya error, bentar ya pake jalur alternatif dulu~ ૮ ˶ᵔ ᵕ ᵔ˶ ა');
-		  const yt = await( await fetch(`https://api.betabotz.eu.org/api/download/ytmp3?url=${args[0]}&apikey=ravaja`)).json()
-		await conn.sendMessage(m.chat, { audio: { url: yt.result.mp3 }, mimetype: 'audio/mpeg' }, { quoted: m });
+		  let api = await ddownr.download(args[0], "mp3");
+		await conn.sendMessage(m.chat, { audio: { url: api.downloadUrl }, mimetype: 'audio/mpeg' }, { quoted: m });
 	  }
 }
 handler.tags = ['downloader']
