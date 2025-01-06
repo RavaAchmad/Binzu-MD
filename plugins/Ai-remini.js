@@ -33,6 +33,7 @@ let handler = async (m, {
 					conn.sendFile(m.chat, url, null, wm, m);
 				} catch (e) {
 					console.log(e)
+					m.reply('Server error wak')
 			}
 		}
 	} else {

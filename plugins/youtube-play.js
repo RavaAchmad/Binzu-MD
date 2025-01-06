@@ -3,7 +3,7 @@
  * https://github.com/XM4ZE
  */
 
-import { downloadFromYoutube, ytdls } from '../lib/scrape.js';
+import { downloadFromYoutube, ytdls, ddownr } from '../lib/scrape.js';
 import search from 'yt-search';
 
 const handler = async (m, { conn, text }) => {
@@ -63,7 +63,7 @@ SENT By
     try {
         const us = await ytdls(links);
         const hasil = await us.result.audio.downloadLink;
-        console.log(hasil);
+        console.log(us);
         await conn.sendMessage(m.chat, {
             audio: {
                 url: hasil
@@ -74,7 +74,23 @@ SENT By
         });
     } catch (e) {
         console.error(e);
-        m.reply(e.message);
+        m.reply("panggil owner atau teruskan pesan ini ke nomornya" + e.message);
+        m.reply("Tunggu sebentar sedang mencoba alternatif kedua!")
+        try {
+            let apik = await ddownr.download("mp3", links)
+            let hasil = await apik.downloadUrl
+            console.log(hasil);
+            await conn.sendMessage(m.chat, {
+                audio: {
+                    url: hasil
+                },
+                mimetype: 'audio/mpeg'
+            }, {
+                quoted: m
+            });
+        } catch(e) {
+            m.reply(e.message)
+        }
     }
 };
 

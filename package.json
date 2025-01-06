@@ -51,6 +51,7 @@
         "chalk": "^5.3.0",
         "cheerio": "github:XM4ZE/cheerio",
         "colors": "1.4.0",
+        "didyoumean": "^1.2.2",
         "express": "^4.21.0",
         "file-type": "^19.6.0",
         "fluent-ffmpeg": "^2.1.3",
