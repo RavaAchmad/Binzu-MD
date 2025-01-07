@@ -19,6 +19,6 @@ handler.help = ['mulaigiveaway'].map(v => v + ' <text>')
 handler.tags = ['adminry', 'group']
 handler.command = /^(start|mulai)giveaway$/i
 handler.group = true
-handler.admin = false
-handler.owner = true
+handler.admin = true
+handler.owner = false
 export default handler
