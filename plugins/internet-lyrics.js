@@ -1,5 +1,5 @@
 import api from 'api-dylux';
-
+import fetch from 'node-fetch';
 var handler = async (m, {
 	conn,
 	text,
@@ -8,20 +8,26 @@ var handler = async (m, {
 }) => {
 		var teks = text ? text : m.quoted && m.quoted.text ? m.quoted.text : ''
 		if (!teks) throw `Use example ${usedPrefix}${command} Indonesia raya`
+		m.reply("tunggu kak lagi proses")
 	try {
-		var maxim = await api.lyrics(teks);
-		let lyricst = maxim.lyrics
-		let data = `*Title :* \`${maxim.title}\`\n`
-		data += `*Artist :* ${maxim.artist}\n\n`
+		var api = await ( await fetch(`https://api.botcahx.eu.org/api/search/lirik?lirik=${text}&apikey=ravaja`)).json()
+		let { 
+			lyrics,
+			title,
+			artist,
+			image
+		 } = api.result
+		let data = `*Title :* \`${title}\`\n`
+		data += `*Artist :* ${artist}\n\n`
 		data += `\`LYRICS\`\n\n`
-		data += lyricst.replace('\'')
+		data += lyrics.replace('\'')
 		conn.sendMessage(m.chat, {
                 text: data,
                 contextInfo: {
                     externalAdReply: {
                         title: "Lyrics Search",
                         body: "Powered By ʙɪɴᴢᴜ",
-                        thumbnailUrl: maxim.image ? maxim.image : "https://telegra.ph/file/8cc4c40b303872675f7bb.jpg",
+                        thumbnailUrl: image ? image : "https://telegra.ph/file/8cc4c40b303872675f7bb.jpg",
                         sourceUrl: "",
                         mediaType: 1,
                         showAdAttribution: true,
@@ -31,7 +37,7 @@ var handler = async (m, {
             })
 	} catch (e) {
 		console.log(e)
-		m.reply(eror)
+		m.reply("music tidak tersedia, atau belum terdaftar dalam list. Laporkan ke owner jika emang ada yang aneh")
 	}
 }
 

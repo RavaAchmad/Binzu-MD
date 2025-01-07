@@ -9,6 +9,7 @@ let handler = async (m, command) => {
   let media = await q.download()
   let isTele = /image\/(png|jpe?g|gif)|video\/mp4\/mp3/.test(mime)
   let link = await (uploadImage ? uploadImage : uploadFile)(media)
+  console.log("url : " + link)
   let max = `
 ${link}
 ${media.length} Byte(s)
@@ -17,7 +18,8 @@ ${isTele ? '(Tidak Ada Tanggal Kedaluwarsa)' : '(Tidak diketahui)'}
 
   if (!/all/.test(command) && await getDevice(m.key.id) == 'android') {
   await conn.sendButton(m.chat, max, wm, 'https://files.catbox.moe/nz6pwc.jpg', [['Salin / Copy',link,'cta_copy']], m)
-   } else conn.sendMessage(m.chat, {
+   } else 
+   conn.sendMessage(m.chat, {
                 text: max,
                 contextInfo: {
                     externalAdReply: {

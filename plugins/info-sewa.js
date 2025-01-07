@@ -3,24 +3,83 @@ import { getDevice } from '@adiwajshing/baileys'
 let handler = async(m, { conn, text, usedPrefix, command}) => {
     let xm4ze = await( await fetch(xmenus)).json()
     let thum = xm4ze[Math.floor(Math.random() * xm4ze.length)]
-    let pesan = `\n> *1.* 30 Day join the group\n> *2.* 3 Day Premium\n> *3.* 30 Day Premium\n\nSilahkan pilih produk kami dengan mengeklik tombol dibawah ini`
-    const sections = [
-				[
-					'— BINZU JOIN GROUP', [
-						['Harga: Rp. 7.000 IDR', '.sewa G7', '7 Day join the group'],
-						['Harga: Rp. 15.000 IDR', '.sewa G30', '30 Day join the group'],
-						['Harga: Rp. 30.000 IDR', '.sewa G60', '60 Day join the group']
-				]], [
-					'— PREMIUM USER', [
-						['Harga: Rp. 5.000 IDR', '.sewa 3day', '3 Day Premium'],
-						['Harga: Rp. 7.000 IDR', '.sewa 7day', '7 Day Premium'],
-						['Harga: Rp. 15.000 IDR', '.sewa 30day', '30 Day Premium'],
-						['Harga: Rp. 30.000 IDR', '.sewa 60day', '60 Day Premium'],
-				]],
-			]
-    if (!/all/.test(command) && await getDevice(m.key.id) == 'android') {
-    if (!text) return conn.sendButtonList(m.chat, `— TOP 3 SELLING PRODUCTS`, pesan, global.wm, 'PRICE LIST', thum, sections, m)
-    }
+    let esanan = `*ID Pesanan* yang dipilih tidak tersedia, Silahkan pilih *ID Pesanan* di bawah ini.
+      
+*— BINZU JOIN GROUP*
+
+*7 Day join the group*
+- Harga: Rp. 7.000 IDR
+- ID Pesanan: G7
+
+*30 Day join the group*
+- Harga: Rp. 15.000 IDR
+- ID Pesanan: G30
+
+*60 Day join the group*
+- Harga: Rp. 30.000 IDR
+- ID Pesanan: G60
+
+
+*— PREMIUM USER*
+
+*3 Day premium*
+- Harga: Rp. 5.000 IDR
+- ID Pesanan: 3day
+
+*7 Day premium*
+- Harga: Rp. 10.000 IDR
+- ID Pesanan: 7day
+
+*30 Day premium*
+- Harga: Rp. 20.000 IDR
+- ID Pesanan: 30day
+
+*60 Day premium*
+- Harga: Rp. 35.000 IDR
+- ID Pesanan: 60day
+
+
+*Example:* ${usedPrefix + command} <ID Pesanan>
+*Example:* ${usedPrefix + command} 30day
+`;
+
+    // let pesan = `\n> *1.* 30 Day join the group\n> *2.* 3 Day Premium\n> *3.* 30 Day Premium\n\nSilahkan pilih produk kami dengan mengeklik tombol dibawah ini`
+    // const sections = [
+		// 		[
+		// 			'— BINZU JOIN GROUP', [
+		// 				['Harga: Rp. 7.000 IDR', '.sewa G7', '7 Day join the group'],
+		// 				['Harga: Rp. 15.000 IDR', '.sewa G30', '30 Day join the group'],
+		// 				['Harga: Rp. 30.000 IDR', '.sewa G60', '60 Day join the group']
+		// 		]], [
+		// 			'— PREMIUM USER', [
+		// 				['Harga: Rp. 5.000 IDR', '.sewa 3day', '3 Day Premium'],
+		// 				['Harga: Rp. 7.000 IDR', '.sewa 7day', '7 Day Premium'],
+		// 				['Harga: Rp. 15.000 IDR', '.sewa 30day', '30 Day Premium'],
+		// 				['Harga: Rp. 30.000 IDR', '.sewa 60day', '60 Day Premium'],
+		// 		]],
+		// 	]
+
+     if(!text) return await conn.sendMessage(m.chat, {
+        text: esanan,
+        contextInfo: {
+            forwardingScore: 9999,
+            isForwarded: true,
+            forwardedNewsletterMessageInfo: {
+                newsletterJid: global.info.channel,
+                serverMessageId: null,
+                newsletterName: global.info.namechannel,
+            },
+            externalAdReply: {
+                title: "SILAHKAN PILIH PESANAN SESUAI ID!",
+                body: "",
+                thum,
+                sourceUrl: "",
+                mediaType: 1,
+                renderLargerThumbnail: true
+            },
+        },
+    }, {});
+    
     let orderID;
 
   switch(text) {
@@ -74,11 +133,11 @@ let handler = async(m, { conn, text, usedPrefix, command}) => {
 - ID Pesanan: 7day
 
 *30 Day premium*
-- Harga: Rp. 15.000 IDR
+- Harga: Rp. 20.000 IDR
 - ID Pesanan: 30day
 
 *60 Day premium*
-- Harga: Rp. 30.000 IDR
+- Harga: Rp. 35.000 IDR
 - ID Pesanan: 60day
 
 
@@ -93,7 +152,7 @@ let handler = async(m, { conn, text, usedPrefix, command}) => {
 }
 handler.help = ['sewa', 'order']
 handler.tags = ['info']
-handler.command =  /(order|sewa)/i
+handler.command =  /(order|sewa|premium)/i
 handler.register = false;
 handler.premium = false;
 
