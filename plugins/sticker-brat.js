@@ -11,13 +11,11 @@ import fetch from 'node-fetch';
         text = text ? text : m.quoted && m.quoted.text ? m.quoted.text : m.quoted && m.quoted.caption ? m.quoted.caption : m.quoted && m.quoted.description ? m.quoted.description : ''
         if (!text) throw `Example : ${usedPrefix + command} Lagi Ruwet`
         console.log(text)
-        const res = `https://mannoffc-x.hf.space/brat?q=${encodeURIComponent(text.substring(0, 151))}`
+        const res = `https://api.botcahx.eu.org/api/maker/brat?text=${encodeURIComponent(text.substring(0, 151))}&apikey=ravaja`
         // var error = fs.readFileSync(`./tmp/emror.webp`)
         try {
-            if (command == 'brat') {
                 var stiker = await createSticker(res, false, '', '')
                 await conn.sendFile(m.chat, stiker, 'emror.webp', '', m)
-            }
         } catch (e) {
             console.log(e)
             m.reply(e)

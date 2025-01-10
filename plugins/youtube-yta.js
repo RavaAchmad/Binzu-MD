@@ -10,6 +10,34 @@ let handler = async (m, {
 }) => {
 	if (!(args[0] || '').match(new RegExp(/(?:https?:\/\/)?(?:youtu\.be\/|(?:www\.|m\.)?youtube\.com\/(?:watch|v|embed|shorts)(?:\.php)?(?:\?.*v=|\/))([a-zA-Z0-9\_-]+)/, 'gi'))) return m.reply(`Example: *${usedPrefix}${command}* https://youtu.be/pvlDjh_UgvA`)
 		try {
+		var res = await fetch(`https://api.botcahx.eu.org/api/dowloader/yt?url=${args[0]}&apikey=ravaja`)
+		m.reply("pemroses!")
+			var json = await res.json()
+			console.log("response : " + json)
+			var { title, thumb, mp3} = json.result
+			await conn.sendMessage(m.chat, {         
+				audio: {
+					url: mp3
+				},
+				mimetype: 'audio/mpeg',
+				contextInfo: {
+					externalAdReply: {
+						title: title,
+						body: "▶︎ Now Playing...",
+						thumbnailUrl: thumb,
+						sourceUrl: args[0],
+						mediaType: 1,
+						showAdAttribution: true,
+						renderLargerThumbnail: true
+					}
+				}
+			}, {
+				quoted: m
+			});
+
+		} catch(e) {
+			m.reply(e)
+			try {
 				const yt = await ytdls(args[0])
 			const aurio = yt.result.audio.downloadLink
 			  await conn.sendMessage(m.chat, {         
@@ -38,6 +66,7 @@ let handler = async (m, {
 		  let api = await ddownr.download(args[0], "mp3");
 		await conn.sendMessage(m.chat, { audio: { url: api.downloadUrl }, mimetype: 'audio/mpeg' }, { quoted: m });
 	  }
+	}
 }
 handler.tags = ['downloader']
 handler.help = ['ytmp3 <url>']
