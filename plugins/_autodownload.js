@@ -74,7 +74,19 @@ async function downloadTikTok(link, m) {
 } catch (e) {
     m.reply(e.message)
     sleep(2000)
-    m.reply("coba cek kembali spasi atau url nya!")
+	try {
+		const response = await axios.get(`https://api.botcahx.eu.org/api/dowloader/tiktok?url=${text}&apikey=${btc}`);        
+		const res = response.data.result;      
+		var { video, title, title_audio, audio } = res;
+		let capt = `乂 *T I K T O K*\n\n`;
+		capt += `◦ *Title* : ${title}\n`;
+		capt += `◦ *Audio* : ${title_audio}\n`;
+		capt += `\n`;        
+		await conn.sendFile(m.chat, video, null, capt, m);
+		conn.sendMessage(m.chat, { audio: { url: audio[0] }, mimetype: 'audio/mpeg' }, { quoted: m });     
+	}catch(e) {
+		console.log(e)
+	}
     //conn.sendMessage(m.chat, e)
 };
 }

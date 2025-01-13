@@ -51,17 +51,17 @@ handler.before = async (m, { conn }) => {
     const selectedUrl = limitedVideos[inputNumber - 1].url;
     let yt;
     try {
-      const response = await fetch(`https://api.betabotz.eu.org/api/download/ytmp3?url=${selectedUrl}&apikey=${lann}`);
+      const response = await fetch(`https://api.botcahx.eu.org/api/dowloader/yt?url=${selectedUrl}&apikey=${global.btc}`);
       const data = await response.json();
-      console.log('Response from Betabotz:', data);
+      console.log('Response from Botcahx:', data);
       yt = data.result;
     } catch (error) {
       console.error('Betabotz request failed:', error);
       try {
-        const response = await fetch(`https://api.botcahx.eu.org/api/dowloader/yt?url=${selectedUrl}&apikey=${global.btc}`);
-        const data = await response.json();
-        console.log('Response from Botcahx:', data);
-        yt = data.result;
+      const response = await fetch(`https://api.betabotz.eu.org/api/download/ytmp3?url=${selectedUrl}&apikey=${lann}`);
+      const data = await response.json();
+      console.log('Response from Betabotz:', data);
+      yt = data.result;
       } catch (error) {
         console.error('Botcahx request failed:', error);
         delete conn.youtubeList[m.sender];

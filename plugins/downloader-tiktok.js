@@ -1,5 +1,6 @@
 //import axios from 'axios';
 import fetch from 'node-fetch';
+import axios from 'axios';
 
 let handler = async (m, { conn, args, usedPrefix, text, command }) => {
     var delay = time => new Promise(res => setTimeout(res, time))
@@ -81,8 +82,20 @@ let handler = async (m, { conn, args, usedPrefix, text, command }) => {
         } catch (e) {
             console.log(e.message)
             delay(2000)
-            m.reply("coba cek kembali spasi atau mungkin url nya sedang bermasalah!!")
-            conn.sendMessage(global.owner + '@s.whatsapp.net', 'tiktok error! :' + e)
+            m.reply("alternatif yach")
+            try {
+                const response = await axios.get(`https://api.botcahx.eu.org/api/dowloader/tiktok?url=${text}&apikey=${btc}`);        
+                const res = response.data.result;      
+                var { video, title, title_audio, audio } = res;
+                let capt = `乂 *T I K T O K*\n\n`;
+                capt += `◦ *Title* : ${title}\n`;
+                capt += `◦ *Audio* : ${title_audio}\n`;
+                capt += `\n`;        
+                await conn.sendFile(m.chat, video, null, capt, m);
+                conn.sendMessage(m.chat, { audio: { url: audio[0] }, mimetype: 'audio/mpeg' }, { quoted: m });     
+            }catch(e) {
+                console.log(e)
+            }
         };
     };
     handler.help = ['tiktok']
