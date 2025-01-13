@@ -6,7 +6,7 @@ import { fileURLToPath } from 'url'
 /*========= GLOBAL APIKEY =========*/
 // ISI APIKEY KALIAN DI BAGIAN 'ENTER YOUR APIKEY' SIMBOL JANGAN DI HAPUS
 global.btc = 'ravaja' // apikey Botchax
-global.lann = 'btzravaja' // apikey Beta
+global.lann = 'ravaja' // apikey Beta
 
 
 
@@ -19,7 +19,7 @@ global.APIs = {
 } 
 
 global.APIKeys = {
-  'https://api.betabotz.eu.org': 'btzravaja',
+  'https://api.betabotz.eu.org': 'ravaja',
   'https://api.botcahx.eu.org': 'ravaja',
   'https://skizoasia.xyz/': 'ravaja'
 }
