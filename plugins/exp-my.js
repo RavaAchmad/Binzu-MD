@@ -103,7 +103,10 @@ let handler = async (m, { conn, command }) => {
   const crates = Object.keys(inventory.crates).map(v => user[v] && `*${global.rpg.emoticon(v)}${v}:* ${user[v]}`).filter(v => v).join('\n').trim()
   const pets = Object.keys(inventory.pets).map(v => user[v] && `*${global.rpg.emoticon(v)}${v}:* ${user[v] >= inventory.pets[v] ? 'Max Levels' : `Level(s) ${user[v]}`}`).filter(v => v).join('\n').trim()
   const cooldowns = Object.entries(inventory.cooldowns).map(([cd, { name, time }]) => cd in user && `*✧ ${name}*: ${new Date() - user[cd] >= time ? '✅' : '❌'}`).filter(v => v).join('\n').trim()
+  let pasangan = user.pasangan 
+  let jodoh = `Berpacaran @${pasangan.split`@`[0]}`
   const caption = `*🧑🏻‍🏫 ɴᴀᴍᴇ:* ${user.registered ? user.name : conn.getName(m.sender)}
+*▸ 𝗌𝗍𝖺𝗍𝗎𝗌:* ${pasangan ? jodoh : 'Jomblo' }
 *▸ ᴇxᴘ:* ${user.exp}
 *▸ ʟᴇᴠᴇʟ:* ${user.level}
 *▸ ʀᴏʟᴇ:* ${user.role}

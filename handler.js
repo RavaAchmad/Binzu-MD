@@ -59,6 +59,7 @@ export async function handler(chatUpdate) {
 			if (user) {
 				if (!("BannedReason" in user)) user.BannedReason = ""
 				if (!("Banneduser" in user)) user.Banneduser = false
+                if (!("pasangan" in user)) user.pasangan = ""
 				if (!("afkReason" in user)) user.afkReason = ""
 				if (!("autolevelup" in user)) user.autolevelup = false
 				if (!("banned" in user)) user.banned = false
@@ -539,6 +540,7 @@ export async function handler(chatUpdate) {
 					banned: false,
 					BannedReason: "",
 					Banneduser: false,
+                    pasangan: '',
 					banteng: 0,
 					batu: 0,
 					bawal: 0,
