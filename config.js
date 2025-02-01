@@ -32,7 +32,7 @@ global.info = {
 	nomorbot: '62895325866441',
 	nomorown: '6281212035575',
 	namebot: 'ʙɪɴᴢᴜ Bot',
-	nameown: 'R4nz Store',
+	nameown: 'RVXA',
 	channel: '120363218308835731@newsletter',
 	namechannel: 'ʙɪɴᴢᴜ | Whatsapp Bots'
 }
@@ -51,7 +51,7 @@ global.prems = ['6281212035575', '6285779153439'] // Opsional boleh ganti atau t
 /*=========== WATERMARK ===========*/
 // BOLEH DI EDIT ASALKAN JANGAN ADA SIMBOL YANG DI HAPUS
 global.wm = 'ʙɪɴᴢᴜ-MD' // Opsional boleh ganti atau tidak 
-global.author = 'R4NZ' // Opsional boleh ganti atau tidak 
+global.author = '\n\n\n\n\n\n\n62895325866441' // Opsional boleh ganti atau tidak 
 global.stickpack = 'Bot : ʙɪɴᴢᴜ-MD' // Opsional boleh ganti atau tidak 
 global.stickauth = 'https://wa.me/62895325866441' // Opsional boleh ganti atau tidak 
 

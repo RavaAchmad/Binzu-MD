@@ -38,6 +38,6 @@ handler.help = ['tourl <reply image/video>']
 handler.tags = ['tools']
 handler.command = /^(tourl)$/i
 handler.limit = true;
-handler.register = true;
+handler. = true;
 
 export default handler;
