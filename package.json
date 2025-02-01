@@ -38,7 +38,7 @@
     },
     "license": "MIT",
     "dependencies": {
-        "@adiwajshing/baileys": "npm:@im-dims/baileys-md",
+        "@adiwajshing/baileys": "npm:@seaavey/baileys",
         "@bochilteam/scraper": "^4.2.4",
         "@vitalets/google-translate-api": "^9.2.0",
         "aki-api": "npm:aki-api@latest",
