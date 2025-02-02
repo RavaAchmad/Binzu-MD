@@ -109,7 +109,7 @@ SENT By
                                         }, {
                                                 quoted: m
                                         });
-                                        await sleep(3000)
+                                        await sleep(2000)
                                         const button = [['MP4', `.ytv ${links}`]];
                                         await conn.sendButton(m.chat, `Mau sekalian video nya?`, `Click button MP4`, global.maximus, button, m);
                                 } catch (e) {
@@ -119,6 +119,7 @@ SENT By
                         }
         }
 };
+
 
 handler.help = ['youtubeplay'].map(v => v + ' name/url');
 handler.tags = ['downloader'];
