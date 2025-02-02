@@ -3,28 +3,45 @@
  * https://github.com/XM4ZE
  */
 
-import { downloadFromYoutube, ytdls, ddownr } from '../lib/scrape.js';
+import {
+        youtubedl
+} from '@bochilteam/scraper';
+import {
+        toAudio
+} from '../lib/converter.js'
+import api from 'btch-downloader';
 import search from 'yt-search';
+import fetch from 'node-fetch';
+import ytdl from 'ytdl-core';
+import fs from 'fs';
 
-const handler = async (m, { conn, text }) => {
-    if (!text) return m.reply('*example*: .play eula song');
-    if (text.startsWith('https://')) {
-        return m.reply(`Silahkan gunakan \`.ytmp3 atau .yta\` untuk mendapatkan audio`);
-    }
+let handler = async (m, {
+        conn,
+        text
+}) => {
+        if (!text) return m.reply('*example*: .play eula song');
+        if (text.startsWith('https://')) return m.reply(`Silahkan gunakan \`.ytmp3 atau .yta\` untuk mendapatkan audio`)
+        let results = await search(text);
+        let videoId = results.videos[0].videoId;
+        let durasi = results.videos[0].timestamp;
+        let thumbnailUrl = `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`;
+        let author = results.videos[0].author.name;
+        let views = results.videos[0].views;
+        let links = results.videos[0].url;
+        let title = results.videos[0].title
+        let detik = results.videos[0].seconds
 
-    const results = await search(text);
-    const video = results.videos[0];
-
-    if (!video) {
-        return m.reply('Video tidak ditemukan.');
-    }
-
-    const { videoId, timestamp: durasi, author, views, url: links, title, seconds: detik } = video;
-    const thumbnailUrl = `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`;
-
-    const infoText = `  ◦ *Duration*: ${durasi}
-  ◦ *Author*: ${author.name}
+// Do not change below
+        let infoText = `  ◦ *Duration*: ${durasi}
+  ◦ *Author*: ${author}
   ◦ *Views*: ${views}
+  
+YT-DL By 
+- api.betabotz.eu.org
+- api.botcahx.eu.org
+- github:fent/node-ytdl-core
+- github:bochilteam/scraper
+- npm:btch-downloader 
 
 SEARCH By 
 - github.com/talmobi/yt-search
@@ -32,66 +49,72 @@ SEARCH By
 SENT By 
 - ${global.info.namebot}`;
 
-    await conn.sendMessage(m.chat, {
-        text: infoText,
-        contextInfo: {
-            forwardingScore: 9999,
-            isForwarded: true,
-            forwardedNewsletterMessageInfo: {
-                newsletterJid: global.info.channel,
-                serverMessageId: null,
-                newsletterName: global.info.namechannel,
-            },
-            externalAdReply: {
-                title: "AUDIO SEDANG DI KIRIM",
-                body: `Youtube Play by Assisten ${global.info.namebot}`,
-                thumbnailUrl,
-                sourceUrl: links,
-                mediaType: 1,
-                renderLargerThumbnail: true
-            },
-        },
-    }, {});
-
-    const button = [['MP4', `.ytv ${links}`]];
-    await conn.sendButton(m.chat, `Mau sekalian video nya?`, `Click button MP4`, global.maximus, button, m);
-
-    if (detik > 900) {
-        return m.reply(`Audio *${durasi}*\n_Tidak dapat mengirim, maksimal durasi 15 Menit_`);
-    }
-
-    try {
-        const us = await ytdls(links);
-        const hasil = await us.result.audio.downloadLink;
-        console.log(us);
-        await conn.sendMessage(m.chat, {
-            audio: {
-                url: hasil
-            },
-            mimetype: 'audio/mpeg'
-        }, {
-            quoted: m
-        });
-    } catch (e) {
-        console.error(e);
-        m.reply("panggil owner atau teruskan pesan ini ke nomornya" + e.message);
-        m.reply("Tunggu sebentar sedang mencoba alternatif kedua!")
-        try {
-            let apik = await ddownr.download("mp3", links)
-            let hasil = await apik.downloadUrl
-            console.log(hasil);
-            await conn.sendMessage(m.chat, {
-                audio: {
-                    url: hasil
+        var pesan = conn.sendMessage(m.chat, {
+                text: infoText,
+                contextInfo: {
+                        forwardingScore: 9999,
+                        isForwarded: true,
+                        forwardedNewsletterMessageInfo: {
+                                newsletterJid: global.info.channel,
+                                serverMessageId: null,
+                                newsletterName: global.info.namechannel,
+                        },
+                        externalAdReply: {
+                                title: "AUDIO SEDANG DI KIRIM",
+                                body: `Youtube Play by Assisten ${global.info.namebot}`,
+                                thumbnailUrl: thumbnailUrl,
+                                sourceUrl: links,
+                                mediaType: 1,
+                                renderLargerThumbnail: true
+                        },
                 },
-                mimetype: 'audio/mpeg'
-            }, {
-                quoted: m
-            });
-        } catch(e) {
-            m.reply(e.message)
+        }, {});
+
+        if (detik > 900) return m.reply(`Audio *${durasi}*\n_Tidak dapat mengirim, maksimal durasi 15 Menit_`);
+                try {
+                        const yt = await (await fetch(`https://api.betabotz.eu.org/api/download/ytmp3?url=${links}&apikey=${lann}`)).json()
+                        await conn.sendMessage(m.chat, {
+                                audio: {
+                                        url: yt.result.mp3
+                                },
+                                mimetype: 'audio/mpeg'
+                        }, {
+                                quoted: m
+                        });
+                } catch (e) {
+                        console.log(e);
+                        try {
+                                let btch = await (await fetch(`https://api.botcahx.eu.org/api/dowloader/yt?url=${links}&apikey=${btc}`)).json()
+                                await conn.sendMessage(m.chat, {
+                                        audio: {
+                                                url: btch.result.mp3
+                                        },
+                                        mimetype: 'audio/mpeg'
+                                }, {
+                                        quoted: m
+                                });
+                        } catch (e) {
+                                console.log(e)
+                                try {
+                                        let boc = await youtubedl(links)
+                                        let mx = await boc.audio['128kbps'].download()
+                                        await conn.sendMessage(m.chat, {
+                                                audio: {
+                                                        url: mx
+                                                },
+                                                mimetype: 'audio/mpeg'
+                                        }, {
+                                                quoted: m
+                                        });
+                                        await sleep(3000)
+                                        const button = [['MP4', `.ytv ${links}`]];
+                                        await conn.sendButton(m.chat, `Mau sekalian video nya?`, `Click button MP4`, global.maximus, button, m);
+                                } catch (e) {
+                                        console.log(e)
+                                        m.reply(`An error occurred while searching for the song: ${e.message}`);
+                                }
+                        }
         }
-    }
 };
 
 handler.help = ['youtubeplay'].map(v => v + ' name/url');
