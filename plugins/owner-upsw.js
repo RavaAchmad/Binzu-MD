@@ -150,7 +150,7 @@ if (command == 'upsw') {
 .upswaudio ( untuk audio )
 .upswtext < caption > ( untuk text )`
   m.reply(anu);
-}
+} 
 }
 handler.help = ['upswimage','upswvideo','upswtext','upswaudio','upsw']
 handler.tags = ['owner']
