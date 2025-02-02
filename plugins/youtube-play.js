@@ -96,6 +96,9 @@ SENT By
                                 }, {
                                         quoted: m
                                 });
+                                await sleep(2000)
+                                const button = [['MP4', `.ytv ${links}`]];
+                                await conn.sendButton(m.chat, `Mau sekalian video nya?`, `Click button MP4`, global.maximus, button, m);
                         } catch (e) {
                                 console.log(e)
                                 try {
