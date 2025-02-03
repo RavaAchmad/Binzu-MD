@@ -8,6 +8,7 @@ export async function before(m, { isBotAdmin }) {
     let bang = m.key.id
     if (chat.antiBadword && isBadword && m.isGroup) {
         user.warn += 1
+        console.log(isBadword)
         await conn.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: bang, participant: hapus }})
 //         conn.reply(`${user.warning >= 5 ? '*📮 Warning Kamu Sudah Mencapai 5!*' : '*📮 Kata Kata Toxic Terdeteksi*'}
 
