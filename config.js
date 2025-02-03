@@ -64,7 +64,7 @@ global.waown = 'wa.me/6281212035575' // ganti nomor tanpa menghilangkan wa.me/
 global.mail = 'ravabbok.ganz@gmail.com' // boleh taruh email kalian
 global.fb = 'https://facebook.com/' // boleh taruh link fb kalian
 global.ig = 'https://instagram.com/ravaja_' // boleh taruh link ig kalian
-global.gcbot = 'https://chat.whatsapp.com/GFtm25cVEmC1ZtqoCenClf' // boleh taruh link group kalian
+global.gcbot = 'https://chat.whatsapp.com/KPqLnY91cX2BGWaZVcXX2D' // boleh taruh link group kalian
 global.qris = 'https://i.ibb.co.com/F4QScw2/0z-Yk-UD15-Hkm-A.jpg' // Wajib isi untuk pembayaran. isi dengan qris
 global.vn = 'https://github.com/XM4ZE/DATABASE/raw/master/wallpaper/KARA.mp3?raw=true' // Allmenu Voice
 

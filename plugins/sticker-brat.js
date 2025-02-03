@@ -62,7 +62,7 @@ import fetch from 'node-fetch';
     
     handler.command = handler.help = ['brat']
     handler.tags = ['sticker']
-    handler.limit = 10
+    handler.limit = 1
     export default handler
 
     async function createSticker(res, url, packName, authorName, quality) {
