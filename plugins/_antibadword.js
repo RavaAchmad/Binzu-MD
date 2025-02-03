@@ -16,8 +16,8 @@ export async function before(m, { isBotAdmin }) {
 // “ Tch... Diam kamu bocah brengsek ! ! !`)
         conn.reply(m.chat, `Maaf Kak, *${global.info.namebot}* ditugaskan untuk memoderasi konten di grup ini dan Kamu telah melakukan kesalahan, sehingga *${global.info.namebot}* akan memberikan tindakan sesuai dengan moderasi yang diatur di sini (ᵕ—ᴗ—)
             
-           > Alasan : *Badword*
-           > Tindakan : *Delete Pesan*`)
+> Alasan : *Badword*
+> Tindakan : *Delete Pesan*`)
         if (user.warn >= 5) {
             user.warn = 0
             //conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
