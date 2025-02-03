@@ -9,13 +9,15 @@ export async function before(m, { isBotAdmin }) {
     if (chat.antiBadword && isBadword && m.isGroup) {
         user.warn += 1
         await conn.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: bang, participant: hapus }})
-        m.reply(`${user.warning >= 5 ? '*📮 Warning Kamu Sudah Mencapai 5 Maka Kamu Akan Dikick!*' : '*📮 Kata Kata Toxic Terdeteksi*'}
+//         conn.reply(`${user.warning >= 5 ? '*📮 Warning Kamu Sudah Mencapai 5!*' : '*📮 Kata Kata Toxic Terdeteksi*'}
 
-Binzu Memberi Peringatan: ${user.warn} / 5
+// [❗] Jika *${global.info.namebot}* sudah memperingatkanmu sebanyak 5x. Kamu akan dikeluarkan dari group ini.
 
-[❗] Jika *${global.info.namebot}* sudah memperingatkanmu sebanyak 5x. Kamu akan dikeluarkan dari group ini.
-
-“ Tch... Diam kamu bocah brengsek ! ! !`)
+// “ Tch... Diam kamu bocah brengsek ! ! !`)
+        conn.reply(m.chat, `Maaf Kak, *${global.info.namebot}* ditugaskan untuk memoderasi konten di grup ini dan Kamu telah melakukan kesalahan, sehingga *${global.info.namebot}* akan memberikan tindakan sesuai dengan moderasi yang diatur di sini (ᵕ—ᴗ—)
+            
+           > Alasan : *Badword*
+           > Tindakan : *Delete Pesan*`)
         if (user.warn >= 5) {
             user.warn = 0
             //conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
