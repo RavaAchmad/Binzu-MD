@@ -4,13 +4,17 @@ let handler = async (m, { text, isAdmin }) => {
   m.reply(`
 *Admin* ${conn.getName(m.sender)} *Sedang AFK*
 *Alasan:* ${text ? ' ' + text : 'tanpa alasan'}
+
+Jangan lupa kembali pls ya sayangku Admin❤️
 `)
 user.afk = + new Date
 user.afkReason = text
 } else {
   m.reply(`
-    *Pengguna* ${conn.getName(m.sender)} *Sedang AFK*
-    *Alasan:* ${text ? ' ' + text : 'tanpa alasan'}
+*Pengguna* ${conn.getName(m.sender)} *Sedang AFK*
+ *Alasan:* ${text ? ' ' + text : 'tanpa alasan'}
+ 
+ woi pler jangan kelamaan afk penuh memori gw
     `)
     user.afk = + new Date
     user.afkReason = text
