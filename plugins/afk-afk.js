@@ -14,7 +14,7 @@ user.afkReason = text
 *Pengguna* ${conn.getName(m.sender)} *Sedang AFK*
  *Alasan:* ${text ? ' ' + text : 'tanpa alasan'}
  
- woi pler jangan kelamaan afk penuh memori gw
+ woi pl3r jangan kelamaan afk penuh memori gw
     `)
     user.afk = + new Date
     user.afkReason = text
