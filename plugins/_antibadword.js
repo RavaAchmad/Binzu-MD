@@ -1,6 +1,6 @@
 let badwordRegex = /as(u|w)|anj(k|g)|ajn?(g|k)|dongo|a?njin(g|k)|bajingan|b(a?n)?gsa?t|(k|d)o?nto?l|me?me?(k|q|g|w)|pe?pe?(k|q)|meki|titi(t|d)|pe?ler|tetek|toket|ngewe|go?blo?k|to?lo?l|idiot|(k|ng)e?nto?(t|d)|jembut|bego|dajj?al|janc(u|o)k|pantek|puki ?(mak)?|kimak|kampang|lonte|col(i|mek?)|pelacur|henceu?t|nigga|fuck|dick|bitch|tits|bastard|asshole|dick|pussy/i // tambahin sendiri
 export async function before(m, { isBotAdmin }) {
-    if (m.isBaileys && m.fromMe) return 
+    if (m.isBaileys && m.fromMe && (isROwner || isOwner)) return 
     let chat = global.db.data.chats[m.chat]
     let user = global.db.data.users[m.sender]
     let isBadword = badwordRegex.exec(m.text)
@@ -10,18 +10,18 @@ export async function before(m, { isBotAdmin }) {
         user.warn += 1
         console.log(isBadword)
         await conn.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: bang, participant: hapus }})
-//         conn.reply(`${user.warning >= 5 ? '*📮 Warning Kamu Sudah Mencapai 5!*' : '*📮 Kata Kata Toxic Terdeteksi*'}
+         conn.reply(`${user.warning >= 5 ? '*📮 Warning Kamu Sudah Mencapai 5!*' : '*📮 Kata Kata Toxic Terdeteksi*'}
 
-// [❗] Jika *${global.info.namebot}* sudah memperingatkanmu sebanyak 5x. Kamu akan dikeluarkan dari group ini.
+[❗] Jika *${global.info.namebot}* sudah memperingatkanmu sebanyak 5x. Kamu akan dikeluarkan dari group ini.
 
-// “ Tch... Diam kamu bocah brengsek ! ! !`)
-        conn.reply(m.chat, `Maaf Kak, *${global.info.namebot}* ditugaskan untuk memoderasi konten di grup ini dan Kamu telah melakukan kesalahan, sehingga *${global.info.namebot}* akan memberikan tindakan sesuai dengan moderasi yang diatur di sini (ᵕ—ᴗ—)
+“ Tch... Diam kamu bocah brengsek ! ! !`)
+//         conn.reply(m.chat, `Maaf Kak, *${global.info.namebot}* ditugaskan untuk memoderasi konten di grup ini dan Kamu telah melakukan kesalahan, sehingga *${global.info.namebot}* akan memberikan tindakan sesuai dengan moderasi yang diatur di sini (ᵕ—ᴗ—)
             
-> Alasan : *Badword*
-> Tindakan : *Delete Pesan*`)
+// > Alasan : *Badword*
+// > Tindakan : *Delete Pesan*`)
         if (user.warn >= 5) {
             user.warn = 0
-            //conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
+            conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
         }
     }
     return !0
