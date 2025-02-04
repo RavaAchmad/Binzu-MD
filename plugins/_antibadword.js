@@ -8,20 +8,19 @@ export async function before(m, { isBotAdmin }) {
     let bang = m.key.id
     if (chat.antiBadword && isBadword && m.isGroup) {
         user.warn += 1
-        console.log(isBadword)
         await conn.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: bang, participant: hapus }})
-         conn.reply(`${user.warning >= 5 ? '*📮 Warning Kamu Sudah Mencapai 5!*' : '*📮 Kata Kata Toxic Terdeteksi*'}
+//          conn.reply(`${user.warning >= 5 ? '*📮 Warning Kamu Sudah Mencapai 5!*' : '*📮 Kata Kata Toxic Terdeteksi*'}
 
-[❗] Jika *${global.info.namebot}* sudah memperingatkanmu sebanyak 5x. Kamu akan dikeluarkan dari group ini.
+// [❗] Jika *${global.info.namebot}* sudah memperingatkanmu sebanyak 5x. Kamu akan dikeluarkan dari group ini.
 
-“ Tch... Diam kamu bocah brengsek ! ! !`)
-//         conn.reply(m.chat, `Maaf Kak, *${global.info.namebot}* ditugaskan untuk memoderasi konten di grup ini dan Kamu telah melakukan kesalahan, sehingga *${global.info.namebot}* akan memberikan tindakan sesuai dengan moderasi yang diatur di sini (ᵕ—ᴗ—)
+// “ Tch... Diam kamu bocah brengsek ! ! !`)
+        conn.reply(m.chat, `Maaf Kak, *${global.info.namebot}* ditugaskan untuk memoderasi konten di grup ini dan Kamu telah melakukan kesalahan, sehingga *${global.info.namebot}* akan memberikan tindakan sesuai dengan moderasi yang diatur di sini (ᵕ—ᴗ—)
             
-// > Alasan : *Badword*
-// > Tindakan : *Delete Pesan*`)
+> Alasan : *Badword*
+> Tindakan : *Delete Pesan*`)
         if (user.warn >= 5) {
             user.warn = 0
-            conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
+            // conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
         }
     }
     return !0
