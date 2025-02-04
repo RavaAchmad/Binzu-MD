@@ -26,7 +26,6 @@ handler.help = ['readviewonce']
 handler.tags = ['tools']
 handler.command = ['readviewonce', 'read', 'rvo', 'liat', 'readvo']
 handler.premium = true
-handler.
 handler.fail = null
 
 export default handler
