@@ -1,87 +1,166 @@
-import fetch from 'node-fetch';
-import api from 'btch-downloader';
-import { ytdls, ddownr } from '../lib/scrape.js';
+import ytdl from 'ytdl-core';
+import {
+    exec
+} from 'child_process';
+import fs from 'fs';
+import path from 'path';
 
-let handler = async (m, { conn, args, usedPrefix, command }) => {
-	if (!(args[0] || '').match(new RegExp(/(?:https?:\/\/)?(?:youtu\.be\/|(?:www\.|m\.)?youtube\.com\/(?:watch|v|embed|shorts)(?:\.php)?(?:\?.*v=|\/))([a-zA-Z0-9\_-]+)/, 'gi'))) return m.reply(`Example: *${usedPrefix}${command}* https://www.youtube.com/watch?v=K9_VFxzCuQ0`)
-	await m.reply(wait);
-	const startTime = Date.now();
-    try {
-		const response = await fetch(`https://ytdl.axeel.my.id/api/download/video/?url=${args[0]}`);
-		const data = await response.json();
+const downloadVideoAndAudio = async (url, selectedResolution) => {
+    const info = await ytdl.getInfo(url);
+    let videoFormat;
 
-		if (!data || !data.metadata) {
-			return m.reply('Gagal ambil data dari link YouTube itu, coba deh link-nya bener. 😕');
-		}
+    if (selectedResolution) {
+        videoFormat = info.formats.find(f => f.height === selectedResolution && f.container === 'mp4');
+    }
 
-		const {
-			metadata,
-			downloads
-		} = data;
+    if (!videoFormat) {
+        videoFormat = info.formats.find(f => f.height === 720 && f.container === 'mp4');
+    }
 
-		const videoUrl = downloads.url;
-		const thumbnailUrl = metadata.thumbnail.url;
+    if (!videoFormat) {
+        videoFormat = info.formats.filter(f => f.container === 'mp4').sort((a, b) => b.height - a.height)[0];
+    }
 
-		await conn.sendMessage(m.chat, {
-			image: {
-				url: thumbnailUrl
-			},
-			caption: `📺 *Judul*: ${metadata.title}\n⏳ *Durasi*: ${metadata.duration}s\n👀 *Views*: ${metadata.views}\n👍 *Likes*: ${metadata.likes}\n✍ *Author*: ${metadata.author}\n📜 *Deskripsi*: ${metadata.description}`,
-		}, {
-			quoted: m
-		});
+    const audioFormat = ytdl.chooseFormat(info.formats, {
+        quality: 'highestaudio',
+        filter: 'audioonly'
+    });
 
-		await conn.sendMessage(m.chat, {
-			video: {
-				url: videoUrl
-			},
-			caption: `🎬 *Video*: ${metadata.title}`,
-        }, {
-            quoted: m
+    if (!videoFormat) {
+        throw new Error('Tidak ditemukan format video yang sesuai.');
+    }
+    if (!audioFormat) {
+        throw new Error('Tidak ditemukan format audio.');
+    }
+
+    const videoPath = path.join('/tmp', `video_${Date.now()}.mp4`);
+    const audioPath = path.join('/tmp', `audio_${Date.now()}.mp4`);
+    const outputPath = path.join('/tmp', `output_${Date.now()}.mp4`);
+
+    await new Promise((resolve, reject) => {
+        ytdl(url, {
+                format: videoFormat
+            })
+            .pipe(fs.createWriteStream(videoPath))
+            .on('finish', resolve)
+            .on('error', reject);
+    });
+
+    await new Promise((resolve, reject) => {
+        ytdl(url, {
+                format: audioFormat
+            })
+            .pipe(fs.createWriteStream(audioPath))
+            .on('finish', resolve)
+            .on('error', reject);
+    });
+
+    await new Promise((resolve, reject) => {
+        exec(`ffmpeg -i ${videoPath} -i ${audioPath} -c:v copy -c:a aac ${outputPath}`, (error, stdout, stderr) => {
+            if (error) {
+                reject(new Error(`ffmpeg error: ${error.message}`));
+                return;
+            }
+            resolve();
         });
+    });
 
-    } catch (error) {
-		console.log(error)
-		try {
-		let resp = await ytdls(args[0]);
-		let tez = `Title : ${resp.result.title}\n`
-		+`- File type : ${resp.result.video.fileType}\n`;
-		+ `- Size : ${resp.result.video.fileSize}\n`;
-		+ `- Duration : ${resp.result.duration}`
-		await conn.sendMessage(m.chat, { image: { url: resp.result.image}, caption: tez}, {quoted: m})
-		const endTime = Date.now();
-		const executionTime = endTime - startTime;
-		await conn.sendMessage(m.chat, { video: { url: resp.result.video.downloadLink}, caption: `Process : ${executionTime} Milisecond` }, { quoted: m})
-		
-		// let anu = await( await fetch(`https://api.betabotz.eu.org/api/download/ytmp3?url=${args[0]}&apikey=${lann}`)).json()
-		// let txt = `*${anu.result.title}*\n\n`
-		// + `⌲ Resolution : 360p\n`
-		// + `⌲ Duration : ${anu.result.duration}`
-		// await conn.sendFile(m.chat, anu.result.mp4, `${anu.result.title}.mp4`, txt, m)
-	} catch (e) {
-		console.log(e)
-			try {
-	        	console.log(e)
-				let api = await ddownr.download(args[0], "720");
-				console.log(api);
-				let capt = `Title : ${api.title}\n`
-				+`\nTunggu sebentar lagi!`
-				await m.reply(capt)
-				const endTime = Date.now();
-				const executionTime = endTime - startTime;
-				await conn.sendMessage(m.chat, { video: { url: api.downloadUrl}, caption: `Process : ${executionTime} Milisecond` }, { quoted: m})
-			} catch (e) {
-				console.log(e)
-			}
-		}
-	}
-}; 
+    await fs.promises.unlink(videoPath);
+    await fs.promises.unlink(audioPath);
 
-handler.menudownload = ['ytvideo <url>']
-handler.tagsdownload = ['downloader']
-handler.command = /^(yt(v(ideo)?|mp4))$/i
+    const {
+        videoDetails
+    } = info;
+    const resolutions = info.formats
+        .filter(f => f.hasVideo && f.height)
+        .map(f => f.height)
+        .filter((value, index, self) => self.indexOf(value) === index)
+        .sort((a, b) => b - a);
 
-handler.premium = false;
+    const duration = new Date(videoDetails.lengthSeconds * 1000).toISOString().substr(11, 8);
+
+    return {
+        outputPath,
+        videoDetails,
+        resolution: videoFormat.height,
+        resolutions,
+        duration
+    };
+};
+
+let handler = async (m, {
+    conn,
+    text
+}) => {
+    const url = text.trim()
+	const selectedResolution = 720;
+    if (!ytdl.validateURL(url)) {
+        return conn.reply(m.chat, 'URL YouTube tidak valid. Pastikan URL diawali dengan http:// atau https://', m);
+    }
+
+    try {
+        const resolution = selectedResolution ? parseInt(selectedResolution, 10) : null;
+        if (resolution && isNaN(resolution)) {
+            return conn.reply(m.chat, 'Resolusi tidak valid. Harap masukkan resolusi dalam angka, misalnya: 720 atau 360.', m);
+        }
+
+        const {
+            outputPath,
+            videoDetails,
+            resolution: videoResolution,
+            resolutions,
+            duration
+        } = await downloadVideoAndAudio(url, resolution);
+        const fileSize = calculateFileSize(outputPath);
+
+        if (fileSize > 5 * 1024 * 1024 * 1024) { // 5 GB
+            return conn.reply(m.chat, 'File terlalu besar untuk dikirim. Maksimum ukuran file adalah 5 GB.', m);
+        }
+
+        if (fileSize > 1.5 * 1024 * 1024 * 1024) { // 1.5 GB
+            return conn.reply(m.chat, 'File melebihi batas 1.5 GB.', m);
+        }
+
+        if (fileSize <= 100 * 1024 * 1024) { // 100 MB
+            await conn.sendMessage(m.chat, {
+                video: {
+                    url: outputPath
+                },
+                mimetype: 'video/mp4',
+                fileName: `${videoDetails.title}.mp4`,
+                caption: `YTMP4 DOWNLOADER resolusi ${videoResolution}p\n\n*Judul:* ${videoDetails.title}\n*Deskripsi:* ${videoDetails.description}\n*Nama Pengupload:* ${videoDetails.author.name}\n*Jumlah Views:* ${videoDetails.viewCount}\n*Durasi:* ${duration}\n*Resolusi yang Tersedia:* ${resolutions.join(', ')}p`
+            }, {
+                quoted: m
+            });
+        } else {
+            await conn.sendMessage(m.chat, {
+                document: {
+                    url: outputPath
+                },
+                mimetype: 'video/mp4',
+                fileName: `${videoDetails.title}.mp4`,
+                caption: `YTMP4 DOWNLOADER resolusi ${videoResolution}p\n\n*Judul:* ${videoDetails.title}\n*Deskripsi:* ${videoDetails.description}\n*Nama Pengupload:* ${videoDetails.author.name}\n*Jumlah Views:* ${videoDetails.viewCount}\n*Durasi:* ${duration}\n*Resolusi yang Tersedia:* ${resolutions.join(', ')}p`
+            }, {
+                quoted: m
+            });
+        }
+
+        await fs.promises.unlink(outputPath);
+
+    } catch (e) {
+        console.error('Error downloading video:', e);
+        conn.reply(m.chat, `Terjadi kesalahan saat mengunduh video: ${e.message}`, m);
+    }
+};
+
+handler.help = ['ytmp4'];
+handler.tags = ['downloader'];
+handler.command = /^(ytmp4|ytv|ytvideo)$/i;
 handler.limit = true;
 
 export default handler;
+
+function calculateFileSize(filePath) {
+    const stats = fs.statSync(filePath);
+    return stats.size;
+}
