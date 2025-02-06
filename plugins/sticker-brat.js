@@ -2,8 +2,8 @@ import { Sticker } from 'wa-sticker-formatter';
     import fs from 'fs';
     import { execSync } from 'child_process';
 import fetch from 'node-fetch';
+import path from 'path';
     var handler = async (m, {
-     conn, 
      args, 
      text, 
      usedPrefix, 
@@ -65,7 +65,7 @@ import fetch from 'node-fetch';
     handler.limit = 1
     export default handler
 
-    async function createSticker(res, url, packName, authorName, quality) {
+    async function createSticker(res, quality) {
         let stickerMetadata = {
             type: 'full',
             pack: stickpack,
