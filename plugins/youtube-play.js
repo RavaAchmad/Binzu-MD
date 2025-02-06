@@ -63,7 +63,7 @@ SENT By
                                 newsletterName: global.info.namechannel,
                         },
                         externalAdReply: {
-                                title: "AUDIO SEDANG DI KIRIM",
+                                title: "INFORMATION",
                                 body: `Youtube Play by Assisten ${global.info.namebot}`,
                                 thumbnailUrl: thumbnailUrl,
                                 sourceUrl: links,
@@ -72,70 +72,71 @@ SENT By
                         },
                 },
         }, {});
+                await conn.sendButton(m.chat, `Hai ${ucapan()}\n\nMonggo dipilih?`.trim(), `Klik menu di bawah untuk memilih video/audio`, null, [['MP4', `/ytv ${links}`], ['MP3', `/yta ${links}`]], m)
 
-        if (detik > 900) return m.reply(`Audio *${durasi}*\n_Tidak dapat mengirim, maksimal durasi 15 Menit_`);
-                try {
-                        const yt = await (await fetch(`https://api.betabotz.eu.org/api/download/ytmp3?url=${links}&apikey=${lann}`)).json()
-                       console.log(yt)
-                        m.reply('sebentar lagi kak, audio sedang dikirim...')
-                        await conn.sendMessage(m.chat, {
-                                audio: {
-                                        url: yt.result.mp3
-                                },
-                                mimetype: 'audio/mpeg'
-                        }, {
-                                quoted: m
-                        });
-                        try {
-                                await conn.sendButton(m.chat, `Hai ${ucapan()}\n\nSekalian dengan video nya?`.trim(), `Klik menu di bawah untuk memilih video`, null, [['MP4', `/ytv ${links}`]], m)
-                        } catch (e) {
-                                console.log(e);
-                                m.reply('An error occurred while sending the button message.');
-                        }
-                } catch (e) {
-                        console.log(e);
-                        try {
-                                let btch = await (await fetch(`https://api.botcahx.eu.org/api/dowloader/yt?url=${links}&apikey=${btc}`)).json()
-                                await conn.sendMessage(m.chat, {
-                                        audio: {
-                                                url: btch.result.mp3
-                                        },
-                                        mimetype: 'audio/mpeg'
-                                }, {
-                                        quoted: m
-                                });
-                                try {
-                                        await conn.sendButton(m.chat, `Hai ${ucapan()}\n\nSekalian dengan video nya?`.trim(), `Klik menu di bawah untuk memilih video`, null, [['MP4', `/ytv ${links}`]], m)
-                                } catch (e) {
-                                        console.log(e);
-                                        m.reply('An error occurred while sending the button message.');
-                                }
-                        } catch (e) {
-                                console.log(e)
-                                try {
-                                        let boc = await youtubedl(links)
-                                        m.reply('sebentar lagi kak, audio sedang dikirim')
-                                        let mx = await boc.audio['128kbps'].download()
-                                        await conn.sendMessage(m.chat, {
-                                                audio: {
-                                                        url: mx
-                                                },
-                                                mimetype: 'audio/mpeg'
-                                        }, {
-                                                quoted: m
-                                        });
-                                        try {
-                                                await conn.sendButton(m.chat, `Hai ${ucapan()}\n\nSekalian dengan video nya?`.trim(), `Klik menu di bawah untuk memilih video`, null, [['MP4', `/ytv ${links}`]], m)
-                                        } catch (e) {
-                                                console.log(e);
-                                                m.reply('An error occurred while sending the button message.');
-                                        }
-                                } catch (e) {
-                                        console.log(e)
-                                        m.reply(`An error occurred while searching for the song: ${e}`);
-                                }
-                        }
-        }
+        // if (detik > 900) return m.reply(`Audio *${durasi}*\n_Tidak dapat mengirim, maksimal durasi 15 Menit_`);
+        //         try {
+        //                 const yt = await (await fetch(`https://api.betabotz.eu.org/api/download/ytmp3?url=${links}&apikey=${lann}`)).json()
+        //                console.log(yt)
+        //                 m.reply('sebentar lagi kak, audio sedang dikirim...')
+        //                 await conn.sendMessage(m.chat, {
+        //                         audio: {
+        //                                 url: yt.result.mp3
+        //                         },
+        //                         mimetype: 'audio/mpeg'
+        //                 }, {
+        //                         quoted: m
+        //                 });
+        //                 try {
+        //                         await conn.sendButton(m.chat, `Hai ${ucapan()}\n\nSekalian dengan video nya?`.trim(), `Klik menu di bawah untuk memilih video`, null, [['MP4', `/ytv ${links}`]], m)
+        //                 } catch (e) {
+        //                         console.log(e);
+        //                         m.reply('An error occurred while sending the button message.');
+        //                 }
+        //         } catch (e) {
+        //                 console.log(e);
+        //                 try {
+        //                         let btch = await (await fetch(`https://api.botcahx.eu.org/api/dowloader/yt?url=${links}&apikey=${btc}`)).json()
+        //                         await conn.sendMessage(m.chat, {
+        //                                 audio: {
+        //                                         url: btch.result.mp3
+        //                                 },
+        //                                 mimetype: 'audio/mpeg'
+        //                         }, {
+        //                                 quoted: m
+        //                         });
+        //                         try {
+        //                                 await conn.sendButton(m.chat, `Hai ${ucapan()}\n\nSekalian dengan video nya?`.trim(), `Klik menu di bawah untuk memilih video`, null, [['MP4', `/ytv ${links}`]], m)
+        //                         } catch (e) {
+        //                                 console.log(e);
+        //                                 m.reply('An error occurred while sending the button message.');
+        //                         }
+        //                 } catch (e) {
+        //                         console.log(e)
+        //                         try {
+        //                                 let boc = await youtubedl(links)
+        //                                 m.reply('sebentar lagi kak, audio sedang dikirim')
+        //                                 let mx = await boc.audio['128kbps'].download()
+        //                                 await conn.sendMessage(m.chat, {
+        //                                         audio: {
+        //                                                 url: mx
+        //                                         },
+        //                                         mimetype: 'audio/mpeg'
+        //                                 }, {
+        //                                         quoted: m
+        //                                 });
+        //                                 try {
+        //                                         await conn.sendButton(m.chat, `Hai ${ucapan()}\n\nSekalian dengan video nya?`.trim(), `Klik menu di bawah untuk memilih video`, null, [['MP4', `/ytv ${links}`]], m)
+        //                                 } catch (e) {
+        //                                         console.log(e);
+        //                                         m.reply('An error occurred while sending the button message.');
+        //                                 }
+        //                         } catch (e) {
+        //                                 console.log(e)
+        //                                 m.reply(`An error occurred while searching for the song: ${e}`);
+        //                         }
+        //                 }
+        // }
 };
 
 
