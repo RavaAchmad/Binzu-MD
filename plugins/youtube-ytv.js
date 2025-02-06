@@ -23,7 +23,7 @@ let handler = async (m, {
         }
 
         const web = await (await fetch(`https://ytdownloader.nvlgroup.my.id/download?url=${encodeURIComponent(url)}&resolution=720`)).buffer();
-        const outputPath = path.join(__dirname, `${Date.now()}.mp4`);
+        const outputPath = path.join('/tmp', `output_${Date.now()}.mp4`);
         await fs.promises.writeFile(outputPath, web);
 
         if (fileSize <= 100 * 1024 * 1024) { // 100 MB
