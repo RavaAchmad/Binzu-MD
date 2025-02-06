@@ -22,6 +22,9 @@ let handler = async (m, {
         if (!text) return m.reply('*example*: .play eula song');
         if (text.startsWith('https://')) return m.reply(`Silahkan gunakan \`.ytmp3 atau .yta\` untuk mendapatkan audio`)
         let results = await search(text);
+        if (!results.videos || results.videos.length === 0) {
+                return m.reply('No results found for the given query.');
+        }
         let videoId = results.videos[0].videoId;
         let durasi = results.videos[0].timestamp;
         let thumbnailUrl = `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`;
