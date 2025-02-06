@@ -1,5 +1,6 @@
 import { Sticker } from 'wa-sticker-formatter';
     import fs from 'fs';
+    import { execSync } from 'child_process';
 import fetch from 'node-fetch';
     var handler = async (m, {
      conn, 
@@ -10,8 +11,7 @@ import fetch from 'node-fetch';
      }) => {
         text = text ? text : m.quoted && m.quoted.text ? m.quoted.text : m.quoted && m.quoted.caption ? m.quoted.caption : m.quoted && m.quoted.description ? m.quoted.description : ''
         if (!text) throw `Example : ${usedPrefix + command} Lagi Ruwet`
-        if (text.endsWith('--gif')) {
-            const { execSync } = require('child_process')
+        if (text.endsWith('--gif')) { 
             if (!text) return m.reply(`Contoh: ${prefix+command} halo saya rava`)
             if (text.length > 40) return m.reply(`Karakter terbatas, max 40 huruf character!`)
             const words = text.split(" ")
