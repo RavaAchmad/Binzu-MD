@@ -9,10 +9,10 @@ let handler = async (m, {
     conn,
     text
 }) => {
-    const url = text.trim()
-	try {
-	const webs = await fetch(`https://ytdownloader.nvlgroup.my.id/download?url=${encodeURIComponent(url)}&resolution=720`, { method: 'HEAD' });
-	const fileSize = webs.headers.get('content-length');
+    const url = text.trim();
+    try {
+        const webs = await fetch(`https://ytdownloader.nvlgroup.my.id/download?url=${encodeURIComponent(url)}&resolution=720`, { method: 'HEAD' });
+        const fileSize = webs.headers.get('content-length');
 
         if (fileSize > 5 * 1024 * 1024 * 1024) { // 5 GB
             return conn.reply(m.chat, 'File terlalu besar untuk dikirim. Maksimum ukuran file adalah 5 GB.', m);
@@ -21,9 +21,11 @@ let handler = async (m, {
         if (fileSize > 1.5 * 1024 * 1024 * 1024) { // 1.5 GB
             return conn.reply(m.chat, 'File melebihi batas 1.5 GB.', m);
         }
-		const web = await (await fetch(`https://ytdownloader.nvlgroup.my.id/download?url=${encodeURIComponent(url)}&resolution=720`)).buffer();
-        const outputPath = path.join(__dirname, `${Date.now()}.mp3`);
+
+        const web = await (await fetch(`https://ytdownloader.nvlgroup.my.id/download?url=${encodeURIComponent(url)}&resolution=720`)).buffer();
+        const outputPath = path.join(__dirname, `${Date.now()}.mp4`);
         await fs.promises.writeFile(outputPath, web);
+
         if (fileSize <= 100 * 1024 * 1024) { // 100 MB
             await conn.sendMessage(m.chat, {
                 video: {
@@ -31,7 +33,7 @@ let handler = async (m, {
                 },
                 mimetype: 'video/mp4',
                 fileName: `toktok.mp4`,
-               }, {
+            }, {
                 quoted: m
             });
         } else {
@@ -46,7 +48,7 @@ let handler = async (m, {
             });
         }
 
-        await fs.promises.unlink(web);
+        await fs.promises.unlink(outputPath);
 
     } catch (e) {
         console.error('Error downloading video:', e);
