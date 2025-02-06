@@ -82,7 +82,6 @@ SENT By
                         }, {
                                 quoted: m
                         });
-                        await sleep(3000)
                         await conn.sendButton(m.chat, `
                                 Hai ${ucapan()}
                                 
@@ -100,7 +99,6 @@ SENT By
                                 }, {
                                         quoted: m
                                 });
-                                await sleep(2000)
                                 await conn.sendButton(m.chat, `
                                         Hai ${ucapan()}
                                         
@@ -120,7 +118,6 @@ SENT By
                                         }, {
                                                 quoted: m
                                         });
-                                        await sleep(2000)
                                         await conn.sendButton(m.chat, `
                                                 Hai ${ucapan()}
                                                 
@@ -128,7 +125,7 @@ SENT By
                                                 `.trim(), `Klik menu di bawah untuk memilih video`, null, [['MP4', `/ytv ${links}`]], m)
                                 } catch (e) {
                                         console.log(e)
-                                        m.reply(`An error occurred while searching for the song: ${e.message}`);
+                                        m.reply(`An error occurred while searching for the song: ${e}`);
                                 }
                         }
         }
