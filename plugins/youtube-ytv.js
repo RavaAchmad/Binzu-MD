@@ -6,7 +6,43 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 	if (!(args[0] || '').match(new RegExp(/(?:https?:\/\/)?(?:youtu\.be\/|(?:www\.|m\.)?youtube\.com\/(?:watch|v|embed|shorts)(?:\.php)?(?:\?.*v=|\/))([a-zA-Z0-9\_-]+)/, 'gi'))) return m.reply(`Example: *${usedPrefix}${command}* https://www.youtube.com/watch?v=K9_VFxzCuQ0`)
 	await m.reply(wait);
 	const startTime = Date.now();
-	try {
+    try {
+		const response = await fetch(`https://ytdl.axeel.my.id/api/download/video/?url=${args[0]}`);
+		const data = await response.json();
+
+		if (!data || !data.metadata) {
+			return m.reply('Gagal ambil data dari link YouTube itu, coba deh link-nya bener. 😕');
+		}
+
+		const {
+			metadata,
+			downloads
+		} = data;
+
+		const videoUrl = downloads.url;
+		const thumbnailUrl = metadata.thumbnail.url;
+
+		await conn.sendMessage(m.chat, {
+			image: {
+				url: thumbnailUrl
+			},
+			caption: `📺 *Judul*: ${metadata.title}\n⏳ *Durasi*: ${metadata.duration}s\n👀 *Views*: ${metadata.views}\n👍 *Likes*: ${metadata.likes}\n✍ *Author*: ${metadata.author}\n📜 *Deskripsi*: ${metadata.description}`,
+		}, {
+			quoted: m
+		});
+
+		await conn.sendMessage(m.chat, {
+			video: {
+				url: videoUrl
+			},
+			caption: `🎬 *Video*: ${metadata.title}`,
+        }, {
+            quoted: m
+        });
+
+    } catch (error) {
+		console.log(error)
+		try {
 		let resp = await ytdls(args[0]);
 		let tez = `Title : ${resp.result.title}\n`
 		+`- File type : ${resp.result.video.fileType}\n`;
@@ -38,7 +74,8 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 				console.log(e)
 			}
 		}
-    }; 
+	}
+}; 
 
 handler.menudownload = ['ytvideo <url>']
 handler.tagsdownload = ['downloader']

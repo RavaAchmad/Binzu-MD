@@ -36,7 +36,53 @@ let handler = async (m, {
 			});
 
 		} catch(e) {
-			m.reply(e)
+		
+			conn.reply(m.chat, 'Sedang mengirim permintaan...', m);
+		
+			let res = await fetch(`https://ytdownloader.nvlgroup.my.id/info?url=${args[0]}`);
+			if (!res.ok) return conn.reply(m.chat, 'Gagal mengambil informasi video', m);
+		
+			let info = await res.json();
+			let title = info.title;
+			let duration = info.duration || 'Tidak diketahui';
+		
+			let downloadUrl = `https://ytdownloader.nvlgroup.my.id/audio?url=${args[0]}&bitrate=128`;
+			let audioRes = await fetch(downloadUrl);
+			if (!audioRes.ok) return conn.reply(m.chat, 'Gagal mengunduh audio', m);
+		
+			let audioBuffer = await audioRes.buffer();
+			let audioSize = audioBuffer.length / (1024 * 1024);
+		
+			let message = `
+		[YTMP3 DOWNLOADER]
+		🎵 Judul: ${title}
+		🔗 Link: [Listen Here](${args[0]})
+		⏱ Durasi: ${duration} menit
+		📦 Besar File: ${audioSize.toFixed(2)} MB
+		`;
+		
+			await conn.reply(m.chat, message, m);
+		
+			// Update status to success
+			conn.reply(m.chat, 'Permintaan sukses dikirim', m);
+		
+			if (audioSize > 100) {
+				await conn.sendMessage(m.chat, {
+					document: audioBuffer,
+					mimetype: 'audio/mpeg',
+					fileName: `${title}.mp3`
+				});
+			} else {
+				await conn.sendMessage(m.chat, {
+					audio: audioBuffer,
+					mimetype: "audio/mpeg",
+					ptt: true // This sets the audio as a voice note (PTT)
+				}, {
+					quoted: m
+				});
+			}
+		
+			console.log(e)
 			try {
 				const yt = await ytdls(args[0])
 			const aurio = yt.result.audio.downloadLink
