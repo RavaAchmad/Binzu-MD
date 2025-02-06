@@ -73,6 +73,7 @@ SENT By
         if (detik > 900) return m.reply(`Audio *${durasi}*\n_Tidak dapat mengirim, maksimal durasi 15 Menit_`);
                 try {
                         const yt = await (await fetch(`https://api.betabotz.eu.org/api/download/ytmp3?url=${links}&apikey=${lann}`)).json()
+                        m.reply('sebentar lagi kak, audio sedang dikirim')
                         await conn.sendMessage(m.chat, {
                                 audio: {
                                         url: yt.result.mp3
@@ -103,6 +104,7 @@ SENT By
                                 console.log(e)
                                 try {
                                         let boc = await youtubedl(links)
+                                        m.reply('sebentar lagi kak, audio sedang dikirim')
                                         let mx = await boc.audio['128kbps'].download()
                                         await conn.sendMessage(m.chat, {
                                                 audio: {
