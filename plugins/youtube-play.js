@@ -85,11 +85,16 @@ SENT By
                         }, {
                                 quoted: m
                         });
-                        await conn.sendButton(m.chat, `
-                                Hai ${ucapan()}
-                                
-                                Sekalian dengan video nya?
-                                `.trim(), `Klik menu di bawah untuk memilih video`, null, [['Video', `/ytv ${links}`]], m)
+                        try {
+                                await conn.sendButton(m.chat, `
+                                        Hai ${ucapan()}
+                                        
+                                        Sekalian dengan video nya?
+                                        `.trim(), `Klik menu di bawah untuk memilih video`, null, [['Video', `/ytv ${links}`]], m)
+                        } catch (e) {
+                                console.log(e);
+                                m.reply('An error occurred while sending the button message.');
+                        }
                 } catch (e) {
                         console.log(e);
                         try {
@@ -102,11 +107,16 @@ SENT By
                                 }, {
                                         quoted: m
                                 });
-                                await conn.sendButton(m.chat, `
-                                        Hai ${ucapan()}
-                                        
-                                        Sekalian dengan video nya?
-                                        `.trim(), `Klik menu di bawah untuk memilih video`, null, [['MP4', `/ytv ${links}`]], m)
+                                try {
+                                        await conn.sendButton(m.chat, `
+                                                Hai ${ucapan()}
+                                                
+                                                Sekalian dengan video nya?
+                                                `.trim(), `Klik menu di bawah untuk memilih video`, null, [['MP4', `/ytv ${links}`]], m)
+                                } catch (e) {
+                                        console.log(e);
+                                        m.reply('An error occurred while sending the button message.');
+                                }
                         } catch (e) {
                                 console.log(e)
                                 try {
@@ -121,11 +131,16 @@ SENT By
                                         }, {
                                                 quoted: m
                                         });
-                                        await conn.sendButton(m.chat, `
-                                                Hai ${ucapan()}
-                                                
-                                                Sekalian dengan video nya?
-                                                `.trim(), `Klik menu di bawah untuk memilih video`, null, [['MP4', `/ytv ${links}`]], m)
+                                        try {
+                                                await conn.sendButton(m.chat, `
+                                                        Hai ${ucapan()}
+                                                        
+                                                        Sekalian dengan video nya?
+                                                        `.trim(), `Klik menu di bawah untuk memilih video`, null, [['MP4', `/ytv ${links}`]], m)
+                                        } catch (e) {
+                                                console.log(e);
+                                                m.reply('An error occurred while sending the button message.');
+                                        }
                                 } catch (e) {
                                         console.log(e)
                                         m.reply(`An error occurred while searching for the song: ${e}`);
