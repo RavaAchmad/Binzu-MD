@@ -1,6 +1,7 @@
 import { Sticker } from 'wa-sticker-formatter';
     import fs from 'fs';
     import { execSync } from 'child_process';
+    import axios from 'axios';
 import fetch from 'node-fetch';
 import path from 'path';
     var handler = async (m, {
