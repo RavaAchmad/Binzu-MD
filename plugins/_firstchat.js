@@ -15,7 +15,7 @@ let user = global.db.data.users[m.sender]
 Hai ${ucapan()}
 
 ${banned ? `kamu *terbanned* kak 😕\nHubungi: wa.me/${owner[0]}` : 'Ada Yang Bisa Saya Bantu?'}
-`.trim(), `Klik menu di bawah untuk melihat menu bot`, null, [['Sewa Bot', '/sewa'], ['menu', '.menu']], m)
+`.trim(), `Klik menu di bawah untuk melihat menu bot`, null, [['Sewa Bot', '/sewa'], ['group', '.grupbot']], m)
     user.pc = new Date * 1
 }
 let messk = [['Menu','.allmenu'], ['Donate', '.donate']]
