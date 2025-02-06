@@ -21,7 +21,7 @@ let handler = async (m, {
         if (fileSize > 1.5 * 1024 * 1024 * 1024) { // 1.5 GB
             return conn.reply(m.chat, 'File melebihi batas 1.5 GB.', m);
         }
-		const web = await (await fetch(`https://ytdownloader.nvlgroup.my.id/audio?url=${url}&bitrate=160`)).buffer();
+		const web = await (await fetch(`https://ytdownloader.nvlgroup.my.id/download?url=${encodeURIComponent(url)}&resolution=720`)).buffer();
         const outputPath = path.join(__dirname, `${Date.now()}.mp3`);
         await fs.promises.writeFile(outputPath, web);
         if (fileSize <= 100 * 1024 * 1024) { // 100 MB
