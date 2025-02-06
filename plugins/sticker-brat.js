@@ -10,7 +10,8 @@ var handler = async (m, { args, text, usedPrefix, command }) => {
 
     if (text.endsWith('--gif')) {
         if (text.length > 40) return m.reply(`Karakter terbatas, max 40 huruf character!`);
-        const words = text.split(" ");
+        const word = text.slice(0, -5);
+        const words = word.split(" ");
         const tempDir = path.join(process.cwd(), 'lib');
         if (!fs.existsSync(tempDir)) fs.mkdirSync(tempDir);
         const framePaths = [];
