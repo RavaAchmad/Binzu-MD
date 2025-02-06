@@ -86,7 +86,7 @@ SENT By
                                 quoted: m
                         });
                         try {
-                                await conn.sendButton(m.chat, `Hai ${ucapan()}\n\nSekalian dengan video nya?`.trim(), `Klik menu di bawah untuk memilih video`, null, [['Video', `/ytv ${links}`]], m)
+                                await conn.sendButton(m.chat, `Hai ${ucapan()}\n\nSekalian dengan video nya?`.trim(), `Klik menu di bawah untuk memilih video`, null, [['MP4', `/ytv ${links}`]], m)
                         } catch (e) {
                                 console.log(e);
                                 m.reply('An error occurred while sending the button message.');
@@ -104,7 +104,7 @@ SENT By
                                         quoted: m
                                 });
                                 try {
-                                        await conn.sendButton(m.chat, `Hai ${ucapan()}\n\nSekalian dengan video nya?`.trim(), `Klik menu di bawah untuk memilih video`, null, [['Video', `/ytv ${links}`]], m)
+                                        await conn.sendButton(m.chat, `Hai ${ucapan()}\n\nSekalian dengan video nya?`.trim(), `Klik menu di bawah untuk memilih video`, null, [['MP4', `/ytv ${links}`]], m)
                                 } catch (e) {
                                         console.log(e);
                                         m.reply('An error occurred while sending the button message.');
@@ -124,7 +124,7 @@ SENT By
                                                 quoted: m
                                         });
                                         try {
-                                                await conn.sendButton(m.chat, `Hai ${ucapan()}\n\nSekalian dengan video nya?`.trim(), `Klik menu di bawah untuk memilih video`, null, [['Video', `/ytv ${links}`]], m)
+                                                await conn.sendButton(m.chat, `Hai ${ucapan()}\n\nSekalian dengan video nya?`.trim(), `Klik menu di bawah untuk memilih video`, null, [['MP4', `/ytv ${links}`]], m)
                                         } catch (e) {
                                                 console.log(e);
                                                 m.reply('An error occurred while sending the button message.');
