@@ -38,7 +38,7 @@
     },
     "license": "MIT",
     "dependencies": {
-        "@adiwajshing/baileys": "github:MFK-Team/baileys",
+        "@adiwajshing/baileys": "npm:MFK-Team/baileys",
         "@bochilteam/scraper": "^4.2.4",
         "aki-api": "npm:aki-api@latest",
         "api-dylux": "^1.8.5",
