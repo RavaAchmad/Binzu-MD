@@ -5,7 +5,7 @@
  * Kamu bersumpah dengan nama tuhanmu
  * Kalau kamu GAY
  */
-
+import moment from 'moment-timezone'
 import yts from "yt-search";
 import fetch from 'node-fetch';
 
@@ -109,6 +109,12 @@ AUDIO SEDANG DI KIRIM
     await conn.sendMessage(m.chat, doc, {
       quoted: m
     });
+    try {
+      await conn.sendButton(m.chat, `Hai ${ucapan()}\n\nSekalian dengan video nya?`.trim(), `Klik menu di bawah untuk memilih video`, null, [['MP4', `/ytv ${selectedUrl}`]], m)
+} catch (e) {
+      console.log(e);
+      m.reply('An error occurred while sending the button message.');
+}
     conn.sendMessage(m.chat, { delete: key });
     clearTimeout(timeout);
     delete conn.youtubeList[m.sender];
@@ -131,3 +137,21 @@ export default handler;
  * Kamu bersumpah dengan nama tuhanmu
  * Kalau kamu GAY
  */
+function ucapan() {
+        const hour_now = moment.tz('Asia/Jakarta').format('HH')
+        var ucapanWaktu = 'Pagi kak'
+        if (hour_now >= '03' && hour_now <= '10') {
+          ucapanWaktu = 'Pagi kak'
+        } else if (hour_now >= '10' && hour_now <= '15') {
+          ucapanWaktu = 'Siang kak'
+        } else if (hour_now >= '15' && hour_now <= '17') {
+          ucapanWaktu = 'Sore kak'
+        } else if (hour_now >= '17' && hour_now <= '18') {
+          ucapanWaktu = 'Selamat Petang kak'
+        } else if (hour_now >= '18' && hour_now <= '23') {
+          ucapanWaktu = 'Malam kak'
+        } else {
+          ucapanWaktu = 'Selamat Malam!'
+        }	
+        return ucapanWaktu
+}

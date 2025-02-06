@@ -9,7 +9,5 @@ handler.help = ['grupbot']
 handler.tags = ['tool']
 handler.command = /^((grup|group)bot)$/i
 
-handler.register = false
-handler.limit = true
 
 export default handler
