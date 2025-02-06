@@ -76,6 +76,7 @@ SENT By
         if (detik > 900) return m.reply(`Audio *${durasi}*\n_Tidak dapat mengirim, maksimal durasi 15 Menit_`);
                 try {
                         const yt = await (await fetch(`https://api.betabotz.eu.org/api/download/ytmp3?url=${links}&apikey=${lann}`)).json()
+                       console.log(yt)
                         m.reply('sebentar lagi kak, audio sedang dikirim...')
                         await conn.sendMessage(m.chat, {
                                 audio: {
