@@ -54,7 +54,7 @@ var handler = async (m, { args, text, usedPrefix, command }) => {
             m.reply('Terjadi kesalahan');
         }
     } else {
-        const apis1 = `https://vapis.my.id/api/bratv1?q=${text}`;
+        const apis1 = `https://vapis.my.id/api/bratv1?q=${encodeURIComponent(text)}`;
         let stiker = await createSticker(apis1, 100, stickpack, stickauth);
         conn.sendFile(m.chat, stiker, 'icikiwir.webp', '', m, false);
     }
