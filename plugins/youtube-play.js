@@ -72,7 +72,7 @@ SENT By
                         },
                 },
         }, {});
-await await conn.sendButton(m.chat, `Hai ${ucapan()}\n\nMonggo dipilih?`.trim(), `Klik menu di bawah untuk memilih video/audio`, null, [['MP4', `/ytv ${links}`], ['MP3', `/yta ${links}`]], m)
+                await conn.sendButton(m.chat, `Hai ${ucapan()}\n\nMonggo dipilih?`.trim(), `Klik menu di bawah untuk memilih video/audio`, null, [['MP4', `/ytv ${links}`], ['MP3', `/yta ${links}`]], m)
 
         // if (detik > 900) return m.reply(`Audio *${durasi}*\n_Tidak dapat mengirim, maksimal durasi 15 Menit_`);
         //         try {
