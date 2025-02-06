@@ -55,7 +55,7 @@ var handler = async (m, { args, text, usedPrefix, command }) => {
         }
     } else {
         const apis1 = `https://vapis.my.id/api/bratv1?q=${text}`;
-        let stiker = await createSticker(apis1, false, stickpack, stickauth);
+        let stiker = await createSticker(apis1, 100, stickpack, stickauth);
         conn.sendFile(m.chat, stiker, 'icikiwir.webp', '', m, false);
     }
 }
