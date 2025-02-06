@@ -43,8 +43,12 @@ import path from 'path';
                 execSync(
                 `ffmpeg -y -f concat -safe 0 -i ${fileListPath} -vf "fps=30" -c:v libx264 -preset ultrafast -pix_fmt yuv420p ${outputVideoPath}`
                 )
-                let stiker = await mp4ToWebp(outputVideoPath, { pack: stickpack, author: stickauth })
-                await m.reply(stiker)
+                if (fs.existsSync(outputVideoPath)) {
+                    let stiker = await mp4ToWebp(outputVideoPath, { pack: stickpack, author: stickauth })
+                    await m.reply(stiker)
+                } else {
+                    throw new Error("Output video file not created")
+                }
                 framePaths.forEach((frame) => {
                 if (fs.existsSync(frame)) fs.unlinkSync(frame)
                 })
