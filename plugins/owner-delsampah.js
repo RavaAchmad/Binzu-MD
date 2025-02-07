@@ -34,9 +34,10 @@ fs.readdir(directoryPath, async (err, files) => {
 });
 }
 
-handler.help = ['spotify'];
-handler.command = /^(spotify)$/i;
-handler.tags = ['downloader'];
-handler.limit = true;
+handler.help = ['delsampah'];
+handler.command = /^(delsampah)$/i;
+handler.tags = ['owner'];
+handler.limit = false;
+handler.owner = true;
 
 export default handler;
