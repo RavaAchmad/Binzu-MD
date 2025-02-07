@@ -3,16 +3,17 @@ import fetch from 'node-fetch';
 let handler = async (m, { conn, args, usedPrefix, command }) => {  
         if (!args[0]) throw `Gunakan contoh ${usedPrefix}${command} https://fb.watch/mcx9K6cb6t/?mibextid=8103lRmnirLUhozF`;
         try {
-        const res = await fetch(`https://mannoffc-x.hf.space/download/facebook?url=${args[0]}`);
-        const json = await res.json();
-        let urls = json.result;
-        if (!Array.isArray(urls)) {
-            throw `Tidak dapat mendapatkan URL video dari tautan yang diberikan`;
-        }
-        for (let url of urls) {
-            if (url.video) {
-                conn.sendFile(m.chat, url.video, 'fb.mp4', `*Facebook Downloader*`, m);
-                break;
+        const response = await fetch(`https://api.botcahx.eu.org/api/dowloader/fbdown3?url=${link}&apikey=${btc}`);
+        const data = await response.json();
+        const urls = data.result.url.urls;
+        const liimit = global.db.data.users[m.sender].limit
+
+        if (Array.isArray(urls)) {
+            for (let url of urls) {
+                if (url.sd) {
+                    await conn.sendFile(m.chat, url.sd, 'fb.mp4', `*Facebook Downloader*`, m);
+                    break;
+                }
             }
         }
     } catch (error) {
