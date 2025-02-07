@@ -14,6 +14,7 @@ import search from 'yt-search';
 import fetch from 'node-fetch';
 import ytdl from 'ytdl-core';
 import fs from 'fs';
+import { delay } from 'lodash';
 
 let handler = async (m, {
         conn,
@@ -52,7 +53,7 @@ SEARCH By
 SENT By 
 - ${global.info.namebot}`;
 
-        var pesan = conn.sendMessage(m.chat, {
+        var pesan = await conn.sendMessage(m.chat, {
                 text: infoText,
                 contextInfo: {
                         forwardingScore: 9999,
@@ -72,6 +73,7 @@ SENT By
                         },
                 },
         }, {});
+        delay(3000)
                 await conn.sendButton(m.chat, `Hai ${ucapan()}\n\nMonggo dipilih?`.trim(), `Klik menu di bawah untuk memilih video/audio`, null, [['MP4', `/ytv ${links}`], ['MP3', `/yta ${links}`]], m)
 
         // if (detik > 900) return m.reply(`Audio *${durasi}*\n_Tidak dapat mengirim, maksimal durasi 15 Menit_`);
