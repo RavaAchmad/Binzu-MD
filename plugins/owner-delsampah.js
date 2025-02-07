@@ -4,7 +4,7 @@ import { promisify } from 'util';
 const sleep = promisify(setTimeout);
 
 let handler = async (m, { conn, args, usedPrefix, command }) => {
-  let directoryPath = '../sessions/';
+  let directoryPath = './sessions/';
   fs.readdir(directoryPath, async (err, files) => {
     if (err) {
       console.error('Unable to scan directory: ', err);
