@@ -16,7 +16,14 @@ let handler = async (m, { conn, args, usedPrefix, command, text }) => {
 		}
 	} catch (e) {
 		console.error(e)
-		throw e.toString()
+		m.reply('Server Error! alternatif yach');
+		var url = text.replace(/\s+/g, '+')
+		var ig = `https://api.botcahx.eu.org/api/dowloader/igdowloader?url=${url}&apikey=ravaja`
+		const res = await (await fetch(ig)).json();
+		for (var i of res) {
+			await conn.sendFile(m.chat, i.url, "", "",m)
+			await delay(1500)
+		}
 	}
 }
 
