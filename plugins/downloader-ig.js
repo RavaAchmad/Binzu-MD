@@ -17,12 +17,18 @@ let handler = async (m, { conn, args, usedPrefix, command, text }) => {
 	} catch (e) {
 		console.error(e)
 		m.reply('Server Error! alternatif yach');
-		var url = text.replace(/\s+/g, '+')
-		var ig = `https://api.botcahx.eu.org/api/dowloader/igdowloader?url=${url}&apikey=ravaja`
-		const res = await (await fetch(ig)).json();
-		for (var i of res) {
-			await conn.sendFile(m.chat, i.url, "", "",m)
-			await delay(1500)
+		try {
+			const api = await fetch(`https://api.botcahx.eu.org/api/dowloader/igdowloader?url=${args[0]}&apikey=${btc}`)
+			const res = await api.json()
+			
+			const limitnya = 999
+			
+			for (let i = 0; i < Math.min(limitnya, res.result.length); i++) {
+				await sleep(3000)
+				conn.sendFile(m.chat, res.result[i].url, null, `*Instagram Downloader*`, m)
+			}
+		} catch (e) {
+			throw eror
 		}
 	}
 }
