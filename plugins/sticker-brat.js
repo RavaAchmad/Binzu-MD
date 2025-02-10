@@ -13,7 +13,7 @@ var handler = async (m, { args, text, usedPrefix, command }) => {
         const word = text.slice(0, -5);
         const words = word.split(" ");
         const kntl = await generateBrat(encodeURIComponent(words), true, true);
-        stiker = await mp4ToWebp(img, { pack: stickpack, author: stickauth })
+        stiker = await mp4ToWebp(kntl, { pack: stickpack, author: stickauth })
         m.reply(stiker)
     } else {
         const apis1 = `https://vapis.my.id/api/bratv1?q=${encodeURIComponent(text)}`;
