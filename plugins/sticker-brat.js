@@ -40,7 +40,25 @@ var handler = async (m, { args, text, usedPrefix, command }) => {
         }
     return (new Sticker(res ? res: error, stickerMetadata)).toBuffer()
     }
- async function mp4ToWebp(file, stickerMetadata) {
+async function createSticker(img, url, packName, authorName, quality) {
+    let stickerMetadata = {
+        type: 'full',
+        pack: stickpack,
+        author: stickauth,
+        quality
+    }
+    
+    try {
+        const sticker = new Sticker(img ? img : url, stickerMetadata);
+        const buffer = await sticker.toBuffer(); // Replace with the correct method
+        return buffer;
+    } catch (error) {
+        console.error('Error creating sticker:', error);
+        throw error; // Rethrow the error after logging it
+    }
+}
+
+async function mp4ToWebp(file, stickerMetadata) {
     if (stickerMetadata) {
         if (!stickerMetadata.pack) stickerMetadata.pack = stickpack
         if (!stickerMetadata.author) stickerMetadata.author = stickauth
@@ -94,21 +112,17 @@ var handler = async (m, { args, text, usedPrefix, command }) => {
             stickerServerEndpoint: true
          }
     }
-    let response = await fetch('https://sticker-api.openwa.dev/convertMp4BufferToWebpDataUrl', {
+    let res = await fetch('https://sticker-api.openwa.dev/convertMp4BufferToWebpDataUrl', {
         method: 'post',
         headers: {
             Accept: 'application/json, text/plain, /',
             'Content-Type': 'application/json;charset=utf-8',
         },
         body: JSON.stringify(Format)
-    });
-    let responseText = await response.text();
-    let parts = responseText.split(';base64,');
-    if (!parts[1]) {
-        throw error
-    }
-    return Buffer.from(parts[1], 'base64');
- }
+    })
+    return Buffer.from((await res.text()).split(';base64,')[1], 'base64')
+}
+
 
  async function generateBrat(text, isBlur = false, isVideo = false) {
     try {
