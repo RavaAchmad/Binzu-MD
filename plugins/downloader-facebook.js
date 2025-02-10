@@ -1,4 +1,5 @@
-import { delay } from 'lodash';
+import pkg from 'lodash';
+const { delay } = pkg;
 import fetch from 'node-fetch';
 
 let handler = async (m, { conn, args, usedPrefix, command }) => {  
