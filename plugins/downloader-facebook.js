@@ -5,7 +5,7 @@ import fetch from 'node-fetch';
 let handler = async (m, { conn, args, usedPrefix, command }) => {  
     if (!args[0]) throw `Gunakan contoh ${usedPrefix}${command} https://fb.watch/mcx9K6cb6t/?mibextid=8103lRmnirLUhozF`;
     try {
-        const response = await fetch(`api.botcahx.eu.org/api/dowloader/allin?url=${args[0]}&apikey=${btc}`);
+        const response = await fetch(`https://api.botcahx.eu.org/api/dowloader/allin?url=${args[0]}&apikey=${btc}`);
         const data = await response.json();
         const limit = global.db.data.users[m.sender].limit;
 
