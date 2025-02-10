@@ -13,9 +13,10 @@ var handler = async (m, { args, text, usedPrefix, command }) => {
         if (text.length > 40) return m.reply(`Karakter terbatas, max 40 huruf character!`);
         const word = text.slice(0, -5);
         const words = word.split(" ");
-        const kntl = await generateBrat(encodeURIComponent(words), true, true);
-        stiker = await mp4ToWebp(kntl, { pack: stickpack, author: stickauth })
-        m.reply(stiker)
+        await generateBrat(encodeURIComponent(words), true, true);
+        const kntl = fs.readFileSync('brat_output.mp4');
+        const stiker = await mp4ToWebp(kntl, { pack: stickpack, author: stickauth });
+        conn.sendFile(m.chat, stiker, 'sticker.webp', '', m, false);
     } else {
         const apis1 = `https://vapis.my.id/api/bratv1?q=${encodeURIComponent(text)}`;
         let stiker = await createSticker(apis1, 100, stickpack, stickauth);
@@ -102,24 +103,34 @@ var handler = async (m, { args, text, usedPrefix, command }) => {
     return Buffer.from((await res.text()).split(';base64,')[1], 'base64')
  }
 
-    async function generateBrat(text, isBlur = false, isVideo = false) {
-  try {
-    const params = new URLSearchParams();
-    params.append("text", text);
-    if (isBlur) params.append("modeBlur", "true");
-    if (isVideo) params.append("isVideo", "true");
-
-    const response = await axios.get(API_URL, {
-      params,
-      responseType: "arraybuffer", // Ambil hasil sebagai buffer
-    });
-
-    const fileType = isVideo ? "mp4" : "png"; // Tentukan format file
-    const fileName = `brat_output.${fileType}`;
-
-    fs.writeFileSync(fileName, response.data);
-    console.log(`✅ File berhasil disimpan: ${fileName}`);
-  } catch (error) {
-    console.error("❌ Error:", error.response ? error.response.data : error.message);
+ async function generateBrat(text, isBlur = false, isVideo = false) {
+    try {
+      const params = new URLSearchParams();
+      params.append("text", text);
+      if (isBlur) params.append("modeBlur", "true");
+      if (isVideo) params.append("isVideo", "true");
+  
+      const response = await axios.get(API_URL, {
+        params,
+        responseType: "arraybuffer",
+      });
+  
+      const fileType = isVideo ? "mp4" : "png";
+      const fileName = `brat_output.${fileType}`;
+  
+      fs.writeFileSync(fileName, response.data);
+      console.log(`✅ File berhasil disimpan: ${fileName}`);
+  
+      setTimeout(() => {
+        fs.unlink(fileName, (err) => {
+          if (err) {
+            console.error(`❌ Gagal menghapus file: ${fileName}`, err);
+          } else {
+            console.log(`🗑️ File berhasil dihapus: ${fileName}`);
+          }
+        });
+      }, 300000); // 300000 milidetik = 5 menit
+    } catch (error) {
+      console.error("❌ Error:", error.response ? error.response.data : error.message);
+    }
   }
-}
