@@ -38,10 +38,15 @@ var handler = async (m, { args, text, usedPrefix, command }) => {
             const outputVideoPath = path.join(tempDir, "output.mp4");
             execSync(`ffmpeg -y -f concat -safe 0 -i ${fileListPath} -vf "fps=30" -c:v libx264 -preset ultrafast -pix_fmt yuv420p ${outputVideoPath}`);
 
-            // Membaca file output sebagai buffer
-            const videoBuffer = fs.readFileSync(outputVideoPath);
-            let stiker = await mp4ToWebp(videoBuffer, { pack: stickpack, author: stickauth });
-            await m.reply(stiker);
+            // Check if the output video file exists before reading it
+            if (fs.existsSync(outputVideoPath)) {
+                // Membaca file output sebagai buffer
+                const videoBuffer = fs.readFileSync(outputVideoPath);
+                let stiker = await mp4ToWebp(videoBuffer, { pack: stickpack, author: stickauth });
+                await m.reply(stiker);
+            } else {
+                throw new Error('Output video file not found');
+            }
 
             // Menghapus file sementara
             framePaths.forEach((frame) => {

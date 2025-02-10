@@ -140,19 +140,25 @@ async function downloadInstagram(link, m) {
 // DOWNLOADER FACEBOOK 
 async function downloadFacebook(link, m) {
 	try {
-		const response = await fetch(`https://api.botcahx.eu.org/api/dowloader/fbdown3?url=${link}&apikey=${btc}`);
+		const response = await fetch(`https://api.botcahx.eu.org/api/dowloader/allin?url=${args[0]}&apikey=${btc}`);
 		const data = await response.json();
-		const urls = data.result.url.urls;
-		const liimit = global.db.data.users[m.sender].limit
 
-		if (Array.isArray(urls)) {
-			for (let url of urls) {
-				if (url.sd) {
-					await conn.sendFile(m.chat, url.sd, 'fb.mp4', `*Facebook Downloader*`, m);
-					break;
-				}
+		// Extract all HD URLs
+		const hdMedias = data.result.medias.filter(media => media.quality === 'hd');
+		if (hdMedias.length > 0) {
+			for (const hdMedia of hdMedias) {
+				sleep(1500);
+				await conn.sendFile(m.chat, hdMedia.url, null, '*Facebook Downloader*', m);
 			}
+		} else {
+			const sdMedias = data.result.medias.filter(media => media.quality === 'hd');
+			if (sdMedias.length > 0) {
+				for (const sdMedia of sdMedias) {
+					sleep(1500);
+					await conn.sendFile(m.chat, sdMedia.url, null, '*Facebook Downloader*', m);
+				}
 		}
+	}
 
 	} catch (error) {
 		console.error(error);

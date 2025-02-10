@@ -15,8 +15,14 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
                 await conn.sendFile(m.chat, hdMedia.url, null, '*Facebook Downloader*', m);
             }
         } else {
-            throw 'HD video not available';
+            const sdMedias = data.result.medias.filter(media => media.quality === 'hd');
+            if (sdMedias.length > 0) {
+                for (const sdMedia of sdMedias) {
+                    sleep(1500);
+                    await conn.sendFile(m.chat, sdMedia.url, null, '*Facebook Downloader*', m);
+                }
         }
+    }
 
     } catch (error) {
         console.log(error);
