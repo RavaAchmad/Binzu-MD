@@ -1,21 +1,24 @@
+import { delay } from 'lodash';
 import fetch from 'node-fetch';
 
 let handler = async (m, { conn, args, usedPrefix, command }) => {  
-        if (!args[0]) throw `Gunakan contoh ${usedPrefix}${command} https://fb.watch/mcx9K6cb6t/?mibextid=8103lRmnirLUhozF`;
-        try {
-        const response = await fetch(`https://api.botcahx.eu.org/api/dowloader/fbdown3?url=${link}&apikey=${btc}`);
+    if (!args[0]) throw `Gunakan contoh ${usedPrefix}${command} https://fb.watch/mcx9K6cb6t/?mibextid=8103lRmnirLUhozF`;
+    try {
+        const response = await fetch(`api.botcahx.eu.org/api/dowloader/allin?url=${args[0]}&apikey=${btc}`);
         const data = await response.json();
-        const urls = data.result.url.urls;
-        const liimit = global.db.data.users[m.sender].limit
+        const limit = global.db.data.users[m.sender].limit;
 
-        if (Array.isArray(urls)) {
-            for (let url of urls) {
-                if (url.sd) {
-                    await conn.sendFile(m.chat, url.sd, 'fb.mp4', `*Facebook Downloader*`, m);
-                    break;
-                }
+        // Extract all HD URLs
+        const hdMedias = data.result.medias.filter(media => media.quality === 'hd');
+        if (hdMedias.length > 0) {
+            for (const hdMedia of hdMedias) {
+                delay(1500);
+                await conn.sendMessage(m.chat, `Here is your HD video URL: ${hdMedia.url}`, m);
             }
+        } else {
+            throw 'HD video not available';
         }
+
     } catch (error) {
         console.log(error);
         throw `${global.eror}`;
