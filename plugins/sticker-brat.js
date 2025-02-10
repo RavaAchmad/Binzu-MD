@@ -148,7 +148,12 @@ var handler = async (m, { args, text, usedPrefix, command }) => {
             try {
                 let json = JSON.parse(resText);
                 if (json.result) {
-                    match = json.result.match(/data:image\/webp;base64,(.+)/);
+                    if (json.result.startsWith('data:image/webp;base64,')) {
+                        match = json.result.match(/data:image\/webp;base64,(.+)/);
+                    } else {
+                        // If no prefix, assume raw base64 string
+                        return Buffer.from(json.result, 'base64');
+                    }
                 }
             } catch (e) {
                 // Ignore JSON parse errors
