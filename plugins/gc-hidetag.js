@@ -26,7 +26,7 @@ handler.tags = ['adminry']
 handler.command = /^(hidetag|ht)$/i
 
 handler.admin = true
-handler.botAdmin = true
+handler.botAdmin = false
 handler.group = true
-handler.rowner = true
+handler.rowner = false
 export default handler
