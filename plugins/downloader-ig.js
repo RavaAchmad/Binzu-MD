@@ -23,12 +23,11 @@ let handler = async (m, { conn, args, usedPrefix, command, text }) => {
 			
 			const limitnya = 999
 			
-			for (let i = 0; i < Math.min(limitnya, res.result.length); i++) {
+			for (var i of res) {
 				await sleep(3000)
 				conn.sendFile(m.chat, res.result[i].url, null, `*Instagram Downloader*`, m)
 			}
 		} catch (e) {
-			throw eror
 			console.log(e)
 		}
 	}
