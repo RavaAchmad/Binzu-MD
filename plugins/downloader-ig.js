@@ -22,8 +22,8 @@ let handler = async (m, { conn, args, usedPrefix, command, text }) => {
 			const res = await api.json()
 			
 			const limitnya = 999
-			
-			for (var i of res) {
+			console.log(res)
+			for (let i = 0; i < Math.min(limitnya, res.result.length); i++) {
 				await sleep(3000)
 				conn.sendFile(m.chat, res.result[i].url, null, `*Instagram Downloader*`, m)
 			}
