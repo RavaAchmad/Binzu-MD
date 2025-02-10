@@ -12,7 +12,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
         if (hdMedias.length > 0) {
             for (const hdMedia of hdMedias) {
                 sleep(1500);
-                await conn.sendMessage(m.chat, `Here is your HD video URL: ${hdMedia.url}`, m);
+                await conn.sendFile(m.chat, hdMedia.url, null, m);
             }
         } else {
             throw 'HD video not available';
