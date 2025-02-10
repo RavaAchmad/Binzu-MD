@@ -40,23 +40,6 @@ var handler = async (m, { args, text, usedPrefix, command }) => {
         }
     return (new Sticker(res ? res: error, stickerMetadata)).toBuffer()
     }
-async function createSticker(img, url, packName, authorName, quality) {
-    let stickerMetadata = {
-        type: 'full',
-        pack: stickpack,
-        author: stickauth,
-        quality
-    }
-    
-    try {
-        const sticker = new Sticker(img ? img : url, stickerMetadata);
-        const buffer = await sticker.toBuffer(); // Replace with the correct method
-        return buffer;
-    } catch (error) {
-        console.error('Error creating sticker:', error);
-        throw error; // Rethrow the error after logging it
-    }
-}
 
 async function mp4ToWebp(file, stickerMetadata) {
     if (stickerMetadata) {
