@@ -144,12 +144,13 @@ var handler = async (m, { args, text, usedPrefix, command }) => {
         let resText = await res.text();
         // First try regex extraction
         let match = resText.match(/data:image\/webp;base64,(.+)/);
-        if (!match) {
+        if (!match || !match[1]) {
             try {
                 let json = JSON.parse(resText);
                 if (json.result) {
                     if (json.result.startsWith('data:image/webp;base64,')) {
-                        match = json.result.match(/data:image\/webp;base64,(.+)/);
+                        let m2 = json.result.match(/data:image\/webp;base64,(.+)/);
+                        if (m2 && m2[1]) return Buffer.from(m2[1], 'base64');
                     } else {
                         return Buffer.from(json.result, 'base64');
                     }
@@ -163,6 +164,5 @@ var handler = async (m, { args, text, usedPrefix, command }) => {
                 }
             }
         }
-        let base64Data = match[1];
-        return Buffer.from(base64Data, 'base64')
+        return Buffer.from(match[1], 'base64')
     }
