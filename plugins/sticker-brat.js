@@ -4,6 +4,7 @@ import { Sticker } from 'wa-sticker-formatter';
     import axios from 'axios';
 import fetch from 'node-fetch';
 import path from 'path';
+import { error } from 'console';
 const API_URL = "https://fgsi-brat.hf.space/";
 var handler = async (m, { args, text, usedPrefix, command }) => {
     text = text ? text : m.quoted && m.quoted.text ? m.quoted.text : m.quoted && m.quoted.caption ? m.quoted.caption : m.quoted && m.quoted.description ? m.quoted.description : '';
@@ -93,15 +94,20 @@ var handler = async (m, { args, text, usedPrefix, command }) => {
             stickerServerEndpoint: true
          }
     }
-    let res = await fetch('https://sticker-api.openwa.dev/convertMp4BufferToWebpDataUrl', {
+    let response = await fetch('https://sticker-api.openwa.dev/convertMp4BufferToWebpDataUrl', {
         method: 'post',
         headers: {
             Accept: 'application/json, text/plain, /',
             'Content-Type': 'application/json;charset=utf-8',
         },
         body: JSON.stringify(Format)
-    })
-    return Buffer.from((await res.text()).split(';base64,')[1], 'base64')
+    });
+    let responseText = await response.text();
+    let parts = responseText.split(';base64,');
+    if (!parts[1]) {
+        throw error
+    }
+    return Buffer.from(parts[1], 'base64');
  }
 
  async function generateBrat(text, isBlur = false, isVideo = false) {
