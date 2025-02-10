@@ -51,7 +51,7 @@ var handler = async (m, { args, text, usedPrefix, command }) => {
           if (fs.existsSync(outputVideoPath)) fs.unlinkSync(outputVideoPath)
         } catch (e) {
           console.error(e)
-          reply('Terjadi kesalahan')
+          m.reply('Terjadi kesalahan')
         }
     } else {
         const apis1 = `https://vapis.my.id/api/bratv1?q=${encodeURIComponent(text)}`;
