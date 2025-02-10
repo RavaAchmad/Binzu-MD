@@ -5,18 +5,18 @@ let handler = async (m, { conn, args, usedPrefix, command, text }) => {
 
 	if (!text) throw 'Perihal Apah?'
 	var url = text.replace(/\s+/g, '+')
-	try {
-		var response = await fetch(API('xzn', 'api/ig', {
-			url
-		}, 'apikey'))
-		var wtf = await response.json()
-		for (var i of wtf) {
-			await conn.sendFile(m.chat, i.url, "", "",m)
-			await delay(1500)
-		}
-	} catch (e) {
-		console.error(e)
-		m.reply('Server Error! alternatif yach');
+	// try {
+	// 	var response = await fetch(API('xzn', 'api/ig', {
+	// 		url
+	// 	}, 'apikey'))
+	// 	var wtf = await response.json()
+	// 	for (var i of wtf) {
+	// 		await conn.sendFile(m.chat, i.url, "", "",m)
+	// 		await delay(1500)
+	// 	}
+	// } catch (e) {
+	// 	console.error(e)
+	// 	m.reply('Server Error! alternatif yach');
 		try {
 			const api = await fetch(`https://api.botcahx.eu.org/api/dowloader/igdowloader?url=${args[0]}&apikey=${btc}`)
 			const res = await api.json()
@@ -32,7 +32,7 @@ let handler = async (m, { conn, args, usedPrefix, command, text }) => {
 			console.log(e)
 		}
 	}
-}
+
 
 handler.help = ['instagram'].map(v => v + ' <url>')
 handler.tags = ['downloader']
