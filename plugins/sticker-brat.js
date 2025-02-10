@@ -13,10 +13,11 @@ var handler = async (m, { args, text, usedPrefix, command }) => {
         if (text.length > 40) return m.reply(`Karakter terbatas, max 40 huruf character!`);
         const word = text.slice(0, -5);
         const words = word.split(" ");
-        await generateBrat(encodeURIComponent(words), true, true);
+        const worrd = words.join(" ");
+        await generateBrat(encodeURIComponent(worrd), true, true);
         const kntl = fs.readFileSync('brat_output.mp4');
-        //const stiker = await mp4ToWebp(kntl, { pack: stickpack, author: stickauth });
-        conn.sendFile(m.chat, kntl, 'sticker.webp', '', m, false);
+        stiker = await mp4ToWebp(kntl, { pack: stickpack, author: stickauth });
+        conn.sendFile(m.chat, stiker, 'sticker.webp', '', m, false);
     } else {
         const apis1 = `https://vapis.my.id/api/bratv1?q=${encodeURIComponent(text)}`;
         let stiker = await createSticker(apis1, 100, stickpack, stickauth);
