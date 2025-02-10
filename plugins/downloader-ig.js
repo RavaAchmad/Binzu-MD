@@ -29,6 +29,7 @@ let handler = async (m, { conn, args, usedPrefix, command, text }) => {
 			}
 		} catch (e) {
 			throw eror
+			console.log(e)
 		}
 	}
 }
