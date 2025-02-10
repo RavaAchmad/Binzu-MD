@@ -1,5 +1,3 @@
-import pkg from 'lodash';
-const { delay } = pkg;
 import fetch from 'node-fetch';
 
 let handler = async (m, { conn, args, usedPrefix, command }) => {  
@@ -13,7 +11,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
         const hdMedias = data.result.medias.filter(media => media.quality === 'hd');
         if (hdMedias.length > 0) {
             for (const hdMedia of hdMedias) {
-                delay(1500);
+                sleep(1500);
                 await conn.sendMessage(m.chat, `Here is your HD video URL: ${hdMedia.url}`, m);
             }
         } else {
@@ -38,3 +36,6 @@ handler.fail = null;
 handler.private = false;
 
 export default handler
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
