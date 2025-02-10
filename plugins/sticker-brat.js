@@ -142,7 +142,9 @@ var handler = async (m, { args, text, usedPrefix, command }) => {
             body: JSON.stringify(Format)
         })
         let resText = await res.text();
-        let base64Data = resText.split(';base64,')[1];
-        if (!base64Data) throw new Error('Failed to extract base64 data from response');
+        // Changed extraction using regex to match data URL format
+        let match = resText.match(/data:image\/webp;base64,(.+)/);
+        if (!match) throw new Error('Failed to extract base64 data from response');
+        let base64Data = match[1];
         return Buffer.from(base64Data, 'base64')
     }
