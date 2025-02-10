@@ -12,52 +12,9 @@ var handler = async (m, { args, text, usedPrefix, command }) => {
         if (text.length > 40) return m.reply(`Karakter terbatas, max 40 huruf character!`);
         const word = text.slice(0, -5);
         const words = word.split(" ");
-        const tempDir = path.join(process.cwd(), 'lib');
-        if (!fs.existsSync(tempDir)) fs.mkdirSync(tempDir);
-        const framePaths = [];
-
-        try {
-            for (let i = 0; i < words.length; i++) {
-                const currentText = words.slice(0, i + 1).join(" ");
-                const res = await axios.get(`https://brat.caliphdev.com/api/brat?text=${encodeURIComponent(currentText)}`, { responseType: "arraybuffer" }).catch((e) => e.response);
-                const framePath = path.join(tempDir, `frame${i}.mp4`);
-                fs.writeFileSync(framePath, res.data);
-                framePaths.push(framePath);
-            }
-
-            const fileListPath = path.join(tempDir, "filelist.txt");
-            let fileListContent = "";
-            for (let i = 0; i < framePaths.length; i++) {
-                fileListContent += `file '${framePaths[i]}'\n`;
-                fileListContent += `duration 0.7\n`;
-            }
-            fileListContent += `file '${framePaths[framePaths.length - 1]}'\n`;
-            fileListContent += `duration 2\n`;
-            fs.writeFileSync(fileListPath, fileListContent);
-
-            const outputVideoPath = path.join(tempDir, "output.mp4");
-            execSync(`ffmpeg -y -f concat -safe 0 -i ${fileListPath} -vf "fps=30" -c:v libx264 -preset ultrafast -pix_fmt yuv420p ${outputVideoPath}`);
-
-            // Check if the output video file exists before reading it
-            if (fs.existsSync(outputVideoPath)) {
-                // Membaca file output sebagai buffer
-                const videoBuffer = fs.readFileSync(outputVideoPath);
-                let stiker = await mp4ToWebp(videoBuffer, { pack: stickpack, author: stickauth });
-                await m.reply(stiker);
-            } else {
-                throw new Error('Output video file not found');
-            }
-
-            // Menghapus file sementara
-            framePaths.forEach((frame) => {
-                if (fs.existsSync(frame)) fs.unlinkSync(frame);
-            });
-            if (fs.existsSync(fileListPath)) fs.unlinkSync(fileListPath);
-            if (fs.existsSync(outputVideoPath)) fs.unlinkSync(outputVideoPath);
-        } catch (e) {
-            console.error(e);
-            m.reply('Terjadi kesalahan');
-        }
+       const ktnl =  await generateBrat(encodeURIComponent(text), true, true);
+       let stiker = await createSticker(ktnl, 100, stickpack, stickauth);
+       conn.sendFile(m.chat, stiker, 'icikiwir.webp', '', m, false);
     } else {
         const apis1 = `https://vapis.my.id/api/bratv1?q=${encodeURIComponent(text)}`;
         let stiker = await createSticker(apis1, 100, stickpack, stickauth);
@@ -166,3 +123,25 @@ var handler = async (m, { args, text, usedPrefix, command }) => {
         }
         return Buffer.from(match[1], 'base64')
     }
+
+    async function generateBrat(text, isBlur = false, isVideo = false) {
+        try {
+          const params = new URLSearchParams();
+          params.append("text", text);
+          if (isBlur) params.append("modeBlur", "true");
+          if (isVideo) params.append("isVideo", "true");
+      
+          const response = await axios.get(API_URL, {
+            params,
+            responseType: "arraybuffer", // Ambil hasil sebagai buffer
+          });
+      
+          const fileType = isVideo ? "mp4" : "png"; // Tentukan format file
+          const fileName = `brat_output.${fileType}`;
+      
+          fs.writeFileSync(fileName, response.data);
+          console.log(`✅ File berhasil disimpan: ${fileName}`);
+        } catch (error) {
+          console.error("❌ Error:", error.response ? error.response.data : error.message);
+        }
+      }
