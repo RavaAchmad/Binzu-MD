@@ -163,7 +163,6 @@ var handler = async (m, { args, text, usedPrefix, command }) => {
                 }
             }
         }
-        if (!match) throw new Error('Failed to extract base64 data from response');
         let base64Data = match[1];
         return Buffer.from(base64Data, 'base64')
     }
