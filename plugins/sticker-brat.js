@@ -15,8 +15,8 @@ var handler = async (m, { args, text, usedPrefix, command }) => {
         const words = word.split(" ");
         await generateBrat(encodeURIComponent(words), true, true);
         const kntl = fs.readFileSync('brat_output.mp4');
-        const stiker = await mp4ToWebp(kntl, { pack: stickpack, author: stickauth });
-        conn.sendFile(m.chat, stiker, 'sticker.webp', '', m, false);
+        //const stiker = await mp4ToWebp(kntl, { pack: stickpack, author: stickauth });
+        conn.sendFile(m.chat, kntl, 'sticker.webp', '', m, false);
     } else {
         const apis1 = `https://vapis.my.id/api/bratv1?q=${encodeURIComponent(text)}`;
         let stiker = await createSticker(apis1, 100, stickpack, stickauth);
