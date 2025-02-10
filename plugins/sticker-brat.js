@@ -4,6 +4,7 @@ import { Sticker } from 'wa-sticker-formatter';
     import axios from 'axios';
 import fetch from 'node-fetch';
 import path from 'path';
+const API_URL = "https://fgsi-brat.hf.space/";
 var handler = async (m, { args, text, usedPrefix, command }) => {
     text = text ? text : m.quoted && m.quoted.text ? m.quoted.text : m.quoted && m.quoted.caption ? m.quoted.caption : m.quoted && m.quoted.description ? m.quoted.description : '';
     if (!text) throw `Example : ${usedPrefix + command} Lagi Ruwet`;
