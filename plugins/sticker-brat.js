@@ -151,12 +151,16 @@ var handler = async (m, { args, text, usedPrefix, command }) => {
                     if (json.result.startsWith('data:image/webp;base64,')) {
                         match = json.result.match(/data:image\/webp;base64,(.+)/);
                     } else {
-                        // If no prefix, assume raw base64 string
                         return Buffer.from(json.result, 'base64');
                     }
+                } else if (json.webp) {
+                    return Buffer.from(json.webp, 'base64');
                 }
             } catch (e) {
-                // Ignore JSON parse errors
+                // If not JSON, check if resText is a raw base64 string
+                if (resText && resText.trim().match(/^[A-Za-z0-9+/=]+$/)) {
+                    return Buffer.from(resText.trim(), 'base64');
+                }
             }
         }
         if (!match) throw new Error('Failed to extract base64 data from response');
