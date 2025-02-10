@@ -40,6 +40,6 @@ handler.limit = true
 
 export default handler
 
-function delay(ms) {
+function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
