@@ -141,5 +141,8 @@ var handler = async (m, { args, text, usedPrefix, command }) => {
             },
             body: JSON.stringify(Format)
         })
-        return Buffer.from((await res.text()).split(';base64,')[1], 'base64')
+        let resText = await res.text();
+        let base64Data = resText.split(';base64,')[1];
+        if (!base64Data) throw new Error('Failed to extract base64 data from response');
+        return Buffer.from(base64Data, 'base64')
     }
