@@ -150,7 +150,10 @@ handler.register = true;
 
 export default handler;
 
-
+function delay(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+    
 function ucapan() {
         const hour_now = moment.tz('Asia/Jakarta').format('HH')
         var ucapanWaktu = 'Pagi kak'
