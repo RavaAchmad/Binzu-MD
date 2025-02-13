@@ -14,7 +14,6 @@ import search from 'yt-search';
 import fetch from 'node-fetch';
 import ytdl from 'ytdl-core';
 import fs from 'fs';
-import { delay } from 'lodash';
 
 let handler = async (m, {
         conn,
@@ -153,7 +152,7 @@ export default handler;
 function delay(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
-    
+
 function ucapan() {
         const hour_now = moment.tz('Asia/Jakarta').format('HH')
         var ucapanWaktu = 'Pagi kak'
