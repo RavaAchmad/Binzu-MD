@@ -39,13 +39,6 @@ let handler = async (m, {
   ◦ *Author*: ${author}
   ◦ *Views*: ${views}
   
-YT-DL By 
-- api.betabotz.eu.org
-- api.botcahx.eu.org
-- github:fent/node-ytdl-core
-- github:bochilteam/scraper
-- npm:btch-downloader 
-
 SEARCH By 
 - github.com/talmobi/yt-search
 
@@ -72,7 +65,7 @@ SENT By
                         },
                 },
         }, {});
-        delay(3000)
+        await delay(3000)
                 await conn.sendButton(m.chat, `Hai ${ucapan()}\n\nMonggo dipilih?`.trim(), `Klik menu di bawah untuk memilih video/audio`, null, [['MP4', `/ytv ${links}`], ['MP3', `/yta ${links}`]], m)
 
         // if (detik > 900) return m.reply(`Audio *${durasi}*\n_Tidak dapat mengirim, maksimal durasi 15 Menit_`);
