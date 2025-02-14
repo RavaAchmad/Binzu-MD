@@ -5,10 +5,14 @@ let {
 export async function all(m) {
 	let setting = global.db.data.settings[this.user.jid]
 	if (setting.resetlimit) {
-		if (new Date() * 1 - setting.resetlimitDB > 604800000) { // waktu reset 7day = 604800000. kamu bisa tanyakan Ai contoh: .bing 1 hari berapa milidetik?
+		if (new Date() * 1 - setting.resetlimitDB > 86400000) { // waktu reset 7day = 604800000. kamu bisa tanyakan Ai contoh: .bing 1 hari berapa milidetik?
 			let list = Object.entries(global.db.data.users);
-			let lim = 90;
-			list.map(([user, data], i) => (Number(data.limit = lim)));
+			let lim = 30;
+			list.map(([user, data], i) => {
+				if (data.limit < lim) {
+					data.limit = lim;
+				}
+			});
 			let anu = {
 				"key": {
 					"fromMe": false,
