@@ -66,13 +66,8 @@ global.fb = 'https://facebook.com/' // boleh taruh link fb kalian
 global.ig = 'https://instagram.com/ravaja_' // boleh taruh link ig kalian
 global.gcbot = 'https://chat.whatsapp.com/KPqLnY91cX2BGWaZVcXX2D' // boleh taruh link group kalian
 global.qris = 'https://i.ibb.co.com/F4QScw2/0z-Yk-UD15-Hkm-A.jpg' // Wajib isi untuk pembayaran. isi dengan qris
-fs.readFile('../mp3/menunya.mp3', (err, data) => {
-    if (err) {
-        console.error('Error reading the file:', err);
-        return;
-    }
-    global.vn = data;
-});
+global.vn = fs.readFile('../mp3/menunya.mp3');
+
 
 
 
