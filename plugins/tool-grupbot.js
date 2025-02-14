@@ -8,6 +8,6 @@ let handler = async (m, { conn, usedPrefix, command }) => {
 handler.help = ['grupbot']
 handler.tags = ['tool']
 handler.command = /^((grup|group)bot)$/i
-
+handler.private = true
 
 export default handler
