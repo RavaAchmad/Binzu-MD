@@ -55,11 +55,10 @@ let handler = async (m, { conn, args, usedPrefix, text, command }) => {
                 if (!nowatermark_hd) throw new Error("nowatermark_hd video not found");
             
                 var descvid = `${data.title}`;
-                var desc = `${data.stats.likes} Likes,\n\n ${data.stats.comment} Comments.\n\n TikTok video from ${data.author.nickname} (@${data.author.fullname})\n\n Title: "${data.title}". \n\nMusic Title${data.music_info.title}.`;
+                var desc = `${data.stats.likes} Likes,\n\n ${data.stats.comment} Comments.\n\n *AUTHOR:* ${data.author.nickname} (@${data.author.fullname})\n\n *TITLE:* "${data.title}". \n\n*MUSIC TITLE:* ${data.music_info.title}.`;
             
                 await conn.sendFile(m.chat, nowatermark_hd.url, '', descvid, m);
                 await m.reply(desc);
-            }
             await conn.sendMessage(m.chat, {
                 audio: {
                     url: data.music_info.url
@@ -77,6 +76,7 @@ let handler = async (m, { conn, args, usedPrefix, text, command }) => {
                     }
                 }
             }, { quoted: m });
+            }
         } catch (e) {
             console.log(e.message)
             delay(2000)
