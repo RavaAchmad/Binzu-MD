@@ -58,7 +58,6 @@ let handler = async (m, { conn, args, usedPrefix, text, command }) => {
                 var desc = `${data.stats.likes} Likes,\n\n ${data.stats.comment} Comments.\n\n *AUTHOR:* ${data.author.nickname} (@${data.author.fullname})\n\n *TITLE:* "${data.title}". \n\n*MUSIC TITLE:* ${data.music_info.title}.`;
             
                 await conn.sendFile(m.chat, nowatermark_hd.url, '', descvid, m);
-                await m.reply(desc);
             await conn.sendMessage(m.chat, {
                 audio: {
                     url: data.music_info.url
