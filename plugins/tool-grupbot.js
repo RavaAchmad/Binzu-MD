@@ -2,7 +2,7 @@ import uploadImage from '../lib/uploadImage.js';
 import fetch from 'node-fetch';
 
 let handler = async (m, { conn, usedPrefix, command }) => {
-    m.reply('https://chat.whatsapp.com/KPqLnY91cX2BGWaZVcXX2D')
+    m.reply('https://chat.whatsapp.com/IzdHOmj7n8gGJQhHzf3GyU')
 }
 
 handler.help = ['grupbot']
