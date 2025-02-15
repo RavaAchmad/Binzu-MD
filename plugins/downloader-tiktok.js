@@ -51,8 +51,9 @@ let handler = async (m, { conn, args, usedPrefix, text, command }) => {
                 }, { quoted: m });
             } else {
                 
-                const nowatermark_hd = data.data.find(media => media.type === 'nowatermark_hd');
-                if (!nowatermark_hd) throw new Error("nowatermark_hd video not found");
+                const hdMedia = Array.isArray(data.data) ? data.data.filter(media => media.type === 'nowatermark_hd') : [];
+                if (!hdMedia.length) throw new Error("nowatermark_hd video not found");
+                const nowatermark_hd = hdMedia[0];
             
                 var descvid = `${data.title}`;
                 var desc = `${data.stats.likes} Likes,\n\n ${data.stats.comment} Comments.\n\n *AUTHOR:* ${data.author.nickname} (@${data.author.fullname})\n\n *TITLE:* "${data.title}". \n\n*MUSIC TITLE:* ${data.music_info.title}.`;
