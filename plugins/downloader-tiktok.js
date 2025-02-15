@@ -20,7 +20,7 @@ let handler = async (m, { conn, args, usedPrefix, text, command }) => {
             const res = await fetchs.json();
             const data = res.result;
             if (res.status !== 200) throw console.log(e);
-            if (data?.photo?.length) {
+            if (Array.isArray(data.data) && data.data.some(media => media.type === 'photo')) {
                 for (let x = 0; x < data.data.length; x++) {
                     if (data.data[x].type === 'photo') {
                         let capt = x === 0 ? data.title : '';
@@ -55,7 +55,7 @@ let handler = async (m, { conn, args, usedPrefix, text, command }) => {
                 if (!nowatermark_hd) throw new Error("nowatermark_hd video not found");
             
                 var descvid = `${data.title}`;
-                var desc = `${data.stats.likes} Likes, ${data.stats.comment} Comments. TikTok video from ${data.author.nickname} (@${data.author.unique_id}): "${data.title}". ${data.music_info.title}.`;
+                var desc = `${data.stats.likes} Likes,\n\n ${data.stats.comment} Comments.\n\n TikTok video from ${data.author.nickname} (@${data.author.fullname})\n\n Title: "${data.title}". \n\nMusic Title${data.music_info.title}.`;
             
                 await conn.sendFile(m.chat, nowatermark_hd.url, '', descvid, m);
                 await m.reply(desc);
