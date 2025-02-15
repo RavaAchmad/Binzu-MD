@@ -1,6 +1,5 @@
 
-let handler = m => m
-handler.before = async function(m, { conn, participants }) {
+export async function before(m, { conn, participants }) {
 
     let name = m.sender
     let fkonn = { 
@@ -59,6 +58,5 @@ handler.before = async function(m, { conn, participants }) {
     } else {
         console.log("No message to send");
     }
+    return
 }
-
-module.exports = handler
