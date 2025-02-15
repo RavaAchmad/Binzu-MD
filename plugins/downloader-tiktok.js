@@ -16,27 +16,25 @@ let handler = async (m, { conn, args, usedPrefix, text, command }) => {
         })
         var body = text.replace(/\s+/g, '+')
         try {
-            var {
-                data,
-                code,
-                msg
-            } = await tiktokDl(body)
-            if (code !== 0) throw msg
-            if (data?.images?.length) {
-                for (var x = 0; x < data.images.length; x++) {
-                    var capt = x == 0 ? data.title : ''
-                    await conn.sendMessage(m.chat, {
-                        image: {
-                            url: data.images[x]
-                        },
-                        caption: capt
-                    }, {
-                        quoted: m
-                    })
+            const fetchs = await fetch(`https://api.vreden.my.id/api/tiktok?url=${args[0]}`);
+            const res = await fetchs.json();
+            const data = res.result;
+            if (res.status !== 200) throw console.log(e);
+            if (Array.isArray(data.data) && data.data.some(media => media.type === 'photo')) {
+                for (let x = 0; x < data.data.length; x++) {
+                    if (data.data[x].type === 'photo') {
+                        let capt = x === 0 ? data.title : '';
+                        await conn.sendMessage(m.chat, {
+                            image: {
+                                url: data.data[x].url
+                            },
+                            caption: capt
+                        }, { quoted: m });
+                    }
                 }
-                await conn.sendMessage(m.chat, {         
+                await conn.sendMessage(m.chat, {
                     audio: {
-                        url: data.music
+                        url: data.music_info.url
                     },
                     mimetype: 'audio/mpeg',
                     contextInfo: {
@@ -44,48 +42,49 @@ let handler = async (m, { conn, args, usedPrefix, text, command }) => {
                             title: 'Ini audio nya kak!',
                             body: "▶︎ Now Playing...",
                             thumbnailUrl: data.cover,
-                            sourceUrl: body,
+                            sourceUrl: args[0],
                             mediaType: 1,
                             showAdAttribution: true,
                             renderLargerThumbnail: true
                         }
                     }
-                }, {
-                    quoted: m
-                });
+                }, { quoted: m });
             } else {
-                var vid = data.play
-                var descvid = `${data.title}`
-                var desc = `${formatK(data.digg_count)} Likes, ${formatK(data.comment_count)} Comments. TikTok video from ${data.author.nickname} (@${data.author.unique_id}): "${data.title}". ${data.music_info.title}.`
-                await conn.sendFile(m.chat, vid, '', descvid, m)
-                await m.reply(desc)
+                
+                const nowatermark_hd = data.data.find(media => media.type === 'nowatermark_hd');
+                if (!nowatermark_hd) throw new Error("nowatermark_hd video not found");
+            
+                var descvid = `${data.title}`;
+                var desc = `${data.stats.likes} Likes,\n\n ${data.stats.comment} Comments.\n\n TikTok video from ${data.author.nickname} (@${data.author.fullname})\n\n Title: "${data.title}". \n\nMusic Title${data.music_info.title}.`;
+            
+                await conn.sendFile(m.chat, nowatermark_hd.url, '', descvid, m);
+                await m.reply(desc);
             }
-                await conn.sendMessage(m.chat, {         
-                    audio: {
-                        url: data.music
-                    },
-                    mimetype: 'audio/mpeg',
-                    contextInfo: {
-                        externalAdReply: {
-                            title: 'Ini audio nya kak!',
-                            body: "▶︎ Now Playing...",
-                            thumbnailUrl: data.cover,
-                            sourceUrl: body,
-                            mediaType: 1,
-                            showAdAttribution: true,
-                            renderLargerThumbnail: true
-                        }
+            await conn.sendMessage(m.chat, {
+                audio: {
+                    url: data.music_info.url
+                },
+                mimetype: 'audio/mpeg',
+                contextInfo: {
+                    externalAdReply: {
+                        title: 'Ini audio nya kak!',
+                        body: "▶︎ Now Playing...",
+                        thumbnailUrl: data.cover,
+                        sourceUrl: args[0],
+                        mediaType: 1,
+                        showAdAttribution: true,
+                        renderLargerThumbnail: true
                     }
-                }, {
-                    quoted: m
-                });
+                }
+            }, { quoted: m });
         } catch (e) {
             console.log(e.message)
             delay(2000)
             m.reply("alternatif yach")
             try {
                 const response = await axios.get(`https://api.botcahx.eu.org/api/dowloader/tiktok?url=${text}&apikey=${btc}`);        
-                const res = response.data.result;      
+                const res = await response.data.result; 
+                if (res) {     
                 var { video, title, title_audio, audio } = res;
                 let capt = `乂 *T I K T O K*\n\n`;
                 capt += `◦ *Title* : ${title}\n`;
@@ -93,6 +92,7 @@ let handler = async (m, { conn, args, usedPrefix, text, command }) => {
                 capt += `\n`;        
                 await conn.sendFile(m.chat, video, null, capt, m);
                 conn.sendMessage(m.chat, { audio: { url: audio[0] }, mimetype: 'audio/mpeg' }, { quoted: m });     
+            }
             }catch(e) {
                 console.log(e)
             }
