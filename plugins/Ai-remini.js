@@ -2,6 +2,7 @@ import uploadFile from '../lib/uploadFile.js';
 import fetch from 'node-fetch';
 import fs from 'fs';
 import path from 'path';
+import { pxpic } from '../lib/pxpic.js';
 
 let handler = async (m, {
 	conn,
@@ -17,6 +18,10 @@ let handler = async (m, {
 		const out = await uploadFile(img);
 		m.reply(wait);
 			try {
+				const api = await pxpic.create(img, 'enhance');
+				await conn.sendFile(m.chat, api, 'remini.jpg', 'Nih kak', m);
+			} catch (e) {
+				try {
 				const api = await fetch(`https://api.botcahx.eu.org/api/tools/remini-v3?url=${out}&resolusi=4&apikey=ravaja`);
 				const image = await api.json();
 				const {
@@ -36,6 +41,7 @@ let handler = async (m, {
 					m.reply('Server error wak')
 			}
 		}
+	}
 	} else {
 		m.reply(`Kirim gambar dengan caption *${usedPrefix + command}* atau reply gambar yang sudah dikirim.`);
 	}
