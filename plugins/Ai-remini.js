@@ -19,6 +19,7 @@ let handler = async (m, {
 		m.reply(wait);
 			try {
 				const api = await pxpic.create(out, 'enhance');
+				console.log(api)
 				await conn.sendFile(m.chat, api, 'remini.jpg', 'Nih kak', m);
 			} catch (e) {
 				try {
