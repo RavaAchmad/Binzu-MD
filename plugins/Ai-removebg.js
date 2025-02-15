@@ -19,6 +19,9 @@ let handler = async (m, { conn, usedPrefix, command }) => {
     }
   } catch (e) {
     console.error(e);
+    
+    const img = await q.download();
+    const out = await uploadImage(img);
     const api = await pxpic.create(out, 'removebg');
     await conn.sendFile(m.chat, api.resultImageUrl, 'remini.jpg', 'Nih kak', m);
   }
