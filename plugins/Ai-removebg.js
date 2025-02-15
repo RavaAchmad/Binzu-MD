@@ -8,9 +8,6 @@ let handler = async (m, { conn, usedPrefix, command }) => {
     if (/^image/.test(mime) && !/webp/.test(mime)) {
       const img = await q.download();
       const out = await uploadImage(img);
-    } else {
-      m.reply(`Kirim gambar dengan caption *${usedPrefix + command}* atau tag gambar yang sudah dikirim.`);
-    }
       m.reply(wait);
   try {
     const api = await pxpic.create(out, 'removebg');
@@ -22,6 +19,9 @@ let handler = async (m, { conn, usedPrefix, command }) => {
       const url = image.url.result;
         conn.sendFile(m.chat, url, null, wm, m);
   }
+    } else {
+      m.reply(`Kirim gambar dengan caption *${usedPrefix + command}* atau tag gambar yang sudah dikirim.`);
+    }
 }
 
 handler.command = handler.help = ['removebg','nobg'];
