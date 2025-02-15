@@ -14,11 +14,16 @@ let handler = async (m, { conn, usedPrefix, command }) => {
     await conn.sendFile(m.chat, api.resultImageUrl, 'remini.jpg', 'Nih kak', m);
   } catch (e) {
     console.error(e);
+    try {
       const api = await fetch(`https://api.betabotz.eu.org/api/tools/removebg?url=${out}&apikey=${lann}`);
       const image = await api.json();
       const url = image.url.result;
         conn.sendFile(m.chat, url, null, wm, m);
+  } catch(e) {
+    console.log('alternate (nobg) e:\n' + e)
+    throw 'Server error wak'
   }
+}
     } else {
       m.reply(`Kirim gambar dengan caption *${usedPrefix + command}* atau tag gambar yang sudah dikirim.`);
     }
