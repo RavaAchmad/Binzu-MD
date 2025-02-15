@@ -13,7 +13,7 @@ let handler = async (m, { conn, usedPrefix, command }) => {
     const api = await pxpic.create(out, 'removebg');
     await conn.sendFile(m.chat, api.resultImageUrl, 'remini.jpg', 'Nih kak', m);
   } catch (e) {
-    console.error(e);
+    console.log('no bg (1) = ' + e);
     try {
       const api = await fetch(`https://api.betabotz.eu.org/api/tools/removebg?url=${out}&apikey=${lann}`);
       const image = await api.json();
