@@ -15,7 +15,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
                 await conn.sendFile(m.chat, hdMedia.url, null, '*Facebook Downloader*', m);
             }
         } else {
-            const sdMedias = data.result.medias.filter(media => media.quality === 'hd');
+            const sdMedias = data.result.medias.filter(media => media.quality === 'sd');
             if (sdMedias.length > 0) {
                 for (const sdMedia of sdMedias) {
                     sleep(1500);
