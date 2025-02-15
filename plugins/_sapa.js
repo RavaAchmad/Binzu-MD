@@ -34,7 +34,7 @@ export async function before(m, { conn, participants }) {
     let mentionedUsers = participants.map((u) => u.id).filter((v) => v !== conn.user.jid);
 
     switch (m.sender) {
-        case "+6281212035575@s.whatsapp.net":
+        case "6281212035575@s.whatsapp.net":
             messageText = "📣 Perhatian semua 📣, Ownerku yang ganteng sudah datang!";
             break;
     }
