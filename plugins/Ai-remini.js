@@ -19,8 +19,7 @@ let handler = async (m, {
 		m.reply(wait);
 			try {
 				const api = await pxpic.create(out, 'enhance');
-				console.log(api)
-				await conn.sendFile(m.chat, api, 'remini.jpg', 'Nih kak', m);
+				await conn.sendFile(m.chat, api.resultImageUrl, 'remini.jpg', 'Nih kak', m);
 			} catch (e) {
 				try {
 				const api = await fetch(`https://api.botcahx.eu.org/api/tools/remini-v3?url=${out}&resolusi=4&apikey=ravaja`);
