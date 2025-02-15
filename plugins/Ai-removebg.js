@@ -1,5 +1,6 @@
 import fetch from 'node-fetch';
 import uploadImage from '../lib/uploadImage.js';
+import { pxpic } from '../lib/pxpic.js';
 
 let handler = async (m, { conn, usedPrefix, command }) => {
   try {
@@ -18,7 +19,8 @@ let handler = async (m, { conn, usedPrefix, command }) => {
     }
   } catch (e) {
     console.error(e);
-    throw `🚩 *Server Error*`
+    const api = await pxpic.create(out, 'removebg');
+    await conn.sendFile(m.chat, api.resultImageUrl, 'remini.jpg', 'Nih kak', m);
   }
 }
 
