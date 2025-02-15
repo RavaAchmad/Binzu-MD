@@ -19,7 +19,7 @@ let handler = async (m, { conn, args, usedPrefix, text, command }) => {
             const fetchs = await fetch(`https://api.vreden.my.id/api/tiktok?url=${args[0]}`);
             const res = await fetchs.json();
             const data = res.result;
-            if (res.status !== 200) throw console.log(e);
+            if (res.data.status == 'false') throw console.log(e);
             if (Array.isArray(data.data) && data.data.some(media => media.type === 'photo')) {
                 for (let x = 0; x < data.data.length; x++) {
                     if (data.data[x].type === 'photo') {
