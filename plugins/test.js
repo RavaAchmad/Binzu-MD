@@ -1,4 +1,4 @@
-import { prepareWAMessageMedia, generateWAMessageFromContent, generateWAMessageContent } from '@adiwajshing/baileys'
+import { prepareWAMessageMedia, generateWAMessageFromContent, generateWAMessageContent, proto } from '@adiwajshing/baileys'
 let handler = async (m, {
     conn,
     text
