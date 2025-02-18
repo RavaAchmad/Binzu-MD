@@ -1,7 +1,7 @@
 //import axios from 'axios';
 import fetch from 'node-fetch';
 import axios from 'axios';
-import { LoveTik } from '../lib/scrape';
+import { LoveTik } from '../lib/scrape.js';
 
 let handler = async (m, { conn, args, usedPrefix, text, command }) => {
     var delay = time => new Promise(res => setTimeout(res, time))
