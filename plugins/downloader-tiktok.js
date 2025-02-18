@@ -78,6 +78,7 @@ let handler = async (m, { conn, args, usedPrefix, text, command }) => {
             }, { quoted: m });
             } 
         } catch (e) {
+            console.log(e)
             try { 
                 const result = await LoveTik.dapatkan(args[0]);
                 
@@ -116,7 +117,7 @@ let handler = async (m, { conn, args, usedPrefix, text, command }) => {
                 }, { quoted: m });
             }
         } catch (e) {
-            console.log(e.message)
+            console.log(e)
             await delay(2000)
             m.reply("alternatif yach")
             try {
