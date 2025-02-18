@@ -97,7 +97,7 @@ let handler = async (m, {
 }
 //handler.help = ['sewa', 'order']
 //handler.tags = ['info']
-handler.command =  /(test)/i
+handler.command = /(test)/i
 handler.register = false;
 handler.premium = false;
 
