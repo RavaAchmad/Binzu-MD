@@ -1,4 +1,4 @@
-import { prepareWAMessageMedia, generateWAMessageFromContent, generateWAMessageContent, proto } from '@adiwajshing/baileys'
+const { prepareWAMessageMedia, generateWAMessageFromContent, generateWAMessageContent, proto } = (await import('@adiwajshing/baileys')).default
 let handler = async (m, {
     conn,
     text
