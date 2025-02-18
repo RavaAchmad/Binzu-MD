@@ -26,7 +26,7 @@ export async function before(m, { conn, participants }) {
     const currentTime = Math.floor(Date.now() / 1000);
 
     if (!m.isGroup || conn.owner_join.time > currentTime) {
-        console.log("Not a group message or still in cooldown");
+        //console.log("Not a group message or still in cooldown");
         return;
     }
 
@@ -36,6 +36,9 @@ export async function before(m, { conn, participants }) {
     switch (m.sender) {
         case "6281212035575@s.whatsapp.net":
             messageText = "📣 Perhatian semua 📣, Ownerku yang ganteng sudah datang!";
+            break;
+        case "6285779153439@s.whatsapp.net":
+            messageText = "📣 Perhatian semua 📣, Admin Binzu sudah datang!";
             break;
     }
 

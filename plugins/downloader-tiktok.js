@@ -1,6 +1,7 @@
 //import axios from 'axios';
 import fetch from 'node-fetch';
 import axios from 'axios';
+import { LoveTik } from '../lib/scrape';
 
 let handler = async (m, { conn, args, usedPrefix, text, command }) => {
     var delay = time => new Promise(res => setTimeout(res, time))
@@ -76,10 +77,48 @@ let handler = async (m, { conn, args, usedPrefix, text, command }) => {
                     }
                 }
             }, { quoted: m });
+            } 
+        } catch (e) {
+            try { 
+                const result = await LoveTik.dapatkan(args[0]);
+                
+                if(result.images){
+                    const slides = await result.render();
+                    for (let x = 0; x < slides.length; x++) {
+                            let capt = x === 0 ? data.title : 'Binzu';
+                            await conn.sendMessage(m.chat, {
+                                image: {
+                                    url: slides[x]
+                                },
+                                caption: capt
+                            }, { quoted: m });
+                    }
+                } else {
+                console.log('Video:', result.video);
+                await conn.sendFile(m.chat, result.video, '', wm, m);
+                console.log('Audeo:', result.audio);
+                await delay(2000)
+                await conn.sendMessage(m.chat, {
+                    audio: {
+                        url: result.audio
+                    },
+                    mimetype: 'audio/mpeg',
+                    contextInfo: {
+                        externalAdReply: {
+                            title: 'Ini audio nya kak!',
+                            body: "▶︎ Now Playing...",
+                            thumbnailUrl: global.maximus,
+                            sourceUrl: args[0],
+                            mediaType: 1,
+                            showAdAttribution: true,
+                            renderLargerThumbnail: true
+                        }
+                    }
+                }, { quoted: m });
             }
         } catch (e) {
             console.log(e.message)
-            delay(2000)
+            await delay(2000)
             m.reply("alternatif yach")
             try {
                 const response = await axios.get(`https://api.botcahx.eu.org/api/dowloader/tiktok?url=${text}&apikey=${btc}`);        
@@ -98,6 +137,7 @@ let handler = async (m, { conn, args, usedPrefix, text, command }) => {
             }
         };
     };
+}
     handler.help = ['tiktok']
     handler.tags = ['downloader'];
     handler.command = ['tiktok', 'ttdl', 'tt'];
