@@ -143,13 +143,6 @@ let handler = async (m, { conn, args, usedPrefix, text, command }) => {
     handler.command = ['tiktok', 'ttdl', 'tt'];
     handler.xmaze = true;
     export default handler
-    async function tiktokDl(url) {
-        var xzn = await fetch(API('xzn', 'api/tiktok', {
-            url
-        }, 'apikey'))
-        var wtf = xzn.json();
-        return wtf
-    }
     
     function formatK(num) {
         return new Intl.NumberFormat('en-US', {
