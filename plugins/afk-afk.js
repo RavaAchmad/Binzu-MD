@@ -10,9 +10,9 @@ let handler = async (m, { text, isAdmin }) => {
  
  Selamat berkegiatan! Jangan lupa untuk menonaktifkan AFK jika sudah kembali <3
     `);
-    console.log(user)
   user.afk = + new Date;
   user.afkReason = text;
+    console.log(user)
 };
 handler.help = ['afk <alasan>'];
 handler.tags = ['group'];
