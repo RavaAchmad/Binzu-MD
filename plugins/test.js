@@ -1,4 +1,4 @@
-const { prepareWAMessageMedia, generateWAMessageFromContent, generateWAMessageContent, proto } = (await import('@adiwajshing/baileys')).default
+const { prepareWAMessageMedia, generateWAMessageFromContent, generateWAMessageContent, proto, prepareWAMessageMediadd } = (await import('@adiwajshing/baileys')).default
 let handler = async (m, {
     conn,
     text
@@ -27,7 +27,7 @@ let handler = async (m, {
                 cards: [
                   {
                     header: proto.Message.InteractiveMessage.Header.create({
-                      ...(await prepareWAMessageMedia({ image: { url: 'https://a.top4top.io/p_3333uv5v81.jpg' } })),
+                      ...(await prepareWAMessageMediadd({ image: { url: 'https://a.top4top.io/p_3333uv5v81.jpg' } })),
                       title: '',
                       gifPlayback: true,
                       subtitle: global.nameown,
