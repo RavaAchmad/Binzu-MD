@@ -370,7 +370,7 @@ let handler = async (m, { conn }) => {
   await conn.sendFile(m.chat, buffer, 'akano.png', '', m)
 }
 
-handler.help = handler.command =  ['listpc']
+handler.help = handler.command =  ['dashboard']
 handler.tags = ['owner']
 handler.owner = true
 
