@@ -1,4 +1,5 @@
 let handler = async (m, { text, isAdmin }) => {
+  console.log(m)
   if (!m || !m.sender || typeof m.sender !== 'string') {
     console.error('Invalid message sender:', m);
     return m.reply('Error: Invalid sender.');
@@ -10,7 +11,6 @@ let handler = async (m, { text, isAdmin }) => {
  
  Selamat berkegiatan! Jangan lupa untuk menonaktifkan AFK jika sudah kembali <3
     `);
-    console.log(user)
   user.afk = + new Date;
   user.afkReason = text;
 };
