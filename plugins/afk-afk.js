@@ -1,5 +1,4 @@
 let handler = async (m, { text, isAdmin }) => {
-  console.log(m)
   if (!m || !m.sender || typeof m.sender !== 'string') {
     console.error('Invalid message sender:', m);
     return m.reply('Error: Invalid sender.');
