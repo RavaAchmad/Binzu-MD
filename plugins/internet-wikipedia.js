@@ -1,5 +1,5 @@
 import axios from 'axios'
-import cheerio from 'cheerio'
+import * as cheerio from 'cheerio'
 let handler = async(m, { conn, text, usedPrefix, command }) => {
     if (!text) return conn.reply(m.chat, 'Masukan Query Yang Ingin Dicari!', m)
     let res = await wiki(text)

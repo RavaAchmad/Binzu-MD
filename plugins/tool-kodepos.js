@@ -1,5 +1,5 @@
 import axios from 'axios'
-import cheerio from 'cheerio'
+import * as cheerio from 'cheerio'
 import request from 'request'
 let handler = async (m, { text, usedPrefix, command }) => {
     if (!text) return m.reply(`Masukan Kota Kamu!\n\nContoh:\n${usedPrefix + command} palembang`)

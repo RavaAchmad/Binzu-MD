@@ -1,5 +1,5 @@
 import axios from 'axios'
-import cheerio from 'cheerio'
+import * as cheerio from 'cheerio'
 let handler = async(m, { conn, text, usedPrefix, command }) => {
     if (!text) return m.reply(`Masukan Nama Kamu!\n\nContoh:\n${usedPrefix + command} Wahyu`)
     let res = await artinama(text)
