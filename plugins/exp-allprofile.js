@@ -1,4 +1,5 @@
 import PhoneNumber from 'awesome-phonenumber';
+import { parsePhoneNumberFromString } from 'libphonenumber-js';
 import { canLevelUp, xpRange } from '../lib/levelling.js'
 import axios from 'axios';
 import fetch from 'node-fetch';
@@ -114,11 +115,14 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
    // let buffer = await getBuffer(pp)
     let math = max - xp
     let prem = global.prems.includes(who.split`@`[0])
+    const raw = '+' + who.replace('@s.whatsapp.net', '');
+const phone = parsePhoneNumberFromString(raw);
+const intl = phone && phone.isValid() ? phone.formatInternational() : raw;
     let jodoh = `Berpacaran @${pasangan.split`@`[0]}`
     let str = `
 Name: ${username} ${registered ? '(' + name + ') ': ''}(@${who.split`@`[0]})${about ? '\nAbout: ' + about : ''}
 Status: ${pasangan ? jodoh : 'Jomblo' }
-Number: ${PhoneNumber('+' + who.replace('@s.whatsapp.net', '')).getNumber('international')}
+Number: ${intl}
 Link: https://wa.me/${who.split`@`[0]}${registered ? '\nAge: ' + age : ''}
 Registered: ${registered ? 'Yes (' + new Date(regTime) + ')': 'No'}
 Premium: ${premium ? 'Yes' : 'No'}

@@ -1,4 +1,5 @@
 import PhoneNumber from 'awesome-phonenumber'
+import { parsePhoneNumberFromString } from 'libphonenumber-js';
 import fetch from 'node-fetch'
 import moment from 'moment-timezone'
 let handler = async (m, { conn }) => {
@@ -33,6 +34,9 @@ let handler = async (m, { conn }) => {
     let username = conn.getName(who)
     let user = db.data.users[who]
     let name = `${user.registered ? user.name : conn.getName(who)}`
+    const raw = '+' + who.replace('@s.whatsapp.net', '');
+const phone = parsePhoneNumberFromString(raw);
+const intl = phone && phone.isValid() ? phone.formatInternational() : raw;
     if (!(who in global.db.data.users)) return m.reply(`User ${who} not in database`)
     let fkon = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: `status@broadcast` }: {} )}, message: { 'contactMessage': { 'displayName': name, 'vcard': `BEGIN:VCARD\nVERSION:3.0\nN:XL;${name},;;;\nFN:${name},\nitem1.TEL;waid=${who.split('@')[0]}:${who.split('@')[0]}\nitem1.X-ABLabell:Ponsel\nEND:VCARD`, 'jpegThumbnail': pp, thumbnail: pp, sendEphemeral: true }}}
     let str = `
@@ -41,7 +45,7 @@ let handler = async (m, { conn }) => {
 🏷 • *Status:* ${who.split`@`[0] == info.nomorown ? 'Developer' : user.premiumTime >= 1 ? 'Premium User' : user.level >= 1000 ? 'Elite User' : 'Free User'}
 📮 • *Bio:* ${bio.status ? bio.status : bio}
 📧 • *Tag:* @${who.replace(/@.+/, '')}
-📞 • *Number:* ${PhoneNumber('+' + who.replace('@s.whatsapp.net', '')).getNumber('international')}
+📞 • *Number:* ${intl}
 🔗 • *Link:* https://wa.me/${who.split`@`[0]}
 🎨 • *Age:* ${user.registered ? age: ''}
 
