@@ -1,0 +1,2845 @@
+{
+    "status": true,
+    "creator": "BOTCAHX",
+    "result": {
+      "code": 200,
+      "status": "OK",
+      "data": [
+        {
+          "timings": {
+            "Fajr": "04:48 (WIB)",
+            "Sunrise": "05:58 (WIB)",
+            "Dhuhr": "12:05 (WIB)",
+            "Asr": "15:08 (WIB)",
+            "Sunset": "18:12 (WIB)",
+            "Maghrib": "18:12 (WIB)",
+            "Isha": "19:21 (WIB)",
+            "Imsak": "04:38 (WIB)",
+            "Midnight": "00:05 (WIB)",
+            "Firstthird": "22:07 (WIB)",
+            "Lastthird": "02:03 (WIB)"
+          },
+          "date": {
+            "readable": "01 Mar 2025",
+            "timestamp": "1740794461",
+            "gregorian": {
+              "date": "01-03-2025",
+              "format": "DD-MM-YYYY",
+              "day": "01",
+              "weekday": {
+                "en": "Saturday"
+              },
+              "month": {
+                "number": 3,
+                "en": "March"
+              },
+              "year": "2025",
+              "designation": {
+                "abbreviated": "AD",
+                "expanded": "Anno Domini"
+              },
+              "lunarSighting": false
+            },
+            "hijri": {
+              "date": "01-09-1446",
+              "format": "DD-MM-YYYY",
+              "day": "1",
+              "weekday": {
+                "en": "Al Sabt",
+                "ar": "السبت"
+              },
+              "month": {
+                "number": 9,
+                "en": "Ramaḍān",
+                "ar": "رَمَضان",
+                "days": 29
+              },
+              "year": "1446",
+              "designation": {
+                "abbreviated": "AH",
+                "expanded": "Anno Hegirae"
+              },
+              "holidays": [
+                "1st Day of Ramadan"
+              ],
+              "adjustedHolidays": [],
+              "method": "HJCoSA"
+            }
+          },
+          "meta": {
+            "latitude": 1.234567,
+            "longitude": 2.34567,
+            "timezone": "Asia/Jakarta",
+            "method": {
+              "id": 1,
+              "name": "University of Islamic Sciences, Karachi",
+              "params": {
+                "Fajr": 18,
+                "Isha": 18
+              },
+              "location": {
+                "latitude": 24.8614622,
+                "longitude": 67.0099388
+              }
+            },
+            "latitudeAdjustmentMethod": "ANGLE_BASED",
+            "midnightMode": "STANDARD",
+            "school": "STANDARD",
+            "offset": {
+              "Imsak": 0,
+              "Fajr": 0,
+              "Sunrise": 0,
+              "Dhuhr": 0,
+              "Asr": 0,
+              "Maghrib": 0,
+              "Sunset": 0,
+              "Isha": 0,
+              "Midnight": 0
+            }
+          }
+        },
+        {
+          "timings": {
+            "Fajr": "04:48 (WIB)",
+            "Sunrise": "05:58 (WIB)",
+            "Dhuhr": "12:05 (WIB)",
+            "Asr": "15:07 (WIB)",
+            "Sunset": "18:11 (WIB)",
+            "Maghrib": "18:11 (WIB)",
+            "Isha": "19:21 (WIB)",
+            "Imsak": "04:38 (WIB)",
+            "Midnight": "00:05 (WIB)",
+            "Firstthird": "22:07 (WIB)",
+            "Lastthird": "02:03 (WIB)"
+          },
+          "date": {
+            "readable": "02 Mar 2025",
+            "timestamp": "1740880861",
+            "gregorian": {
+              "date": "02-03-2025",
+              "format": "DD-MM-YYYY",
+              "day": "02",
+              "weekday": {
+                "en": "Sunday"
+              },
+              "month": {
+                "number": 3,
+                "en": "March"
+              },
+              "year": "2025",
+              "designation": {
+                "abbreviated": "AD",
+                "expanded": "Anno Domini"
+              },
+              "lunarSighting": false
+            },
+            "hijri": {
+              "date": "02-09-1446",
+              "format": "DD-MM-YYYY",
+              "day": "2",
+              "weekday": {
+                "en": "Al Ahad",
+                "ar": "الاحد"
+              },
+              "month": {
+                "number": 9,
+                "en": "Ramaḍān",
+                "ar": "رَمَضان",
+                "days": 29
+              },
+              "year": "1446",
+              "designation": {
+                "abbreviated": "AH",
+                "expanded": "Anno Hegirae"
+              },
+              "holidays": [],
+              "adjustedHolidays": [],
+              "method": "HJCoSA"
+            }
+          },
+          "meta": {
+            "latitude": 1.234567,
+            "longitude": 2.34567,
+            "timezone": "Asia/Jakarta",
+            "method": {
+              "id": 1,
+              "name": "University of Islamic Sciences, Karachi",
+              "params": {
+                "Fajr": 18,
+                "Isha": 18
+              },
+              "location": {
+                "latitude": 24.8614622,
+                "longitude": 67.0099388
+              }
+            },
+            "latitudeAdjustmentMethod": "ANGLE_BASED",
+            "midnightMode": "STANDARD",
+            "school": "STANDARD",
+            "offset": {
+              "Imsak": 0,
+              "Fajr": 0,
+              "Sunrise": 0,
+              "Dhuhr": 0,
+              "Asr": 0,
+              "Maghrib": 0,
+              "Sunset": 0,
+              "Isha": 0,
+              "Midnight": 0
+            }
+          }
+        },
+        {
+          "timings": {
+            "Fajr": "04:49 (WIB)",
+            "Sunrise": "05:58 (WIB)",
+            "Dhuhr": "12:05 (WIB)",
+            "Asr": "15:06 (WIB)",
+            "Sunset": "18:11 (WIB)",
+            "Maghrib": "18:11 (WIB)",
+            "Isha": "19:20 (WIB)",
+            "Imsak": "04:39 (WIB)",
+            "Midnight": "00:05 (WIB)",
+            "Firstthird": "22:07 (WIB)",
+            "Lastthird": "02:02 (WIB)"
+          },
+          "date": {
+            "readable": "03 Mar 2025",
+            "timestamp": "1740967261",
+            "gregorian": {
+              "date": "03-03-2025",
+              "format": "DD-MM-YYYY",
+              "day": "03",
+              "weekday": {
+                "en": "Monday"
+              },
+              "month": {
+                "number": 3,
+                "en": "March"
+              },
+              "year": "2025",
+              "designation": {
+                "abbreviated": "AD",
+                "expanded": "Anno Domini"
+              },
+              "lunarSighting": false
+            },
+            "hijri": {
+              "date": "03-09-1446",
+              "format": "DD-MM-YYYY",
+              "day": "3",
+              "weekday": {
+                "en": "Al Athnayn",
+                "ar": "الاثنين"
+              },
+              "month": {
+                "number": 9,
+                "en": "Ramaḍān",
+                "ar": "رَمَضان",
+                "days": 29
+              },
+              "year": "1446",
+              "designation": {
+                "abbreviated": "AH",
+                "expanded": "Anno Hegirae"
+              },
+              "holidays": [],
+              "adjustedHolidays": [],
+              "method": "HJCoSA"
+            }
+          },
+          "meta": {
+            "latitude": 1.234567,
+            "longitude": 2.34567,
+            "timezone": "Asia/Jakarta",
+            "method": {
+              "id": 1,
+              "name": "University of Islamic Sciences, Karachi",
+              "params": {
+                "Fajr": 18,
+                "Isha": 18
+              },
+              "location": {
+                "latitude": 24.8614622,
+                "longitude": 67.0099388
+              }
+            },
+            "latitudeAdjustmentMethod": "ANGLE_BASED",
+            "midnightMode": "STANDARD",
+            "school": "STANDARD",
+            "offset": {
+              "Imsak": 0,
+              "Fajr": 0,
+              "Sunrise": 0,
+              "Dhuhr": 0,
+              "Asr": 0,
+              "Maghrib": 0,
+              "Sunset": 0,
+              "Isha": 0,
+              "Midnight": 0
+            }
+          }
+        },
+        {
+          "timings": {
+            "Fajr": "04:49 (WIB)",
+            "Sunrise": "05:58 (WIB)",
+            "Dhuhr": "12:04 (WIB)",
+            "Asr": "15:06 (WIB)",
+            "Sunset": "18:10 (WIB)",
+            "Maghrib": "18:10 (WIB)",
+            "Isha": "19:20 (WIB)",
+            "Imsak": "04:39 (WIB)",
+            "Midnight": "00:04 (WIB)",
+            "Firstthird": "22:06 (WIB)",
+            "Lastthird": "02:02 (WIB)"
+          },
+          "date": {
+            "readable": "04 Mar 2025",
+            "timestamp": "1741053661",
+            "gregorian": {
+              "date": "04-03-2025",
+              "format": "DD-MM-YYYY",
+              "day": "04",
+              "weekday": {
+                "en": "Tuesday"
+              },
+              "month": {
+                "number": 3,
+                "en": "March"
+              },
+              "year": "2025",
+              "designation": {
+                "abbreviated": "AD",
+                "expanded": "Anno Domini"
+              },
+              "lunarSighting": false
+            },
+            "hijri": {
+              "date": "04-09-1446",
+              "format": "DD-MM-YYYY",
+              "day": "4",
+              "weekday": {
+                "en": "Al Thalaata",
+                "ar": "الثلاثاء"
+              },
+              "month": {
+                "number": 9,
+                "en": "Ramaḍān",
+                "ar": "رَمَضان",
+                "days": 29
+              },
+              "year": "1446",
+              "designation": {
+                "abbreviated": "AH",
+                "expanded": "Anno Hegirae"
+              },
+              "holidays": [],
+              "adjustedHolidays": [],
+              "method": "HJCoSA"
+            }
+          },
+          "meta": {
+            "latitude": 1.234567,
+            "longitude": 2.34567,
+            "timezone": "Asia/Jakarta",
+            "method": {
+              "id": 1,
+              "name": "University of Islamic Sciences, Karachi",
+              "params": {
+                "Fajr": 18,
+                "Isha": 18
+              },
+              "location": {
+                "latitude": 24.8614622,
+                "longitude": 67.0099388
+              }
+            },
+            "latitudeAdjustmentMethod": "ANGLE_BASED",
+            "midnightMode": "STANDARD",
+            "school": "STANDARD",
+            "offset": {
+              "Imsak": 0,
+              "Fajr": 0,
+              "Sunrise": 0,
+              "Dhuhr": 0,
+              "Asr": 0,
+              "Maghrib": 0,
+              "Sunset": 0,
+              "Isha": 0,
+              "Midnight": 0
+            }
+          }
+        },
+        {
+          "timings": {
+            "Fajr": "04:49 (WIB)",
+            "Sunrise": "05:58 (WIB)",
+            "Dhuhr": "12:04 (WIB)",
+            "Asr": "15:07 (WIB)",
+            "Sunset": "18:10 (WIB)",
+            "Maghrib": "18:10 (WIB)",
+            "Isha": "19:20 (WIB)",
+            "Imsak": "04:39 (WIB)",
+            "Midnight": "00:04 (WIB)",
+            "Firstthird": "22:06 (WIB)",
+            "Lastthird": "02:02 (WIB)"
+          },
+          "date": {
+            "readable": "05 Mar 2025",
+            "timestamp": "1741140061",
+            "gregorian": {
+              "date": "05-03-2025",
+              "format": "DD-MM-YYYY",
+              "day": "05",
+              "weekday": {
+                "en": "Wednesday"
+              },
+              "month": {
+                "number": 3,
+                "en": "March"
+              },
+              "year": "2025",
+              "designation": {
+                "abbreviated": "AD",
+                "expanded": "Anno Domini"
+              },
+              "lunarSighting": false
+            },
+            "hijri": {
+              "date": "05-09-1446",
+              "format": "DD-MM-YYYY",
+              "day": "5",
+              "weekday": {
+                "en": "Al Arba'a",
+                "ar": "الاربعاء"
+              },
+              "month": {
+                "number": 9,
+                "en": "Ramaḍān",
+                "ar": "رَمَضان",
+                "days": 29
+              },
+              "year": "1446",
+              "designation": {
+                "abbreviated": "AH",
+                "expanded": "Anno Hegirae"
+              },
+              "holidays": [],
+              "adjustedHolidays": [],
+              "method": "HJCoSA"
+            }
+          },
+          "meta": {
+            "latitude": 1.234567,
+            "longitude": 2.34567,
+            "timezone": "Asia/Jakarta",
+            "method": {
+              "id": 1,
+              "name": "University of Islamic Sciences, Karachi",
+              "params": {
+                "Fajr": 18,
+                "Isha": 18
+              },
+              "location": {
+                "latitude": 24.8614622,
+                "longitude": 67.0099388
+              }
+            },
+            "latitudeAdjustmentMethod": "ANGLE_BASED",
+            "midnightMode": "STANDARD",
+            "school": "STANDARD",
+            "offset": {
+              "Imsak": 0,
+              "Fajr": 0,
+              "Sunrise": 0,
+              "Dhuhr": 0,
+              "Asr": 0,
+              "Maghrib": 0,
+              "Sunset": 0,
+              "Isha": 0,
+              "Midnight": 0
+            }
+          }
+        },
+        {
+          "timings": {
+            "Fajr": "04:49 (WIB)",
+            "Sunrise": "05:58 (WIB)",
+            "Dhuhr": "12:04 (WIB)",
+            "Asr": "15:07 (WIB)",
+            "Sunset": "18:10 (WIB)",
+            "Maghrib": "18:10 (WIB)",
+            "Isha": "19:19 (WIB)",
+            "Imsak": "04:39 (WIB)",
+            "Midnight": "00:04 (WIB)",
+            "Firstthird": "22:06 (WIB)",
+            "Lastthird": "02:02 (WIB)"
+          },
+          "date": {
+            "readable": "06 Mar 2025",
+            "timestamp": "1741226461",
+            "gregorian": {
+              "date": "06-03-2025",
+              "format": "DD-MM-YYYY",
+              "day": "06",
+              "weekday": {
+                "en": "Thursday"
+              },
+              "month": {
+                "number": 3,
+                "en": "March"
+              },
+              "year": "2025",
+              "designation": {
+                "abbreviated": "AD",
+                "expanded": "Anno Domini"
+              },
+              "lunarSighting": false
+            },
+            "hijri": {
+              "date": "06-09-1446",
+              "format": "DD-MM-YYYY",
+              "day": "6",
+              "weekday": {
+                "en": "Al Khamees",
+                "ar": "الخميس"
+              },
+              "month": {
+                "number": 9,
+                "en": "Ramaḍān",
+                "ar": "رَمَضان",
+                "days": 29
+              },
+              "year": "1446",
+              "designation": {
+                "abbreviated": "AH",
+                "expanded": "Anno Hegirae"
+              },
+              "holidays": [],
+              "adjustedHolidays": [],
+              "method": "HJCoSA"
+            }
+          },
+          "meta": {
+            "latitude": 1.234567,
+            "longitude": 2.34567,
+            "timezone": "Asia/Jakarta",
+            "method": {
+              "id": 1,
+              "name": "University of Islamic Sciences, Karachi",
+              "params": {
+                "Fajr": 18,
+                "Isha": 18
+              },
+              "location": {
+                "latitude": 24.8614622,
+                "longitude": 67.0099388
+              }
+            },
+            "latitudeAdjustmentMethod": "ANGLE_BASED",
+            "midnightMode": "STANDARD",
+            "school": "STANDARD",
+            "offset": {
+              "Imsak": 0,
+              "Fajr": 0,
+              "Sunrise": 0,
+              "Dhuhr": 0,
+              "Asr": 0,
+              "Maghrib": 0,
+              "Sunset": 0,
+              "Isha": 0,
+              "Midnight": 0
+            }
+          }
+        },
+        {
+          "timings": {
+            "Fajr": "04:49 (WIB)",
+            "Sunrise": "05:58 (WIB)",
+            "Dhuhr": "12:04 (WIB)",
+            "Asr": "15:07 (WIB)",
+            "Sunset": "18:09 (WIB)",
+            "Maghrib": "18:09 (WIB)",
+            "Isha": "19:19 (WIB)",
+            "Imsak": "04:39 (WIB)",
+            "Midnight": "00:04 (WIB)",
+            "Firstthird": "22:05 (WIB)",
+            "Lastthird": "02:02 (WIB)"
+          },
+          "date": {
+            "readable": "07 Mar 2025",
+            "timestamp": "1741312861",
+            "gregorian": {
+              "date": "07-03-2025",
+              "format": "DD-MM-YYYY",
+              "day": "07",
+              "weekday": {
+                "en": "Friday"
+              },
+              "month": {
+                "number": 3,
+                "en": "March"
+              },
+              "year": "2025",
+              "designation": {
+                "abbreviated": "AD",
+                "expanded": "Anno Domini"
+              },
+              "lunarSighting": false
+            },
+            "hijri": {
+              "date": "07-09-1446",
+              "format": "DD-MM-YYYY",
+              "day": "7",
+              "weekday": {
+                "en": "Al Juma'a",
+                "ar": "الجمعة"
+              },
+              "month": {
+                "number": 9,
+                "en": "Ramaḍān",
+                "ar": "رَمَضان",
+                "days": 29
+              },
+              "year": "1446",
+              "designation": {
+                "abbreviated": "AH",
+                "expanded": "Anno Hegirae"
+              },
+              "holidays": [],
+              "adjustedHolidays": [],
+              "method": "HJCoSA"
+            }
+          },
+          "meta": {
+            "latitude": 1.234567,
+            "longitude": 2.34567,
+            "timezone": "Asia/Jakarta",
+            "method": {
+              "id": 1,
+              "name": "University of Islamic Sciences, Karachi",
+              "params": {
+                "Fajr": 18,
+                "Isha": 18
+              },
+              "location": {
+                "latitude": 24.8614622,
+                "longitude": 67.0099388
+              }
+            },
+            "latitudeAdjustmentMethod": "ANGLE_BASED",
+            "midnightMode": "STANDARD",
+            "school": "STANDARD",
+            "offset": {
+              "Imsak": 0,
+              "Fajr": 0,
+              "Sunrise": 0,
+              "Dhuhr": 0,
+              "Asr": 0,
+              "Maghrib": 0,
+              "Sunset": 0,
+              "Isha": 0,
+              "Midnight": 0
+            }
+          }
+        },
+        {
+          "timings": {
+            "Fajr": "04:49 (WIB)",
+            "Sunrise": "05:58 (WIB)",
+            "Dhuhr": "12:03 (WIB)",
+            "Asr": "15:08 (WIB)",
+            "Sunset": "18:09 (WIB)",
+            "Maghrib": "18:09 (WIB)",
+            "Isha": "19:18 (WIB)",
+            "Imsak": "04:39 (WIB)",
+            "Midnight": "00:03 (WIB)",
+            "Firstthird": "22:05 (WIB)",
+            "Lastthird": "02:02 (WIB)"
+          },
+          "date": {
+            "readable": "08 Mar 2025",
+            "timestamp": "1741399261",
+            "gregorian": {
+              "date": "08-03-2025",
+              "format": "DD-MM-YYYY",
+              "day": "08",
+              "weekday": {
+                "en": "Saturday"
+              },
+              "month": {
+                "number": 3,
+                "en": "March"
+              },
+              "year": "2025",
+              "designation": {
+                "abbreviated": "AD",
+                "expanded": "Anno Domini"
+              },
+              "lunarSighting": false
+            },
+            "hijri": {
+              "date": "08-09-1446",
+              "format": "DD-MM-YYYY",
+              "day": "8",
+              "weekday": {
+                "en": "Al Sabt",
+                "ar": "السبت"
+              },
+              "month": {
+                "number": 9,
+                "en": "Ramaḍān",
+                "ar": "رَمَضان",
+                "days": 29
+              },
+              "year": "1446",
+              "designation": {
+                "abbreviated": "AH",
+                "expanded": "Anno Hegirae"
+              },
+              "holidays": [],
+              "adjustedHolidays": [],
+              "method": "HJCoSA"
+            }
+          },
+          "meta": {
+            "latitude": 1.234567,
+            "longitude": 2.34567,
+            "timezone": "Asia/Jakarta",
+            "method": {
+              "id": 1,
+              "name": "University of Islamic Sciences, Karachi",
+              "params": {
+                "Fajr": 18,
+                "Isha": 18
+              },
+              "location": {
+                "latitude": 24.8614622,
+                "longitude": 67.0099388
+              }
+            },
+            "latitudeAdjustmentMethod": "ANGLE_BASED",
+            "midnightMode": "STANDARD",
+            "school": "STANDARD",
+            "offset": {
+              "Imsak": 0,
+              "Fajr": 0,
+              "Sunrise": 0,
+              "Dhuhr": 0,
+              "Asr": 0,
+              "Maghrib": 0,
+              "Sunset": 0,
+              "Isha": 0,
+              "Midnight": 0
+            }
+          }
+        },
+        {
+          "timings": {
+            "Fajr": "04:49 (WIB)",
+            "Sunrise": "05:58 (WIB)",
+            "Dhuhr": "12:03 (WIB)",
+            "Asr": "15:08 (WIB)",
+            "Sunset": "18:08 (WIB)",
+            "Maghrib": "18:08 (WIB)",
+            "Isha": "19:18 (WIB)",
+            "Imsak": "04:39 (WIB)",
+            "Midnight": "00:03 (WIB)",
+            "Firstthird": "22:05 (WIB)",
+            "Lastthird": "02:01 (WIB)"
+          },
+          "date": {
+            "readable": "09 Mar 2025",
+            "timestamp": "1741485661",
+            "gregorian": {
+              "date": "09-03-2025",
+              "format": "DD-MM-YYYY",
+              "day": "09",
+              "weekday": {
+                "en": "Sunday"
+              },
+              "month": {
+                "number": 3,
+                "en": "March"
+              },
+              "year": "2025",
+              "designation": {
+                "abbreviated": "AD",
+                "expanded": "Anno Domini"
+              },
+              "lunarSighting": false
+            },
+            "hijri": {
+              "date": "09-09-1446",
+              "format": "DD-MM-YYYY",
+              "day": "9",
+              "weekday": {
+                "en": "Al Ahad",
+                "ar": "الاحد"
+              },
+              "month": {
+                "number": 9,
+                "en": "Ramaḍān",
+                "ar": "رَمَضان",
+                "days": 29
+              },
+              "year": "1446",
+              "designation": {
+                "abbreviated": "AH",
+                "expanded": "Anno Hegirae"
+              },
+              "holidays": [],
+              "adjustedHolidays": [],
+              "method": "HJCoSA"
+            }
+          },
+          "meta": {
+            "latitude": 1.234567,
+            "longitude": 2.34567,
+            "timezone": "Asia/Jakarta",
+            "method": {
+              "id": 1,
+              "name": "University of Islamic Sciences, Karachi",
+              "params": {
+                "Fajr": 18,
+                "Isha": 18
+              },
+              "location": {
+                "latitude": 24.8614622,
+                "longitude": 67.0099388
+              }
+            },
+            "latitudeAdjustmentMethod": "ANGLE_BASED",
+            "midnightMode": "STANDARD",
+            "school": "STANDARD",
+            "offset": {
+              "Imsak": 0,
+              "Fajr": 0,
+              "Sunrise": 0,
+              "Dhuhr": 0,
+              "Asr": 0,
+              "Maghrib": 0,
+              "Sunset": 0,
+              "Isha": 0,
+              "Midnight": 0
+            }
+          }
+        },
+        {
+          "timings": {
+            "Fajr": "04:48 (WIB)",
+            "Sunrise": "05:58 (WIB)",
+            "Dhuhr": "12:03 (WIB)",
+            "Asr": "15:09 (WIB)",
+            "Sunset": "18:08 (WIB)",
+            "Maghrib": "18:08 (WIB)",
+            "Isha": "19:17 (WIB)",
+            "Imsak": "04:38 (WIB)",
+            "Midnight": "00:03 (WIB)",
+            "Firstthird": "22:05 (WIB)",
+            "Lastthird": "02:01 (WIB)"
+          },
+          "date": {
+            "readable": "10 Mar 2025",
+            "timestamp": "1741572061",
+            "gregorian": {
+              "date": "10-03-2025",
+              "format": "DD-MM-YYYY",
+              "day": "10",
+              "weekday": {
+                "en": "Monday"
+              },
+              "month": {
+                "number": 3,
+                "en": "March"
+              },
+              "year": "2025",
+              "designation": {
+                "abbreviated": "AD",
+                "expanded": "Anno Domini"
+              },
+              "lunarSighting": false
+            },
+            "hijri": {
+              "date": "10-09-1446",
+              "format": "DD-MM-YYYY",
+              "day": "10",
+              "weekday": {
+                "en": "Al Athnayn",
+                "ar": "الاثنين"
+              },
+              "month": {
+                "number": 9,
+                "en": "Ramaḍān",
+                "ar": "رَمَضان",
+                "days": 29
+              },
+              "year": "1446",
+              "designation": {
+                "abbreviated": "AH",
+                "expanded": "Anno Hegirae"
+              },
+              "holidays": [],
+              "adjustedHolidays": [],
+              "method": "HJCoSA"
+            }
+          },
+          "meta": {
+            "latitude": 1.234567,
+            "longitude": 2.34567,
+            "timezone": "Asia/Jakarta",
+            "method": {
+              "id": 1,
+              "name": "University of Islamic Sciences, Karachi",
+              "params": {
+                "Fajr": 18,
+                "Isha": 18
+              },
+              "location": {
+                "latitude": 24.8614622,
+                "longitude": 67.0099388
+              }
+            },
+            "latitudeAdjustmentMethod": "ANGLE_BASED",
+            "midnightMode": "STANDARD",
+            "school": "STANDARD",
+            "offset": {
+              "Imsak": 0,
+              "Fajr": 0,
+              "Sunrise": 0,
+              "Dhuhr": 0,
+              "Asr": 0,
+              "Maghrib": 0,
+              "Sunset": 0,
+              "Isha": 0,
+              "Midnight": 0
+            }
+          }
+        },
+        {
+          "timings": {
+            "Fajr": "04:48 (WIB)",
+            "Sunrise": "05:58 (WIB)",
+            "Dhuhr": "12:03 (WIB)",
+            "Asr": "15:09 (WIB)",
+            "Sunset": "18:07 (WIB)",
+            "Maghrib": "18:07 (WIB)",
+            "Isha": "19:17 (WIB)",
+            "Imsak": "04:38 (WIB)",
+            "Midnight": "00:03 (WIB)",
+            "Firstthird": "22:04 (WIB)",
+            "Lastthird": "02:01 (WIB)"
+          },
+          "date": {
+            "readable": "11 Mar 2025",
+            "timestamp": "1741658461",
+            "gregorian": {
+              "date": "11-03-2025",
+              "format": "DD-MM-YYYY",
+              "day": "11",
+              "weekday": {
+                "en": "Tuesday"
+              },
+              "month": {
+                "number": 3,
+                "en": "March"
+              },
+              "year": "2025",
+              "designation": {
+                "abbreviated": "AD",
+                "expanded": "Anno Domini"
+              },
+              "lunarSighting": false
+            },
+            "hijri": {
+              "date": "11-09-1446",
+              "format": "DD-MM-YYYY",
+              "day": "11",
+              "weekday": {
+                "en": "Al Thalaata",
+                "ar": "الثلاثاء"
+              },
+              "month": {
+                "number": 9,
+                "en": "Ramaḍān",
+                "ar": "رَمَضان",
+                "days": 29
+              },
+              "year": "1446",
+              "designation": {
+                "abbreviated": "AH",
+                "expanded": "Anno Hegirae"
+              },
+              "holidays": [],
+              "adjustedHolidays": [],
+              "method": "HJCoSA"
+            }
+          },
+          "meta": {
+            "latitude": 1.234567,
+            "longitude": 2.34567,
+            "timezone": "Asia/Jakarta",
+            "method": {
+              "id": 1,
+              "name": "University of Islamic Sciences, Karachi",
+              "params": {
+                "Fajr": 18,
+                "Isha": 18
+              },
+              "location": {
+                "latitude": 24.8614622,
+                "longitude": 67.0099388
+              }
+            },
+            "latitudeAdjustmentMethod": "ANGLE_BASED",
+            "midnightMode": "STANDARD",
+            "school": "STANDARD",
+            "offset": {
+              "Imsak": 0,
+              "Fajr": 0,
+              "Sunrise": 0,
+              "Dhuhr": 0,
+              "Asr": 0,
+              "Maghrib": 0,
+              "Sunset": 0,
+              "Isha": 0,
+              "Midnight": 0
+            }
+          }
+        },
+        {
+          "timings": {
+            "Fajr": "04:48 (WIB)",
+            "Sunrise": "05:58 (WIB)",
+            "Dhuhr": "12:02 (WIB)",
+            "Asr": "15:09 (WIB)",
+            "Sunset": "18:07 (WIB)",
+            "Maghrib": "18:07 (WIB)",
+            "Isha": "19:16 (WIB)",
+            "Imsak": "04:38 (WIB)",
+            "Midnight": "00:02 (WIB)",
+            "Firstthird": "22:04 (WIB)",
+            "Lastthird": "02:01 (WIB)"
+          },
+          "date": {
+            "readable": "12 Mar 2025",
+            "timestamp": "1741744861",
+            "gregorian": {
+              "date": "12-03-2025",
+              "format": "DD-MM-YYYY",
+              "day": "12",
+              "weekday": {
+                "en": "Wednesday"
+              },
+              "month": {
+                "number": 3,
+                "en": "March"
+              },
+              "year": "2025",
+              "designation": {
+                "abbreviated": "AD",
+                "expanded": "Anno Domini"
+              },
+              "lunarSighting": false
+            },
+            "hijri": {
+              "date": "12-09-1446",
+              "format": "DD-MM-YYYY",
+              "day": "12",
+              "weekday": {
+                "en": "Al Arba'a",
+                "ar": "الاربعاء"
+              },
+              "month": {
+                "number": 9,
+                "en": "Ramaḍān",
+                "ar": "رَمَضان",
+                "days": 29
+              },
+              "year": "1446",
+              "designation": {
+                "abbreviated": "AH",
+                "expanded": "Anno Hegirae"
+              },
+              "holidays": [],
+              "adjustedHolidays": [],
+              "method": "HJCoSA"
+            }
+          },
+          "meta": {
+            "latitude": 1.234567,
+            "longitude": 2.34567,
+            "timezone": "Asia/Jakarta",
+            "method": {
+              "id": 1,
+              "name": "University of Islamic Sciences, Karachi",
+              "params": {
+                "Fajr": 18,
+                "Isha": 18
+              },
+              "location": {
+                "latitude": 24.8614622,
+                "longitude": 67.0099388
+              }
+            },
+            "latitudeAdjustmentMethod": "ANGLE_BASED",
+            "midnightMode": "STANDARD",
+            "school": "STANDARD",
+            "offset": {
+              "Imsak": 0,
+              "Fajr": 0,
+              "Sunrise": 0,
+              "Dhuhr": 0,
+              "Asr": 0,
+              "Maghrib": 0,
+              "Sunset": 0,
+              "Isha": 0,
+              "Midnight": 0
+            }
+          }
+        },
+        {
+          "timings": {
+            "Fajr": "04:48 (WIB)",
+            "Sunrise": "05:58 (WIB)",
+            "Dhuhr": "12:02 (WIB)",
+            "Asr": "15:10 (WIB)",
+            "Sunset": "18:07 (WIB)",
+            "Maghrib": "18:07 (WIB)",
+            "Isha": "19:16 (WIB)",
+            "Imsak": "04:38 (WIB)",
+            "Midnight": "00:02 (WIB)",
+            "Firstthird": "22:04 (WIB)",
+            "Lastthird": "02:01 (WIB)"
+          },
+          "date": {
+            "readable": "13 Mar 2025",
+            "timestamp": "1741831261",
+            "gregorian": {
+              "date": "13-03-2025",
+              "format": "DD-MM-YYYY",
+              "day": "13",
+              "weekday": {
+                "en": "Thursday"
+              },
+              "month": {
+                "number": 3,
+                "en": "March"
+              },
+              "year": "2025",
+              "designation": {
+                "abbreviated": "AD",
+                "expanded": "Anno Domini"
+              },
+              "lunarSighting": false
+            },
+            "hijri": {
+              "date": "13-09-1446",
+              "format": "DD-MM-YYYY",
+              "day": "13",
+              "weekday": {
+                "en": "Al Khamees",
+                "ar": "الخميس"
+              },
+              "month": {
+                "number": 9,
+                "en": "Ramaḍān",
+                "ar": "رَمَضان",
+                "days": 29
+              },
+              "year": "1446",
+              "designation": {
+                "abbreviated": "AH",
+                "expanded": "Anno Hegirae"
+              },
+              "holidays": [],
+              "adjustedHolidays": [],
+              "method": "HJCoSA"
+            }
+          },
+          "meta": {
+            "latitude": 1.234567,
+            "longitude": 2.34567,
+            "timezone": "Asia/Jakarta",
+            "method": {
+              "id": 1,
+              "name": "University of Islamic Sciences, Karachi",
+              "params": {
+                "Fajr": 18,
+                "Isha": 18
+              },
+              "location": {
+                "latitude": 24.8614622,
+                "longitude": 67.0099388
+              }
+            },
+            "latitudeAdjustmentMethod": "ANGLE_BASED",
+            "midnightMode": "STANDARD",
+            "school": "STANDARD",
+            "offset": {
+              "Imsak": 0,
+              "Fajr": 0,
+              "Sunrise": 0,
+              "Dhuhr": 0,
+              "Asr": 0,
+              "Maghrib": 0,
+              "Sunset": 0,
+              "Isha": 0,
+              "Midnight": 0
+            }
+          }
+        },
+        {
+          "timings": {
+            "Fajr": "04:48 (WIB)",
+            "Sunrise": "05:57 (WIB)",
+            "Dhuhr": "12:02 (WIB)",
+            "Asr": "15:10 (WIB)",
+            "Sunset": "18:06 (WIB)",
+            "Maghrib": "18:06 (WIB)",
+            "Isha": "19:15 (WIB)",
+            "Imsak": "04:38 (WIB)",
+            "Midnight": "00:02 (WIB)",
+            "Firstthird": "22:03 (WIB)",
+            "Lastthird": "02:00 (WIB)"
+          },
+          "date": {
+            "readable": "14 Mar 2025",
+            "timestamp": "1741917661",
+            "gregorian": {
+              "date": "14-03-2025",
+              "format": "DD-MM-YYYY",
+              "day": "14",
+              "weekday": {
+                "en": "Friday"
+              },
+              "month": {
+                "number": 3,
+                "en": "March"
+              },
+              "year": "2025",
+              "designation": {
+                "abbreviated": "AD",
+                "expanded": "Anno Domini"
+              },
+              "lunarSighting": false
+            },
+            "hijri": {
+              "date": "14-09-1446",
+              "format": "DD-MM-YYYY",
+              "day": "14",
+              "weekday": {
+                "en": "Al Juma'a",
+                "ar": "الجمعة"
+              },
+              "month": {
+                "number": 9,
+                "en": "Ramaḍān",
+                "ar": "رَمَضان",
+                "days": 29
+              },
+              "year": "1446",
+              "designation": {
+                "abbreviated": "AH",
+                "expanded": "Anno Hegirae"
+              },
+              "holidays": [],
+              "adjustedHolidays": [],
+              "method": "HJCoSA"
+            }
+          },
+          "meta": {
+            "latitude": 1.234567,
+            "longitude": 2.34567,
+            "timezone": "Asia/Jakarta",
+            "method": {
+              "id": 1,
+              "name": "University of Islamic Sciences, Karachi",
+              "params": {
+                "Fajr": 18,
+                "Isha": 18
+              },
+              "location": {
+                "latitude": 24.8614622,
+                "longitude": 67.0099388
+              }
+            },
+            "latitudeAdjustmentMethod": "ANGLE_BASED",
+            "midnightMode": "STANDARD",
+            "school": "STANDARD",
+            "offset": {
+              "Imsak": 0,
+              "Fajr": 0,
+              "Sunrise": 0,
+              "Dhuhr": 0,
+              "Asr": 0,
+              "Maghrib": 0,
+              "Sunset": 0,
+              "Isha": 0,
+              "Midnight": 0
+            }
+          }
+        },
+        {
+          "timings": {
+            "Fajr": "04:48 (WIB)",
+            "Sunrise": "05:57 (WIB)",
+            "Dhuhr": "12:02 (WIB)",
+            "Asr": "15:10 (WIB)",
+            "Sunset": "18:06 (WIB)",
+            "Maghrib": "18:06 (WIB)",
+            "Isha": "19:15 (WIB)",
+            "Imsak": "04:38 (WIB)",
+            "Midnight": "00:02 (WIB)",
+            "Firstthird": "22:03 (WIB)",
+            "Lastthird": "02:00 (WIB)"
+          },
+          "date": {
+            "readable": "15 Mar 2025",
+            "timestamp": "1742004061",
+            "gregorian": {
+              "date": "15-03-2025",
+              "format": "DD-MM-YYYY",
+              "day": "15",
+              "weekday": {
+                "en": "Saturday"
+              },
+              "month": {
+                "number": 3,
+                "en": "March"
+              },
+              "year": "2025",
+              "designation": {
+                "abbreviated": "AD",
+                "expanded": "Anno Domini"
+              },
+              "lunarSighting": false
+            },
+            "hijri": {
+              "date": "15-09-1446",
+              "format": "DD-MM-YYYY",
+              "day": "15",
+              "weekday": {
+                "en": "Al Sabt",
+                "ar": "السبت"
+              },
+              "month": {
+                "number": 9,
+                "en": "Ramaḍān",
+                "ar": "رَمَضان",
+                "days": 29
+              },
+              "year": "1446",
+              "designation": {
+                "abbreviated": "AH",
+                "expanded": "Anno Hegirae"
+              },
+              "holidays": [],
+              "adjustedHolidays": [],
+              "method": "HJCoSA"
+            }
+          },
+          "meta": {
+            "latitude": 1.234567,
+            "longitude": 2.34567,
+            "timezone": "Asia/Jakarta",
+            "method": {
+              "id": 1,
+              "name": "University of Islamic Sciences, Karachi",
+              "params": {
+                "Fajr": 18,
+                "Isha": 18
+              },
+              "location": {
+                "latitude": 24.8614622,
+                "longitude": 67.0099388
+              }
+            },
+            "latitudeAdjustmentMethod": "ANGLE_BASED",
+            "midnightMode": "STANDARD",
+            "school": "STANDARD",
+            "offset": {
+              "Imsak": 0,
+              "Fajr": 0,
+              "Sunrise": 0,
+              "Dhuhr": 0,
+              "Asr": 0,
+              "Maghrib": 0,
+              "Sunset": 0,
+              "Isha": 0,
+              "Midnight": 0
+            }
+          }
+        },
+        {
+          "timings": {
+            "Fajr": "04:48 (WIB)",
+            "Sunrise": "05:57 (WIB)",
+            "Dhuhr": "12:01 (WIB)",
+            "Asr": "15:11 (WIB)",
+            "Sunset": "18:05 (WIB)",
+            "Maghrib": "18:05 (WIB)",
+            "Isha": "19:14 (WIB)",
+            "Imsak": "04:38 (WIB)",
+            "Midnight": "00:01 (WIB)",
+            "Firstthird": "22:03 (WIB)",
+            "Lastthird": "02:00 (WIB)"
+          },
+          "date": {
+            "readable": "16 Mar 2025",
+            "timestamp": "1742090461",
+            "gregorian": {
+              "date": "16-03-2025",
+              "format": "DD-MM-YYYY",
+              "day": "16",
+              "weekday": {
+                "en": "Sunday"
+              },
+              "month": {
+                "number": 3,
+                "en": "March"
+              },
+              "year": "2025",
+              "designation": {
+                "abbreviated": "AD",
+                "expanded": "Anno Domini"
+              },
+              "lunarSighting": false
+            },
+            "hijri": {
+              "date": "16-09-1446",
+              "format": "DD-MM-YYYY",
+              "day": "16",
+              "weekday": {
+                "en": "Al Ahad",
+                "ar": "الاحد"
+              },
+              "month": {
+                "number": 9,
+                "en": "Ramaḍān",
+                "ar": "رَمَضان",
+                "days": 29
+              },
+              "year": "1446",
+              "designation": {
+                "abbreviated": "AH",
+                "expanded": "Anno Hegirae"
+              },
+              "holidays": [],
+              "adjustedHolidays": [],
+              "method": "HJCoSA"
+            }
+          },
+          "meta": {
+            "latitude": 1.234567,
+            "longitude": 2.34567,
+            "timezone": "Asia/Jakarta",
+            "method": {
+              "id": 1,
+              "name": "University of Islamic Sciences, Karachi",
+              "params": {
+                "Fajr": 18,
+                "Isha": 18
+              },
+              "location": {
+                "latitude": 24.8614622,
+                "longitude": 67.0099388
+              }
+            },
+            "latitudeAdjustmentMethod": "ANGLE_BASED",
+            "midnightMode": "STANDARD",
+            "school": "STANDARD",
+            "offset": {
+              "Imsak": 0,
+              "Fajr": 0,
+              "Sunrise": 0,
+              "Dhuhr": 0,
+              "Asr": 0,
+              "Maghrib": 0,
+              "Sunset": 0,
+              "Isha": 0,
+              "Midnight": 0
+            }
+          }
+        },
+        {
+          "timings": {
+            "Fajr": "04:48 (WIB)",
+            "Sunrise": "05:57 (WIB)",
+            "Dhuhr": "12:01 (WIB)",
+            "Asr": "15:11 (WIB)",
+            "Sunset": "18:05 (WIB)",
+            "Maghrib": "18:05 (WIB)",
+            "Isha": "19:14 (WIB)",
+            "Imsak": "04:38 (WIB)",
+            "Midnight": "00:01 (WIB)",
+            "Firstthird": "22:02 (WIB)",
+            "Lastthird": "02:00 (WIB)"
+          },
+          "date": {
+            "readable": "17 Mar 2025",
+            "timestamp": "1742176861",
+            "gregorian": {
+              "date": "17-03-2025",
+              "format": "DD-MM-YYYY",
+              "day": "17",
+              "weekday": {
+                "en": "Monday"
+              },
+              "month": {
+                "number": 3,
+                "en": "March"
+              },
+              "year": "2025",
+              "designation": {
+                "abbreviated": "AD",
+                "expanded": "Anno Domini"
+              },
+              "lunarSighting": false
+            },
+            "hijri": {
+              "date": "17-09-1446",
+              "format": "DD-MM-YYYY",
+              "day": "17",
+              "weekday": {
+                "en": "Al Athnayn",
+                "ar": "الاثنين"
+              },
+              "month": {
+                "number": 9,
+                "en": "Ramaḍān",
+                "ar": "رَمَضان",
+                "days": 29
+              },
+              "year": "1446",
+              "designation": {
+                "abbreviated": "AH",
+                "expanded": "Anno Hegirae"
+              },
+              "holidays": [],
+              "adjustedHolidays": [],
+              "method": "HJCoSA"
+            }
+          },
+          "meta": {
+            "latitude": 1.234567,
+            "longitude": 2.34567,
+            "timezone": "Asia/Jakarta",
+            "method": {
+              "id": 1,
+              "name": "University of Islamic Sciences, Karachi",
+              "params": {
+                "Fajr": 18,
+                "Isha": 18
+              },
+              "location": {
+                "latitude": 24.8614622,
+                "longitude": 67.0099388
+              }
+            },
+            "latitudeAdjustmentMethod": "ANGLE_BASED",
+            "midnightMode": "STANDARD",
+            "school": "STANDARD",
+            "offset": {
+              "Imsak": 0,
+              "Fajr": 0,
+              "Sunrise": 0,
+              "Dhuhr": 0,
+              "Asr": 0,
+              "Maghrib": 0,
+              "Sunset": 0,
+              "Isha": 0,
+              "Midnight": 0
+            }
+          }
+        },
+        {
+          "timings": {
+            "Fajr": "04:48 (WIB)",
+            "Sunrise": "05:57 (WIB)",
+            "Dhuhr": "12:01 (WIB)",
+            "Asr": "15:11 (WIB)",
+            "Sunset": "18:04 (WIB)",
+            "Maghrib": "18:04 (WIB)",
+            "Isha": "19:13 (WIB)",
+            "Imsak": "04:38 (WIB)",
+            "Midnight": "00:01 (WIB)",
+            "Firstthird": "22:02 (WIB)",
+            "Lastthird": "01:59 (WIB)"
+          },
+          "date": {
+            "readable": "18 Mar 2025",
+            "timestamp": "1742263261",
+            "gregorian": {
+              "date": "18-03-2025",
+              "format": "DD-MM-YYYY",
+              "day": "18",
+              "weekday": {
+                "en": "Tuesday"
+              },
+              "month": {
+                "number": 3,
+                "en": "March"
+              },
+              "year": "2025",
+              "designation": {
+                "abbreviated": "AD",
+                "expanded": "Anno Domini"
+              },
+              "lunarSighting": false
+            },
+            "hijri": {
+              "date": "18-09-1446",
+              "format": "DD-MM-YYYY",
+              "day": "18",
+              "weekday": {
+                "en": "Al Thalaata",
+                "ar": "الثلاثاء"
+              },
+              "month": {
+                "number": 9,
+                "en": "Ramaḍān",
+                "ar": "رَمَضان",
+                "days": 29
+              },
+              "year": "1446",
+              "designation": {
+                "abbreviated": "AH",
+                "expanded": "Anno Hegirae"
+              },
+              "holidays": [],
+              "adjustedHolidays": [],
+              "method": "HJCoSA"
+            }
+          },
+          "meta": {
+            "latitude": 1.234567,
+            "longitude": 2.34567,
+            "timezone": "Asia/Jakarta",
+            "method": {
+              "id": 1,
+              "name": "University of Islamic Sciences, Karachi",
+              "params": {
+                "Fajr": 18,
+                "Isha": 18
+              },
+              "location": {
+                "latitude": 24.8614622,
+                "longitude": 67.0099388
+              }
+            },
+            "latitudeAdjustmentMethod": "ANGLE_BASED",
+            "midnightMode": "STANDARD",
+            "school": "STANDARD",
+            "offset": {
+              "Imsak": 0,
+              "Fajr": 0,
+              "Sunrise": 0,
+              "Dhuhr": 0,
+              "Asr": 0,
+              "Maghrib": 0,
+              "Sunset": 0,
+              "Isha": 0,
+              "Midnight": 0
+            }
+          }
+        },
+        {
+          "timings": {
+            "Fajr": "04:48 (WIB)",
+            "Sunrise": "05:57 (WIB)",
+            "Dhuhr": "12:00 (WIB)",
+            "Asr": "15:11 (WIB)",
+            "Sunset": "18:04 (WIB)",
+            "Maghrib": "18:04 (WIB)",
+            "Isha": "19:13 (WIB)",
+            "Imsak": "04:38 (WIB)",
+            "Midnight": "00:00 (WIB)",
+            "Firstthird": "22:02 (WIB)",
+            "Lastthird": "01:59 (WIB)"
+          },
+          "date": {
+            "readable": "19 Mar 2025",
+            "timestamp": "1742349661",
+            "gregorian": {
+              "date": "19-03-2025",
+              "format": "DD-MM-YYYY",
+              "day": "19",
+              "weekday": {
+                "en": "Wednesday"
+              },
+              "month": {
+                "number": 3,
+                "en": "March"
+              },
+              "year": "2025",
+              "designation": {
+                "abbreviated": "AD",
+                "expanded": "Anno Domini"
+              },
+              "lunarSighting": false
+            },
+            "hijri": {
+              "date": "19-09-1446",
+              "format": "DD-MM-YYYY",
+              "day": "19",
+              "weekday": {
+                "en": "Al Arba'a",
+                "ar": "الاربعاء"
+              },
+              "month": {
+                "number": 9,
+                "en": "Ramaḍān",
+                "ar": "رَمَضان",
+                "days": 29
+              },
+              "year": "1446",
+              "designation": {
+                "abbreviated": "AH",
+                "expanded": "Anno Hegirae"
+              },
+              "holidays": [],
+              "adjustedHolidays": [],
+              "method": "HJCoSA"
+            }
+          },
+          "meta": {
+            "latitude": 1.234567,
+            "longitude": 2.34567,
+            "timezone": "Asia/Jakarta",
+            "method": {
+              "id": 1,
+              "name": "University of Islamic Sciences, Karachi",
+              "params": {
+                "Fajr": 18,
+                "Isha": 18
+              },
+              "location": {
+                "latitude": 24.8614622,
+                "longitude": 67.0099388
+              }
+            },
+            "latitudeAdjustmentMethod": "ANGLE_BASED",
+            "midnightMode": "STANDARD",
+            "school": "STANDARD",
+            "offset": {
+              "Imsak": 0,
+              "Fajr": 0,
+              "Sunrise": 0,
+              "Dhuhr": 0,
+              "Asr": 0,
+              "Maghrib": 0,
+              "Sunset": 0,
+              "Isha": 0,
+              "Midnight": 0
+            }
+          }
+        },
+        {
+          "timings": {
+            "Fajr": "04:48 (WIB)",
+            "Sunrise": "05:57 (WIB)",
+            "Dhuhr": "12:00 (WIB)",
+            "Asr": "15:11 (WIB)",
+            "Sunset": "18:03 (WIB)",
+            "Maghrib": "18:03 (WIB)",
+            "Isha": "19:12 (WIB)",
+            "Imsak": "04:38 (WIB)",
+            "Midnight": "00:00 (WIB)",
+            "Firstthird": "22:01 (WIB)",
+            "Lastthird": "01:59 (WIB)"
+          },
+          "date": {
+            "readable": "20 Mar 2025",
+            "timestamp": "1742436061",
+            "gregorian": {
+              "date": "20-03-2025",
+              "format": "DD-MM-YYYY",
+              "day": "20",
+              "weekday": {
+                "en": "Thursday"
+              },
+              "month": {
+                "number": 3,
+                "en": "March"
+              },
+              "year": "2025",
+              "designation": {
+                "abbreviated": "AD",
+                "expanded": "Anno Domini"
+              },
+              "lunarSighting": false
+            },
+            "hijri": {
+              "date": "20-09-1446",
+              "format": "DD-MM-YYYY",
+              "day": "20",
+              "weekday": {
+                "en": "Al Khamees",
+                "ar": "الخميس"
+              },
+              "month": {
+                "number": 9,
+                "en": "Ramaḍān",
+                "ar": "رَمَضان",
+                "days": 29
+              },
+              "year": "1446",
+              "designation": {
+                "abbreviated": "AH",
+                "expanded": "Anno Hegirae"
+              },
+              "holidays": [],
+              "adjustedHolidays": [],
+              "method": "HJCoSA"
+            }
+          },
+          "meta": {
+            "latitude": 1.234567,
+            "longitude": 2.34567,
+            "timezone": "Asia/Jakarta",
+            "method": {
+              "id": 1,
+              "name": "University of Islamic Sciences, Karachi",
+              "params": {
+                "Fajr": 18,
+                "Isha": 18
+              },
+              "location": {
+                "latitude": 24.8614622,
+                "longitude": 67.0099388
+              }
+            },
+            "latitudeAdjustmentMethod": "ANGLE_BASED",
+            "midnightMode": "STANDARD",
+            "school": "STANDARD",
+            "offset": {
+              "Imsak": 0,
+              "Fajr": 0,
+              "Sunrise": 0,
+              "Dhuhr": 0,
+              "Asr": 0,
+              "Maghrib": 0,
+              "Sunset": 0,
+              "Isha": 0,
+              "Midnight": 0
+            }
+          }
+        },
+        {
+          "timings": {
+            "Fajr": "04:48 (WIB)",
+            "Sunrise": "05:57 (WIB)",
+            "Dhuhr": "12:00 (WIB)",
+            "Asr": "15:12 (WIB)",
+            "Sunset": "18:03 (WIB)",
+            "Maghrib": "18:03 (WIB)",
+            "Isha": "19:12 (WIB)",
+            "Imsak": "04:38 (WIB)",
+            "Midnight": "00:00 (WIB)",
+            "Firstthird": "22:01 (WIB)",
+            "Lastthird": "01:59 (WIB)"
+          },
+          "date": {
+            "readable": "21 Mar 2025",
+            "timestamp": "1742522461",
+            "gregorian": {
+              "date": "21-03-2025",
+              "format": "DD-MM-YYYY",
+              "day": "21",
+              "weekday": {
+                "en": "Friday"
+              },
+              "month": {
+                "number": 3,
+                "en": "March"
+              },
+              "year": "2025",
+              "designation": {
+                "abbreviated": "AD",
+                "expanded": "Anno Domini"
+              },
+              "lunarSighting": false
+            },
+            "hijri": {
+              "date": "21-09-1446",
+              "format": "DD-MM-YYYY",
+              "day": "21",
+              "weekday": {
+                "en": "Al Juma'a",
+                "ar": "الجمعة"
+              },
+              "month": {
+                "number": 9,
+                "en": "Ramaḍān",
+                "ar": "رَمَضان",
+                "days": 29
+              },
+              "year": "1446",
+              "designation": {
+                "abbreviated": "AH",
+                "expanded": "Anno Hegirae"
+              },
+              "holidays": [
+                "Lailat-ul-Qadr"
+              ],
+              "adjustedHolidays": [],
+              "method": "HJCoSA"
+            }
+          },
+          "meta": {
+            "latitude": 1.234567,
+            "longitude": 2.34567,
+            "timezone": "Asia/Jakarta",
+            "method": {
+              "id": 1,
+              "name": "University of Islamic Sciences, Karachi",
+              "params": {
+                "Fajr": 18,
+                "Isha": 18
+              },
+              "location": {
+                "latitude": 24.8614622,
+                "longitude": 67.0099388
+              }
+            },
+            "latitudeAdjustmentMethod": "ANGLE_BASED",
+            "midnightMode": "STANDARD",
+            "school": "STANDARD",
+            "offset": {
+              "Imsak": 0,
+              "Fajr": 0,
+              "Sunrise": 0,
+              "Dhuhr": 0,
+              "Asr": 0,
+              "Maghrib": 0,
+              "Sunset": 0,
+              "Isha": 0,
+              "Midnight": 0
+            }
+          }
+        },
+        {
+          "timings": {
+            "Fajr": "04:47 (WIB)",
+            "Sunrise": "05:57 (WIB)",
+            "Dhuhr": "12:00 (WIB)",
+            "Asr": "15:12 (WIB)",
+            "Sunset": "18:02 (WIB)",
+            "Maghrib": "18:02 (WIB)",
+            "Isha": "19:12 (WIB)",
+            "Imsak": "04:37 (WIB)",
+            "Midnight": "23:59 (WIB)",
+            "Firstthird": "22:00 (WIB)",
+            "Lastthird": "01:58 (WIB)"
+          },
+          "date": {
+            "readable": "22 Mar 2025",
+            "timestamp": "1742608861",
+            "gregorian": {
+              "date": "22-03-2025",
+              "format": "DD-MM-YYYY",
+              "day": "22",
+              "weekday": {
+                "en": "Saturday"
+              },
+              "month": {
+                "number": 3,
+                "en": "March"
+              },
+              "year": "2025",
+              "designation": {
+                "abbreviated": "AD",
+                "expanded": "Anno Domini"
+              },
+              "lunarSighting": false
+            },
+            "hijri": {
+              "date": "22-09-1446",
+              "format": "DD-MM-YYYY",
+              "day": "22",
+              "weekday": {
+                "en": "Al Sabt",
+                "ar": "السبت"
+              },
+              "month": {
+                "number": 9,
+                "en": "Ramaḍān",
+                "ar": "رَمَضان",
+                "days": 29
+              },
+              "year": "1446",
+              "designation": {
+                "abbreviated": "AH",
+                "expanded": "Anno Hegirae"
+              },
+              "holidays": [],
+              "adjustedHolidays": [],
+              "method": "HJCoSA"
+            }
+          },
+          "meta": {
+            "latitude": 1.234567,
+            "longitude": 2.34567,
+            "timezone": "Asia/Jakarta",
+            "method": {
+              "id": 1,
+              "name": "University of Islamic Sciences, Karachi",
+              "params": {
+                "Fajr": 18,
+                "Isha": 18
+              },
+              "location": {
+                "latitude": 24.8614622,
+                "longitude": 67.0099388
+              }
+            },
+            "latitudeAdjustmentMethod": "ANGLE_BASED",
+            "midnightMode": "STANDARD",
+            "school": "STANDARD",
+            "offset": {
+              "Imsak": 0,
+              "Fajr": 0,
+              "Sunrise": 0,
+              "Dhuhr": 0,
+              "Asr": 0,
+              "Maghrib": 0,
+              "Sunset": 0,
+              "Isha": 0,
+              "Midnight": 0
+            }
+          }
+        },
+        {
+          "timings": {
+            "Fajr": "04:47 (WIB)",
+            "Sunrise": "05:56 (WIB)",
+            "Dhuhr": "11:59 (WIB)",
+            "Asr": "15:12 (WIB)",
+            "Sunset": "18:02 (WIB)",
+            "Maghrib": "18:02 (WIB)",
+            "Isha": "19:11 (WIB)",
+            "Imsak": "04:37 (WIB)",
+            "Midnight": "23:59 (WIB)",
+            "Firstthird": "22:00 (WIB)",
+            "Lastthird": "01:58 (WIB)"
+          },
+          "date": {
+            "readable": "23 Mar 2025",
+            "timestamp": "1742695261",
+            "gregorian": {
+              "date": "23-03-2025",
+              "format": "DD-MM-YYYY",
+              "day": "23",
+              "weekday": {
+                "en": "Sunday"
+              },
+              "month": {
+                "number": 3,
+                "en": "March"
+              },
+              "year": "2025",
+              "designation": {
+                "abbreviated": "AD",
+                "expanded": "Anno Domini"
+              },
+              "lunarSighting": false
+            },
+            "hijri": {
+              "date": "23-09-1446",
+              "format": "DD-MM-YYYY",
+              "day": "23",
+              "weekday": {
+                "en": "Al Ahad",
+                "ar": "الاحد"
+              },
+              "month": {
+                "number": 9,
+                "en": "Ramaḍān",
+                "ar": "رَمَضان",
+                "days": 29
+              },
+              "year": "1446",
+              "designation": {
+                "abbreviated": "AH",
+                "expanded": "Anno Hegirae"
+              },
+              "holidays": [
+                "Lailat-ul-Qadr"
+              ],
+              "adjustedHolidays": [],
+              "method": "HJCoSA"
+            }
+          },
+          "meta": {
+            "latitude": 1.234567,
+            "longitude": 2.34567,
+            "timezone": "Asia/Jakarta",
+            "method": {
+              "id": 1,
+              "name": "University of Islamic Sciences, Karachi",
+              "params": {
+                "Fajr": 18,
+                "Isha": 18
+              },
+              "location": {
+                "latitude": 24.8614622,
+                "longitude": 67.0099388
+              }
+            },
+            "latitudeAdjustmentMethod": "ANGLE_BASED",
+            "midnightMode": "STANDARD",
+            "school": "STANDARD",
+            "offset": {
+              "Imsak": 0,
+              "Fajr": 0,
+              "Sunrise": 0,
+              "Dhuhr": 0,
+              "Asr": 0,
+              "Maghrib": 0,
+              "Sunset": 0,
+              "Isha": 0,
+              "Midnight": 0
+            }
+          }
+        },
+        {
+          "timings": {
+            "Fajr": "04:47 (WIB)",
+            "Sunrise": "05:56 (WIB)",
+            "Dhuhr": "11:59 (WIB)",
+            "Asr": "15:12 (WIB)",
+            "Sunset": "18:02 (WIB)",
+            "Maghrib": "18:02 (WIB)",
+            "Isha": "19:11 (WIB)",
+            "Imsak": "04:37 (WIB)",
+            "Midnight": "23:59 (WIB)",
+            "Firstthird": "22:00 (WIB)",
+            "Lastthird": "01:58 (WIB)"
+          },
+          "date": {
+            "readable": "24 Mar 2025",
+            "timestamp": "1742781661",
+            "gregorian": {
+              "date": "24-03-2025",
+              "format": "DD-MM-YYYY",
+              "day": "24",
+              "weekday": {
+                "en": "Monday"
+              },
+              "month": {
+                "number": 3,
+                "en": "March"
+              },
+              "year": "2025",
+              "designation": {
+                "abbreviated": "AD",
+                "expanded": "Anno Domini"
+              },
+              "lunarSighting": false
+            },
+            "hijri": {
+              "date": "24-09-1446",
+              "format": "DD-MM-YYYY",
+              "day": "24",
+              "weekday": {
+                "en": "Al Athnayn",
+                "ar": "الاثنين"
+              },
+              "month": {
+                "number": 9,
+                "en": "Ramaḍān",
+                "ar": "رَمَضان",
+                "days": 29
+              },
+              "year": "1446",
+              "designation": {
+                "abbreviated": "AH",
+                "expanded": "Anno Hegirae"
+              },
+              "holidays": [],
+              "adjustedHolidays": [],
+              "method": "HJCoSA"
+            }
+          },
+          "meta": {
+            "latitude": 1.234567,
+            "longitude": 2.34567,
+            "timezone": "Asia/Jakarta",
+            "method": {
+              "id": 1,
+              "name": "University of Islamic Sciences, Karachi",
+              "params": {
+                "Fajr": 18,
+                "Isha": 18
+              },
+              "location": {
+                "latitude": 24.8614622,
+                "longitude": 67.0099388
+              }
+            },
+            "latitudeAdjustmentMethod": "ANGLE_BASED",
+            "midnightMode": "STANDARD",
+            "school": "STANDARD",
+            "offset": {
+              "Imsak": 0,
+              "Fajr": 0,
+              "Sunrise": 0,
+              "Dhuhr": 0,
+              "Asr": 0,
+              "Maghrib": 0,
+              "Sunset": 0,
+              "Isha": 0,
+              "Midnight": 0
+            }
+          }
+        },
+        {
+          "timings": {
+            "Fajr": "04:47 (WIB)",
+            "Sunrise": "05:56 (WIB)",
+            "Dhuhr": "11:59 (WIB)",
+            "Asr": "15:12 (WIB)",
+            "Sunset": "18:01 (WIB)",
+            "Maghrib": "18:01 (WIB)",
+            "Isha": "19:10 (WIB)",
+            "Imsak": "04:37 (WIB)",
+            "Midnight": "23:59 (WIB)",
+            "Firstthird": "21:59 (WIB)",
+            "Lastthird": "01:58 (WIB)"
+          },
+          "date": {
+            "readable": "25 Mar 2025",
+            "timestamp": "1742868061",
+            "gregorian": {
+              "date": "25-03-2025",
+              "format": "DD-MM-YYYY",
+              "day": "25",
+              "weekday": {
+                "en": "Tuesday"
+              },
+              "month": {
+                "number": 3,
+                "en": "March"
+              },
+              "year": "2025",
+              "designation": {
+                "abbreviated": "AD",
+                "expanded": "Anno Domini"
+              },
+              "lunarSighting": false
+            },
+            "hijri": {
+              "date": "25-09-1446",
+              "format": "DD-MM-YYYY",
+              "day": "25",
+              "weekday": {
+                "en": "Al Thalaata",
+                "ar": "الثلاثاء"
+              },
+              "month": {
+                "number": 9,
+                "en": "Ramaḍān",
+                "ar": "رَمَضان",
+                "days": 29
+              },
+              "year": "1446",
+              "designation": {
+                "abbreviated": "AH",
+                "expanded": "Anno Hegirae"
+              },
+              "holidays": [
+                "Lailat-ul-Qadr"
+              ],
+              "adjustedHolidays": [],
+              "method": "HJCoSA"
+            }
+          },
+          "meta": {
+            "latitude": 1.234567,
+            "longitude": 2.34567,
+            "timezone": "Asia/Jakarta",
+            "method": {
+              "id": 1,
+              "name": "University of Islamic Sciences, Karachi",
+              "params": {
+                "Fajr": 18,
+                "Isha": 18
+              },
+              "location": {
+                "latitude": 24.8614622,
+                "longitude": 67.0099388
+              }
+            },
+            "latitudeAdjustmentMethod": "ANGLE_BASED",
+            "midnightMode": "STANDARD",
+            "school": "STANDARD",
+            "offset": {
+              "Imsak": 0,
+              "Fajr": 0,
+              "Sunrise": 0,
+              "Dhuhr": 0,
+              "Asr": 0,
+              "Maghrib": 0,
+              "Sunset": 0,
+              "Isha": 0,
+              "Midnight": 0
+            }
+          }
+        },
+        {
+          "timings": {
+            "Fajr": "04:47 (WIB)",
+            "Sunrise": "05:56 (WIB)",
+            "Dhuhr": "11:58 (WIB)",
+            "Asr": "15:12 (WIB)",
+            "Sunset": "18:01 (WIB)",
+            "Maghrib": "18:01 (WIB)",
+            "Isha": "19:10 (WIB)",
+            "Imsak": "04:37 (WIB)",
+            "Midnight": "23:58 (WIB)",
+            "Firstthird": "21:59 (WIB)",
+            "Lastthird": "01:58 (WIB)"
+          },
+          "date": {
+            "readable": "26 Mar 2025",
+            "timestamp": "1742954461",
+            "gregorian": {
+              "date": "26-03-2025",
+              "format": "DD-MM-YYYY",
+              "day": "26",
+              "weekday": {
+                "en": "Wednesday"
+              },
+              "month": {
+                "number": 3,
+                "en": "March"
+              },
+              "year": "2025",
+              "designation": {
+                "abbreviated": "AD",
+                "expanded": "Anno Domini"
+              },
+              "lunarSighting": false
+            },
+            "hijri": {
+              "date": "26-09-1446",
+              "format": "DD-MM-YYYY",
+              "day": "26",
+              "weekday": {
+                "en": "Al Arba'a",
+                "ar": "الاربعاء"
+              },
+              "month": {
+                "number": 9,
+                "en": "Ramaḍān",
+                "ar": "رَمَضان",
+                "days": 29
+              },
+              "year": "1446",
+              "designation": {
+                "abbreviated": "AH",
+                "expanded": "Anno Hegirae"
+              },
+              "holidays": [],
+              "adjustedHolidays": [],
+              "method": "HJCoSA"
+            }
+          },
+          "meta": {
+            "latitude": 1.234567,
+            "longitude": 2.34567,
+            "timezone": "Asia/Jakarta",
+            "method": {
+              "id": 1,
+              "name": "University of Islamic Sciences, Karachi",
+              "params": {
+                "Fajr": 18,
+                "Isha": 18
+              },
+              "location": {
+                "latitude": 24.8614622,
+                "longitude": 67.0099388
+              }
+            },
+            "latitudeAdjustmentMethod": "ANGLE_BASED",
+            "midnightMode": "STANDARD",
+            "school": "STANDARD",
+            "offset": {
+              "Imsak": 0,
+              "Fajr": 0,
+              "Sunrise": 0,
+              "Dhuhr": 0,
+              "Asr": 0,
+              "Maghrib": 0,
+              "Sunset": 0,
+              "Isha": 0,
+              "Midnight": 0
+            }
+          }
+        },
+        {
+          "timings": {
+            "Fajr": "04:47 (WIB)",
+            "Sunrise": "05:56 (WIB)",
+            "Dhuhr": "11:58 (WIB)",
+            "Asr": "15:12 (WIB)",
+            "Sunset": "18:00 (WIB)",
+            "Maghrib": "18:00 (WIB)",
+            "Isha": "19:09 (WIB)",
+            "Imsak": "04:37 (WIB)",
+            "Midnight": "23:58 (WIB)",
+            "Firstthird": "21:59 (WIB)",
+            "Lastthird": "01:57 (WIB)"
+          },
+          "date": {
+            "readable": "27 Mar 2025",
+            "timestamp": "1743040861",
+            "gregorian": {
+              "date": "27-03-2025",
+              "format": "DD-MM-YYYY",
+              "day": "27",
+              "weekday": {
+                "en": "Thursday"
+              },
+              "month": {
+                "number": 3,
+                "en": "March"
+              },
+              "year": "2025",
+              "designation": {
+                "abbreviated": "AD",
+                "expanded": "Anno Domini"
+              },
+              "lunarSighting": false
+            },
+            "hijri": {
+              "date": "27-09-1446",
+              "format": "DD-MM-YYYY",
+              "day": "27",
+              "weekday": {
+                "en": "Al Khamees",
+                "ar": "الخميس"
+              },
+              "month": {
+                "number": 9,
+                "en": "Ramaḍān",
+                "ar": "رَمَضان",
+                "days": 29
+              },
+              "year": "1446",
+              "designation": {
+                "abbreviated": "AH",
+                "expanded": "Anno Hegirae"
+              },
+              "holidays": [
+                "Lailat-ul-Qadr"
+              ],
+              "adjustedHolidays": [],
+              "method": "HJCoSA"
+            }
+          },
+          "meta": {
+            "latitude": 1.234567,
+            "longitude": 2.34567,
+            "timezone": "Asia/Jakarta",
+            "method": {
+              "id": 1,
+              "name": "University of Islamic Sciences, Karachi",
+              "params": {
+                "Fajr": 18,
+                "Isha": 18
+              },
+              "location": {
+                "latitude": 24.8614622,
+                "longitude": 67.0099388
+              }
+            },
+            "latitudeAdjustmentMethod": "ANGLE_BASED",
+            "midnightMode": "STANDARD",
+            "school": "STANDARD",
+            "offset": {
+              "Imsak": 0,
+              "Fajr": 0,
+              "Sunrise": 0,
+              "Dhuhr": 0,
+              "Asr": 0,
+              "Maghrib": 0,
+              "Sunset": 0,
+              "Isha": 0,
+              "Midnight": 0
+            }
+          }
+        },
+        {
+          "timings": {
+            "Fajr": "04:47 (WIB)",
+            "Sunrise": "05:56 (WIB)",
+            "Dhuhr": "11:58 (WIB)",
+            "Asr": "15:13 (WIB)",
+            "Sunset": "18:00 (WIB)",
+            "Maghrib": "18:00 (WIB)",
+            "Isha": "19:09 (WIB)",
+            "Imsak": "04:37 (WIB)",
+            "Midnight": "23:58 (WIB)",
+            "Firstthird": "21:58 (WIB)",
+            "Lastthird": "01:57 (WIB)"
+          },
+          "date": {
+            "readable": "28 Mar 2025",
+            "timestamp": "1743127261",
+            "gregorian": {
+              "date": "28-03-2025",
+              "format": "DD-MM-YYYY",
+              "day": "28",
+              "weekday": {
+                "en": "Friday"
+              },
+              "month": {
+                "number": 3,
+                "en": "March"
+              },
+              "year": "2025",
+              "designation": {
+                "abbreviated": "AD",
+                "expanded": "Anno Domini"
+              },
+              "lunarSighting": false
+            },
+            "hijri": {
+              "date": "28-09-1446",
+              "format": "DD-MM-YYYY",
+              "day": "28",
+              "weekday": {
+                "en": "Al Juma'a",
+                "ar": "الجمعة"
+              },
+              "month": {
+                "number": 9,
+                "en": "Ramaḍān",
+                "ar": "رَمَضان",
+                "days": 29
+              },
+              "year": "1446",
+              "designation": {
+                "abbreviated": "AH",
+                "expanded": "Anno Hegirae"
+              },
+              "holidays": [],
+              "adjustedHolidays": [],
+              "method": "HJCoSA"
+            }
+          },
+          "meta": {
+            "latitude": 1.234567,
+            "longitude": 2.34567,
+            "timezone": "Asia/Jakarta",
+            "method": {
+              "id": 1,
+              "name": "University of Islamic Sciences, Karachi",
+              "params": {
+                "Fajr": 18,
+                "Isha": 18
+              },
+              "location": {
+                "latitude": 24.8614622,
+                "longitude": 67.0099388
+              }
+            },
+            "latitudeAdjustmentMethod": "ANGLE_BASED",
+            "midnightMode": "STANDARD",
+            "school": "STANDARD",
+            "offset": {
+              "Imsak": 0,
+              "Fajr": 0,
+              "Sunrise": 0,
+              "Dhuhr": 0,
+              "Asr": 0,
+              "Maghrib": 0,
+              "Sunset": 0,
+              "Isha": 0,
+              "Midnight": 0
+            }
+          }
+        },
+        {
+          "timings": {
+            "Fajr": "04:46 (WIB)",
+            "Sunrise": "05:56 (WIB)",
+            "Dhuhr": "11:57 (WIB)",
+            "Asr": "15:13 (WIB)",
+            "Sunset": "17:59 (WIB)",
+            "Maghrib": "17:59 (WIB)",
+            "Isha": "19:08 (WIB)",
+            "Imsak": "04:36 (WIB)",
+            "Midnight": "23:57 (WIB)",
+            "Firstthird": "21:58 (WIB)",
+            "Lastthird": "01:57 (WIB)"
+          },
+          "date": {
+            "readable": "29 Mar 2025",
+            "timestamp": "1743213661",
+            "gregorian": {
+              "date": "29-03-2025",
+              "format": "DD-MM-YYYY",
+              "day": "29",
+              "weekday": {
+                "en": "Saturday"
+              },
+              "month": {
+                "number": 3,
+                "en": "March"
+              },
+              "year": "2025",
+              "designation": {
+                "abbreviated": "AD",
+                "expanded": "Anno Domini"
+              },
+              "lunarSighting": false
+            },
+            "hijri": {
+              "date": "29-09-1446",
+              "format": "DD-MM-YYYY",
+              "day": "29",
+              "weekday": {
+                "en": "Al Sabt",
+                "ar": "السبت"
+              },
+              "month": {
+                "number": 9,
+                "en": "Ramaḍān",
+                "ar": "رَمَضان",
+                "days": 29
+              },
+              "year": "1446",
+              "designation": {
+                "abbreviated": "AH",
+                "expanded": "Anno Hegirae"
+              },
+              "holidays": [
+                "Lailat-ul-Qadr"
+              ],
+              "adjustedHolidays": [],
+              "method": "HJCoSA"
+            }
+          },
+          "meta": {
+            "latitude": 1.234567,
+            "longitude": 2.34567,
+            "timezone": "Asia/Jakarta",
+            "method": {
+              "id": 1,
+              "name": "University of Islamic Sciences, Karachi",
+              "params": {
+                "Fajr": 18,
+                "Isha": 18
+              },
+              "location": {
+                "latitude": 24.8614622,
+                "longitude": 67.0099388
+              }
+            },
+            "latitudeAdjustmentMethod": "ANGLE_BASED",
+            "midnightMode": "STANDARD",
+            "school": "STANDARD",
+            "offset": {
+              "Imsak": 0,
+              "Fajr": 0,
+              "Sunrise": 0,
+              "Dhuhr": 0,
+              "Asr": 0,
+              "Maghrib": 0,
+              "Sunset": 0,
+              "Isha": 0,
+              "Midnight": 0
+            }
+          }
+        },
+        {
+          "timings": {
+            "Fajr": "04:46 (WIB)",
+            "Sunrise": "05:55 (WIB)",
+            "Dhuhr": "11:57 (WIB)",
+            "Asr": "15:13 (WIB)",
+            "Sunset": "17:59 (WIB)",
+            "Maghrib": "17:59 (WIB)",
+            "Isha": "19:08 (WIB)",
+            "Imsak": "04:36 (WIB)",
+            "Midnight": "23:57 (WIB)",
+            "Firstthird": "21:58 (WIB)",
+            "Lastthird": "01:57 (WIB)"
+          },
+          "date": {
+            "readable": "30 Mar 2025",
+            "timestamp": "1743300061",
+            "gregorian": {
+              "date": "30-03-2025",
+              "format": "DD-MM-YYYY",
+              "day": "30",
+              "weekday": {
+                "en": "Sunday"
+              },
+              "month": {
+                "number": 3,
+                "en": "March"
+              },
+              "year": "2025",
+              "designation": {
+                "abbreviated": "AD",
+                "expanded": "Anno Domini"
+              },
+              "lunarSighting": false
+            },
+            "hijri": {
+              "date": "01-10-1446",
+              "format": "DD-MM-YYYY",
+              "day": "1",
+              "weekday": {
+                "en": "Al Ahad",
+                "ar": "الاحد"
+              },
+              "month": {
+                "number": 10,
+                "en": "Shawwāl",
+                "ar": "شَوّال",
+                "days": 30
+              },
+              "year": "1446",
+              "designation": {
+                "abbreviated": "AH",
+                "expanded": "Anno Hegirae"
+              },
+              "holidays": [
+                "Eid-ul-Fitr"
+              ],
+              "adjustedHolidays": [],
+              "method": "HJCoSA"
+            }
+          },
+          "meta": {
+            "latitude": 1.234567,
+            "longitude": 2.34567,
+            "timezone": "Asia/Jakarta",
+            "method": {
+              "id": 1,
+              "name": "University of Islamic Sciences, Karachi",
+              "params": {
+                "Fajr": 18,
+                "Isha": 18
+              },
+              "location": {
+                "latitude": 24.8614622,
+                "longitude": 67.0099388
+              }
+            },
+            "latitudeAdjustmentMethod": "ANGLE_BASED",
+            "midnightMode": "STANDARD",
+            "school": "STANDARD",
+            "offset": {
+              "Imsak": 0,
+              "Fajr": 0,
+              "Sunrise": 0,
+              "Dhuhr": 0,
+              "Asr": 0,
+              "Maghrib": 0,
+              "Sunset": 0,
+              "Isha": 0,
+              "Midnight": 0
+            }
+          }
+        },
+        {
+          "timings": {
+            "Fajr": "04:46 (WIB)",
+            "Sunrise": "05:55 (WIB)",
+            "Dhuhr": "11:57 (WIB)",
+            "Asr": "15:13 (WIB)",
+            "Sunset": "17:58 (WIB)",
+            "Maghrib": "17:58 (WIB)",
+            "Isha": "19:07 (WIB)",
+            "Imsak": "04:36 (WIB)",
+            "Midnight": "23:57 (WIB)",
+            "Firstthird": "21:57 (WIB)",
+            "Lastthird": "01:56 (WIB)"
+          },
+          "date": {
+            "readable": "31 Mar 2025",
+            "timestamp": "1743386461",
+            "gregorian": {
+              "date": "31-03-2025",
+              "format": "DD-MM-YYYY",
+              "day": "31",
+              "weekday": {
+                "en": "Monday"
+              },
+              "month": {
+                "number": 3,
+                "en": "March"
+              },
+              "year": "2025",
+              "designation": {
+                "abbreviated": "AD",
+                "expanded": "Anno Domini"
+              },
+              "lunarSighting": false
+            },
+            "hijri": {
+              "date": "02-10-1446",
+              "format": "DD-MM-YYYY",
+              "day": "2",
+              "weekday": {
+                "en": "Al Athnayn",
+                "ar": "الاثنين"
+              },
+              "month": {
+                "number": 10,
+                "en": "Shawwāl",
+                "ar": "شَوّال",
+                "days": 30
+              },
+              "year": "1446",
+              "designation": {
+                "abbreviated": "AH",
+                "expanded": "Anno Hegirae"
+              },
+              "holidays": [],
+              "adjustedHolidays": [],
+              "method": "HJCoSA"
+            }
+          },
+          "meta": {
+            "latitude": 1.234567,
+            "longitude": 2.34567,
+            "timezone": "Asia/Jakarta",
+            "method": {
+              "id": 1,
+              "name": "University of Islamic Sciences, Karachi",
+              "params": {
+                "Fajr": 18,
+                "Isha": 18
+              },
+              "location": {
+                "latitude": 24.8614622,
+                "longitude": 67.0099388
+              }
+            },
+            "latitudeAdjustmentMethod": "ANGLE_BASED",
+            "midnightMode": "STANDARD",
+            "school": "STANDARD",
+            "offset": {
+              "Imsak": 0,
+              "Fajr": 0,
+              "Sunrise": 0,
+              "Dhuhr": 0,
+              "Asr": 0,
+              "Maghrib": 0,
+              "Sunset": 0,
+              "Isha": 0,
+              "Midnight": 0
+            }
+          }
+        }
+      ]
+    }
+  }
