@@ -995,6 +995,7 @@ export async function handler(chatUpdate) {
 				if (!('composing' in settings)) settings.composing = false
 				if (!('restrict' in settings)) settings.restrict = true
 				if (!('autorestart' in settings)) settings.autorestart = true
+				if (!isNumber(settings.lastRamadanReminder)) settings.lastRamadanReminder = 0
 				if (!isNumber(settings.restartDB)) settings.restartDB = 0
 				if (!('backup' in settings)) settings.backup = false
 				if (!isNumber(settings.backupDB)) settings.backupDB = 0
@@ -1005,6 +1006,7 @@ export async function handler(chatUpdate) {
 				if (!('toko' in settings)) settings.toko = true
 			} else global.db.data.settings[this.user.jid] = {
 				self: false,
+				lastRamadanReminder: 0,
 				autoread: true,
 				composing: false,
 				restrict: true,
