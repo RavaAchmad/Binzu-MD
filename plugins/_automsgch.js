@@ -19,6 +19,9 @@ export async function before(m, { conn, isAdmin, isBotAdmin }) {
         const minutes = now.getMinutes();
         
         // Initialize reminder tracker if needed
+        if (!global.db.data.settings.lastRamadanReminder) {
+            global.db.data.settings.lastRamadanReminder = {};
+        }
         const lastReminder = global.db.data.settings.lastRamadanReminder;
         const currentKey = `${now.toISOString().slice(0, 10)}_${hours}`;
 
