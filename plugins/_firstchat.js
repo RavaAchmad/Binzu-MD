@@ -49,7 +49,7 @@ await this.sendMessage(
 
 // ${banned ? `kamu *terbanned* kak 😕\nHubungi: wa.me/${owner[0]}` : 'Ada Yang Bisa Saya Bantu?'}
 // `.trim(), `Klik menu di bawah untuk melihat menu bot`, null, [['Sewa Bot', '/sewa'], ['group', '.grupbot']], m)
-//     user.pc = new Date * 1
+    user.pc = new Date * 1
 }
 let messk = [['Menu','.allmenu'], ['Donate', '.donate']]
 //await this.sendButtons
