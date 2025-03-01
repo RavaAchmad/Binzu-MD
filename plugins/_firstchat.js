@@ -8,15 +8,48 @@ export async function all(m) {
 let user = global.db.data.users[m.sender]
     let { banned } = db.data.users[m.chat]
     let username = conn.getName(m.sender) 
+    const fswtag = { key: {  fromMe: false, participant: "0@s.whatsapp.net", ...(m.chat ? { remoteJid: "status@broadcast" } : {}) }, message: { groupStatusMentionMessage: { message: { protocolMessage: { key: m.key,  type: 25 }}}}};
+    
    if (new Date - user.pc < 86400000) return // setiap 24 jam sekali
 //await conn.modifyChat(m.chat, 'mute', -Math.floor(new Date / 1e3) * 1e3 - 1e3).catch(console.log)
-//let capt = 
- await this.sendButton(m.chat, `
-Hai ${ucapan()}
+let capt = `Hai ${ucapan()}
 
 ${banned ? `kamu *terbanned* kak 😕\nHubungi: wa.me/${owner[0]}` : 'Ada Yang Bisa Saya Bantu?'}
-`.trim(), `Klik menu di bawah untuk melihat menu bot`, null, [['Sewa Bot', '/sewa'], ['group', '.grupbot']], m)
-    user.pc = new Date * 1
+`.trim()
+await this.sendMessage(
+  m.chat,
+  {
+      text: capt, //Additional information
+      title: "Hai kak selamat datang kembali, aku Binzu!",
+      subtitle: "This is are welcome text",
+      footer: "Binzu Bot",
+      interactiveButtons: [
+           {
+              name: "quick_reply",
+              buttonParamsJson: JSON.stringify({
+                   display_text: "Sewa Bot",
+                   id: ".sewa"
+              })
+           },
+           {
+              name: "cta_url",
+              buttonParamsJson: JSON.stringify({
+                   display_text: "Group Bot",
+                   url: "https://chat.whatsapp.com/KPqLnY91cX2BGWaZVcXX2D"
+              })
+           }
+      ]
+  },
+{
+  quoted : fswtag
+}
+) 
+//  await this.sendButton(m.chat, `
+// Hai ${ucapan()}
+
+// ${banned ? `kamu *terbanned* kak 😕\nHubungi: wa.me/${owner[0]}` : 'Ada Yang Bisa Saya Bantu?'}
+// `.trim(), `Klik menu di bawah untuk melihat menu bot`, null, [['Sewa Bot', '/sewa'], ['group', '.grupbot']], m)
+//     user.pc = new Date * 1
 }
 let messk = [['Menu','.allmenu'], ['Donate', '.donate']]
 //await this.sendButtons
