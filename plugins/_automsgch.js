@@ -37,7 +37,7 @@ export async function before(m, { conn, isAdmin, isBotAdmin }) {
             }
             if (remMessage) {
                 lastReminder[currentKey] = true;
-                await conn.sendMessage("status@broadcast", { text: remMessage });
+                await conn.sendMessage(global.info.channel, { text: remMessage });
             }
         }
     } catch (e) {
