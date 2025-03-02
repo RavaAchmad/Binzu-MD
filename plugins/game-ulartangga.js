@@ -108,12 +108,13 @@ handler.owner = false
 handler.group = true
 
 handler.before = async function (m, { conn, text, command }) {
-	var body = (m.mtype === 'conversation') ? m.message.conversation : (m.mtype == 'imageMessage') ? m.message.imageMessage.caption : (m.mtype == 'videoMessage') ? m.message.videoMessage.caption : (m.mtype == 'extendedTextMessage') ? m.message.extendedTextMessage.text : (m.mtype == 'buttonsResponseMessage') ? m.message.buttonsResponseMessage.selectedButtonId : (m.mtype == 'listResponseMessage') ? m.message.listResponseMessage.singleSelectReply.selectedRowId : (m.mtype == 'templateButtonReplyMessage') ? m.message.templateButtonReplyMessage.selectedId : (m.mtype === 'messageContextInfo') ? (m.message.buttonsResponseMessage?.selectedButtonId || m.message.listResponseMessage?.singleSelectReply.selectedRowId || m.text) : ''
-	conn.ulartangga = conn.ulartangga ? conn.ulartangga : {};
+    var body = (m.mtype === 'conversation') ? m.message.conversation : (m.mtype == 'imageMessage') ? m.message.imageMessage.caption : (m.mtype == 'videoMessage') ? m.message.videoMessage.caption : (m.mtype == 'extendedTextMessage') ? m.message.extendedTextMessage.text : (m.mtype == 'buttonsResponseMessage') ? m.message.buttonsResponseMessage.selectedButtonId : (m.mtype == 'listResponseMessage') ? m.message.listResponseMessage.singleSelectReply.selectedRowId : (m.mtype == 'templateButtonReplyMessage') ? m.message.templateButtonReplyMessage.selectedId : (m.mtype === 'messageContextInfo') ? (m.message.buttonsResponseMessage?.selectedButtonId || m.message.listResponseMessage?.singleSelectReply.selectedRowId || m.text) : ''
+    conn.ulartangga = conn.ulartangga ? conn.ulartangga : {};
     const ut = conn.ulartangga;
-	if(body.toLowerCase().split(" ")[0] !== "kocok" || !ut.hasOwnProperty(m.chat)) return
-	await kocok(m, ut, conn) 
-	}
+    if (!body || typeof body !== 'string' || !ut.hasOwnProperty(m.chat)) return;
+    if (body.toLowerCase().split(" ")[0] !== "kocok") return;
+    await kocok(m, ut, conn);
+}
 
 export default handler;
 
