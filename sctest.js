@@ -1,51 +1,49 @@
-import axios from 'axios';
 
-async function aioSaveTheVideo(videoUrl, format) {
-  try {
-    for (let i = 0; i < 5; i++) { // max 5x ngulang
-      const response = await axios.post(
-        'https://api.v02.savethevideo.com/tasks',
-        {
-          type: 'convert',
-          url: videoUrl,
-          format
-        },
-        {
-          headers: {
-            accept: 'application/json',
-            'accept-language': 'id;q=0.9',
-            'content-type': 'application/json',
-            origin: 'https://www.savethevideo.com',
-            referer: 'https://www.savethevideo.com/',
-            'user-agent':
-              'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36'
-          }
-        }
-      );
-      if (response.data.state === 'completed') {
-        return response.data;
-      } else if (
-        response.data.state === 'pending' ||
-        response.data.state === 'active'
-      ) {
-        await new Promise((resolve) => setTimeout(resolve, 3000)); // delay 3 dtk
-      } else {
-        throw 'Unexpected response state';
+async function ytv(url, format) {
+    
+
+    
+    const headers = {
+        "accept": "*/*",
+        "accept-language": "id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7",
+        "sec-ch-ua": "\"Not A(Brand\";v=\"8\", \"Chromium\";v=\"132\"",
+        "sec-ch-ua-mobile": "?1",
+        "sec-ch-ua-platform": "\"Android\"",
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "cross-site",
+        "Referer": "https://id.ytmp3.mobi/",
+        "Referrer-Policy": "strict-origin-when-cross-origin"
       }
+    
+    const initial = await fetch(`https://d.ymcdn.org/api/v1/init?p=y&23=1llum1n471&_=${Math.random()}`, {headers});
+    
+    const init = await initial.json();
+    console.log(init)
+    
+    const id = url.match(/(?:youtu\.be\/|youtube\.com\/(?:.*v=|.*\/|.*embed\/))([^&?/]+)/)?.[1];
+    let convertURL = init.convertURL + `&v=${id}&f=${format}&_=${Math.random()}`;
+    console.log(convertURL)
+    
+    const converts = await fetch(convertURL, {headers});
+    const convert = await converts.json();
+    console.log(convert)
+    
+    let info = {};
+    for (let i = 0; i < 3; i++ ){
+        let j = await fetch(convert.progressURL, {headers});
+        info = await j.json();
+        console.log(info);
+        if (info.progress == 3) break;
     }
-    throw 'Max retries reached, conversion still pending';
-  } catch (error) {
-    if (error.message && error.message.includes('429')) {
-      await new Promise((resolve) => setTimeout(resolve, 10000)); // delay 10 dtk
+    
+    const result = {
+        url: convert.downloadURL,
+        title: info.title
     }
-    console.log(error);
-    throw error.message; // kbnykn req, try again later
-  }
-}
+    
+    console.log('Hasil akhir:', result)
+    
+    }
 
-aioSaveTheVideo(
-  'https://www.instagram.com/reel/DGNXdUjvhyg/?igsh=ODN0ZTJtNTYyZWdv',
-  'mp4'
-)
-  .then((result) => console.log(result))
-  .catch((error) => console.error(error));
+ytv('https://youtube.com/shorts/nulmwBtjXKQ?si=K3xc81SuwnrQHiWt', 'mp3')
