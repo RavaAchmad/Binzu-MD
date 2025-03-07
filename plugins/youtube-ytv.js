@@ -5,7 +5,7 @@ import {
 import fs from 'fs';
 import path from 'path';
 import fetch from 'node-fetch';
-import { ytv } from '../lib/scrape';
+import { ytv } from '../lib/scrape.js';
 let handler = async (m, {
     conn,
     text
