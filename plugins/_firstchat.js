@@ -32,6 +32,13 @@ await this.sendMessage(
               })
            },
            {
+              name: "quick_reply",
+              buttonParamsJson: JSON.stringify({
+                   display_text: "Group Bot",
+                   id: ".grupbot"
+              })  
+           },
+           {
               name: "cta_url",
               buttonParamsJson: JSON.stringify({
                    display_text: "Group Bot",
