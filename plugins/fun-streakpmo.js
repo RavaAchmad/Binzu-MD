@@ -88,7 +88,7 @@ ${ayat[Math.floor(Math.random() * ayat.length)]}
 
 Tetap semangat! Jangan menyerah, kamu semakin dekat dengan kemenangan
 
-~ Cuki Selalu mendukung mu agar tidak melakukan PMO
+~ Binzu Selalu mendukung mu agar tidak melakukan PMO
         `
         conn.reply(m.chat, pesan, m)
     } else {

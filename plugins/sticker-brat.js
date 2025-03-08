@@ -39,11 +39,13 @@ var handler = async (m, { args, text, usedPrefix, command }) => {
           execSync(
             `ffmpeg -y -f concat -safe 0 -i ${fileListPath} -vf "fps=30" -c:v libx264 -preset ultrafast -pix_fmt yuv420p ${outputVideoPath}`
           )
-          
-          await conn.sendMessage(m.chat, outputVideoPath, m, {
-            packname: global.packname,
-            author: global.author
-          })
+          const videoBuffer = fs.readFileSync(outputVideoPath)
+          const stickerBuffer = await mp4ToWebp(videoBuffer, {
+            pack: global.packname,
+            author: global.author,
+            crop: false
+        })
+        await conn.sendFile(m.chat, stickerBuffer, 'sticker.webp', '', m, false)
           framePaths.forEach((frame) => {
             if (fs.existsSync(frame)) fs.unlinkSync(frame)
           })
@@ -51,6 +53,11 @@ var handler = async (m, { args, text, usedPrefix, command }) => {
           if (fs.existsSync(outputVideoPath)) fs.unlinkSync(outputVideoPath)
         } catch (e) {
           console.error(e)
+          framePaths.forEach((frame) => {
+            if (fs.existsSync(frame)) fs.unlinkSync(frame)
+          })
+          if (fs.existsSync(fileListPath)) fs.unlinkSync(fileListPath)
+          if (fs.existsSync(outputVideoPath)) fs.unlinkSync(outputVideoPath)
           m.reply('Terjadi kesalahan')
         }
     } else {
