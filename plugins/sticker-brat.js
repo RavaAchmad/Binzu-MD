@@ -11,8 +11,8 @@ var handler = async (m, { args, text, usedPrefix, command }) => {
     if (!text) throw `Example : ${usedPrefix + command} Lagi Ruwet`;
 
     if (text.endsWith('--gif')) {
-        const word = text.split(" ")
-        const words = word.slice(0, 5)
+        text = text.slice(0, -5).trim();
+      const words = text.split(" ").slice(0, 5);
         const tempDir = path.join(process.cwd(), 'tmp')
         if (!fs.existsSync(tempDir)) fs.mkdirSync(tempDir)
         const framePaths = []
