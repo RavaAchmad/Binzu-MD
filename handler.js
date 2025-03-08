@@ -491,6 +491,12 @@ export async function handler(chatUpdate) {
 				if (!user.rtrofi) user.rtrofi = "Perunggu"
 				if (!isNumber(user.limitjoin))
 					user.limitjoin = 0
+				if (!user.pmo) {
+                    user.pmo = {
+                        streak: 0,
+                        lastCheck: 0
+                    }
+                }
 			} else
 				global.db.data.users[m.sender] = {
 					pc: 0,
@@ -886,6 +892,10 @@ export async function handler(chatUpdate) {
 					wood: 0,
 					wortel: 0,
 					limitjoin: 0,
+					pmo: {
+                        streak: 0,
+                        lastCheck: 0
+                    },
 				}
 			let chat = global.db.data.chats[m.chat]
 			if (typeof chat !== 'object')
