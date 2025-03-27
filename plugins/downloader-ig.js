@@ -8,11 +8,22 @@ let handler = async (m, { conn, args, usedPrefix, command, text }) => {
 		try {
 			const api = await fetch(`https://api.botcahx.eu.org/api/dowloader/igdowloader?url=${args[0]}&apikey=${btc}`)
 			const res = await api.json()
+
 			
-			const limitnya = 999
-			for (let i = 0; i < Math.min(limitnya, res.result.length); i++) {
-				await sleep(3000)
-				conn.sendFile(m.chat, res.result[i].url, null, `*Instagram Downloader*`, m)
+			let urlCount = new Map();
+			const filteredResults = [];
+			for (let item of res.result) {
+				let count = urlCount.get(item.url) || 0;
+				if (count < 2) {
+					filteredResults.push(item);
+					urlCount.set(item.url, count + 1);
+				}
+			}
+
+			const limitnya = 999;
+			for (let i = 0; i < Math.min(limitnya, filteredResults.length); i++) {
+				await sleep(3000);
+				conn.sendFile(m.chat, filteredResults[i].url, null, `*Instagram Downloader*`, m)
 			}
 		} catch (e) {
 			m.reply('Server Error!');
