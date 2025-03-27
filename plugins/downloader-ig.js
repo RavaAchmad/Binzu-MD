@@ -9,15 +9,20 @@ let handler = async (m, { conn, args, usedPrefix, command, text }) => {
 			const api = await fetch(`https://api.botcahx.eu.org/api/dowloader/igdowloader?url=${args[0]}&apikey=${btc}`)
 			const res = await api.json()
 
-			
+			// Filter URLs to allow at most 1 occurrence per unique URL
 			let urlCount = new Map();
 			const filteredResults = [];
 			for (let item of res.result) {
 				let count = urlCount.get(item.url) || 0;
-				if (count < 2) {
+				if (count < 1) {
 					filteredResults.push(item);
 					urlCount.set(item.url, count + 1);
 				}
+			}
+
+			// Warn if duplicates were filtered out
+			if (filteredResults.length < res.result.length) {
+				console.warn("pengiriman file sudah membatasi 1x url per file, pengiriman terhenti karna tidak bisa mengirimi double url");
 			}
 
 			const limitnya = 999;
