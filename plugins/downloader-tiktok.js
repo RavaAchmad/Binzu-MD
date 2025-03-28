@@ -23,12 +23,12 @@ let handler = async (m, { conn, args, usedPrefix, text, command }) => {
             });
             const data = await json.json();
             const { video_hd, audio, image } = data;
-            if (data.type === 'video_hd') {
+            if (data.type === 'video') {
                 await conn.sendFile(m.chat, video_hd, 'kanj.mp4', '', m);
                 await conn.sendMessage(m.chat, {
                     audio: audio
                 }, m)
-            } else if (data.type === 'image') {
+            } else if (data.type === 'slide') {
                 for (let i = 0; i < image.length; i++) {
                     await conn.sendFile(m.chat, image[i], '', '', m);
                 }
