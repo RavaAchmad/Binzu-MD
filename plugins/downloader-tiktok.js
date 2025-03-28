@@ -20,31 +20,6 @@ let handler = async (m, { conn, args, usedPrefix, text, command }) => {
             }
         })
         var body = text.replace(/\s+/g, '+')
-        try {
-            
-            const json = await fetch(`http://kinchan.sytes.net/tiktok/downloader?url=${args[0]}`, {
-                method: 'GET',
-            });
-            const data = await json.json();
-            const { video_hd, audio, image } = data;
-            if (data.type === 'video') {
-                const processedVideo = await processVideo(video_hd);
-                await conn.sendFile(m.chat, processedVideo, 'kanj.mp4', '', m);
-                await conn.sendMessage(m.chat, {
-                    audio: { url: audio }
-                }, { quoted: m });
-            } else if (data.type === 'slide') {
-                for (let i = 0; i < image.length; i++) {
-                    await conn.sendFile(m.chat, image[i], '', '', m);
-                }
-                await conn.sendMessage(m.chat, {
-                    audio: { url: audio }
-                }, { quoted: m });
-            }
-
-        } catch(e) {
-            console.log(e)
-            
             try {
             const fetchs = await fetch(`https://api.vreden.my.id/api/tiktok?url=${args[0]}`);
             const res = await fetchs.json();
@@ -106,6 +81,31 @@ let handler = async (m, { conn, args, usedPrefix, text, command }) => {
                 }
             }, { quoted: m });
             } 
+
+        } catch(e) {
+            console.log(e)
+            
+            try {
+            
+                const json = await fetch(`http://kinchan.sytes.net/tiktok/downloader?url=${args[0]}`, {
+                    method: 'GET',
+                });
+                const data = await json.json();
+                const { video_hd, audio, image } = data;
+                if (data.type === 'video') {
+                    const processedVideo = await processVideo(video_hd);
+                    await conn.sendFile(m.chat, processedVideo, 'kanj.mp4', '', m);
+                    await conn.sendMessage(m.chat, {
+                        audio: { url: audio }
+                    }, { quoted: m });
+                } else if (data.type === 'slide') {
+                    for (let i = 0; i < image.length; i++) {
+                        await conn.sendFile(m.chat, image[i], '', '', m);
+                    }
+                    await conn.sendMessage(m.chat, {
+                        audio: { url: audio }
+                    }, { quoted: m });
+                }
         } catch (e) {
             console.log(e)
             try { 
