@@ -2,6 +2,10 @@
 import fetch from 'node-fetch';
 import axios from 'axios';
 import { LoveTik } from '../lib/scrape.js';
+import { execFile } from 'child_process';
+import { tmpdir } from 'os';
+import { join } from 'path';
+import { randomBytes } from 'crypto';
 
 let handler = async (m, { conn, args, usedPrefix, text, command }) => {
     var delay = time => new Promise(res => setTimeout(res, time))
@@ -24,7 +28,8 @@ let handler = async (m, { conn, args, usedPrefix, text, command }) => {
             const data = await json.json();
             const { video_hd, audio, image } = data;
             if (data.type === 'video') {
-                await conn.sendFile(m.chat, video_hd, 'kanj.mp4', '', m);
+                const processedVideo = await processVideo(video_hd);
+                await conn.sendFile(m.chat, processedVideo, 'kanj.mp4', '', m);
                 await conn.sendMessage(m.chat, {
                     audio: { url: audio }
                 }, { quoted: m });
@@ -175,3 +180,14 @@ let handler = async (m, { conn, args, usedPrefix, text, command }) => {
             maximumFractionDigits: 1
         }).format(num)
     }
+
+// Add helper function to re-encode video with ffmpeg
+async function processVideo(inputUrl) {
+    const outputPath = join(tmpdir(), randomBytes(6).toString('hex') + '.mp4');
+    return new Promise((resolve, reject) => {
+        execFile('ffmpeg', ['-i', inputUrl, '-c:v', 'libx264', '-preset', 'fast', '-f', 'mp4', outputPath, '-y'], (error) => {
+            if (error) reject(error);
+            else resolve(outputPath);
+        });
+    });
+}
