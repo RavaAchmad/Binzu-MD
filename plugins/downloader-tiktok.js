@@ -38,7 +38,7 @@ let handler = async (m, { conn, args, usedPrefix, text, command }) => {
             }
 
         } catch(e) {
-
+            console.log(e)
             
             try {
             const fetchs = await fetch(`https://api.vreden.my.id/api/tiktok?url=${args[0]}`);
