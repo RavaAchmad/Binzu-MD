@@ -26,15 +26,15 @@ let handler = async (m, { conn, args, usedPrefix, text, command }) => {
             if (data.type === 'video') {
                 await conn.sendFile(m.chat, video_hd, 'kanj.mp4', '', m);
                 await conn.sendMessage(m.chat, {
-                    audio: audio
-                }, m)
+                    audio: { url: audio }
+                }, { quoted: m });
             } else if (data.type === 'slide') {
                 for (let i = 0; i < image.length; i++) {
                     await conn.sendFile(m.chat, image[i], '', '', m);
                 }
                 await conn.sendMessage(m.chat, {
-                    audio: audio
-                }, m)
+                    audio: { url: audio }
+                }, { quoted: m });
             }
 
         } catch(e) {
