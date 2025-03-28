@@ -181,7 +181,7 @@ let handler = async (m, { conn, args, usedPrefix, text, command }) => {
         }).format(num)
     }
 
-// Add helper function to re-encode video with ffmpeg
+// helper function to re-encode video with ffmpeg
 async function processVideo(inputUrl) {
     const outputPath = join(tmpdir(), randomBytes(6).toString('hex') + '.mp4');
     return new Promise((resolve, reject) => {
