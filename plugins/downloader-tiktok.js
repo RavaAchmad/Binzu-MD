@@ -24,7 +24,7 @@ let handler = async (m, { conn, args, usedPrefix, text, command }) => {
 
         const response = `Silahkan di pilih sesuai keinginan kak!`;
 
-        conn.sendMessage(m.key.remoteJid, {
+       await conn.sendMessage(m.key.remoteJid, {
             image: { url: wak },
             caption: response, 
             footer: "binzu-MD",
