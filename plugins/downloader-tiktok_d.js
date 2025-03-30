@@ -23,9 +23,6 @@ let handler = async (m, { conn, args, usedPrefix, text, command }) => {
                                 var { video, title, title_audio, audio } = res;
                                 
                                 const videoUrl = Array.isArray(video) ? video[0] : video;
-                                if (!videoUrl) {
-                                    return m.reply('❌ Error: No valid video URL found');
-                                }
 
                                 try {
                                     const videoCheck = await axios.head(videoUrl);
@@ -63,6 +60,7 @@ let handler = async (m, { conn, args, usedPrefix, text, command }) => {
                                     audio: { url: audio }
                                 }, { quoted: m });
                             } catch (e) {
+                                console.log(e);
                                 m.reply('❌ Error: Failed to process TikTok audio download');
                             }
             break;
