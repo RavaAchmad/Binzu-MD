@@ -23,23 +23,33 @@ let handler = async (m, { conn, args, usedPrefix, text, command }) => {
                                 var { video, title, title_audio, audio } = res;
                                 
                                 const videoUrl = Array.isArray(video) ? video[0] : video;
+                                let isVideo = false;
 
                                 try {
-                                    const videoCheck = await axios.head(videoUrl);
-                                    const contentType = videoCheck.headers['content-type'];
-                                    
-                                    if (!contentType || !(contentType.includes('video/') || contentType.includes('application/octet-stream'))) {
-                                        return m.reply('❌ Error: Invalid video content');
-                                    }
+                                    const contentCheck = await axios.head(videoUrl);
+                                    const contentType = contentCheck.headers['content-type'];
+                                    isVideo = contentType && (contentType.includes('video/') || contentType.includes('application/octet-stream'));
                                 } catch (verifyError) {
-                                    return m.reply('❌ Error: Failed to verify video content');
+                                    console.log('Content verification failed:', verifyError);
                                 }
 
                                 let capt = `乂 *T I K T O K*\n\n`;
                                 capt += `◦ *Title* : ${title || 'No Title'}\n`;
                                 capt += `◦ *Audio* : ${title_audio || 'No Audio Title'}\n\n`;
-                                
-                                await conn.sendFile(m.chat, videoUrl, null, capt, m);
+
+                                if (isVideo) {
+                                    await conn.sendFile(m.chat, videoUrl, null, capt, m);
+                                } else {
+                                    if (Array.isArray(video)) {
+                                        await conn.sendFile(m.chat, video[0], null, capt, m);
+                                        for (let i = 1; i < video.length; i++) {
+                                            await conn.sendFile(m.chat, video[i], null, '', m);
+                                        }
+                                    } else {
+                                        await conn.sendFile(m.chat, video, null, capt, m);
+                                    }
+                                }
+
                                 if (audio && audio[0]) {
                                     conn.sendMessage(m.chat, { audio: { url: audio[0] }, mimetype: 'audio/mpeg' }, { quoted: m });
                                 }
