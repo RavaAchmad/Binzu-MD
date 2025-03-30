@@ -16,10 +16,55 @@ let handler = async (m, { conn, args, usedPrefix, text, command }) => {
         var body = text.replace(/\s+/g, '+')
         switch (command) {
             case 'ttv':
+                        try {
+                            const response = await axios.get(`https://api.botcahx.eu.org/api/dowloader/tiktok?url=${text}&apikey=${btc}`);        
+                            const res = await response.data.result;
+                            if (res) {     
+                                var { video, title, title_audio, audio } = res;
+                                
+                                const videoUrl = Array.isArray(video) ? video[0] : video;
+                                if (!videoUrl) {
+                                    return m.reply('❌ Error: No valid video URL found');
+                                }
 
+                                try {
+                                    const videoCheck = await axios.head(videoUrl);
+                                    const contentType = videoCheck.headers['content-type'];
+                                    
+                                    if (!contentType || !(contentType.includes('video/') || contentType.includes('application/octet-stream'))) {
+                                        return m.reply('❌ Error: Invalid video content');
+                                    }
+                                } catch (verifyError) {
+                                    return m.reply('❌ Error: Failed to verify video content');
+                                }
+
+                                let capt = `乂 *T I K T O K*\n\n`;
+                                capt += `◦ *Title* : ${title || 'No Title'}\n`;
+                                capt += `◦ *Audio* : ${title_audio || 'No Audio Title'}\n\n`;
+                                
+                                await conn.sendFile(m.chat, videoUrl, null, capt, m);
+                                if (audio && audio[0]) {
+                                    conn.sendMessage(m.chat, { audio: { url: audio[0] }, mimetype: 'audio/mpeg' }, { quoted: m });
+                                }
+                            }
+                        } catch(e) {
+                            console.log(e);
+                            m.reply('❌ Error: Failed to process TikTok download');
+                        }
             break;
             case 'tta':
-                
+                try {
+                                const json = await fetch(`http://kinchan.sytes.net/tiktok/downloader?url=${args[0]}`, {
+                                    method: 'GET',
+                                });
+                                const data = await json.json();
+                                const { audio, image } = data;
+                                await conn.sendMessage(m.chat, {
+                                    audio: { url: audio }
+                                }, { quoted: m });
+                            } catch (e) {
+                                m.reply('❌ Error: Failed to process TikTok audio download');
+                            }
             break;
         }
     }
