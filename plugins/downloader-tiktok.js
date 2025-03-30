@@ -21,10 +21,8 @@ let handler = async (m, { conn, args, usedPrefix, text, command }) => {
         })
         
     try {
-        const response = await fetch('https://api.raolprojects.my.id/api/v2/random/ba');
-        const blob = await response.blob();
-        const imageUrl = URL.createObjectURL(blob);
-
+        const img = await global.hwaifu
+        const imageUrl = img[Math.floor(Math.random() * img.length)];
         const menuText = `Silahkan di pilih sesuai keinginan kak!`;
         
         await conn.sendMessage(m.key.remoteJid, {
@@ -39,7 +37,6 @@ let handler = async (m, { conn, args, usedPrefix, text, command }) => {
             viewOnce: true
         }, { quoted: m });
 
-        URL.revokeObjectURL(imageUrl);
     } catch (error) {
         console.error('Failed to fetch menu image:', error);
         await conn.reply(m.chat, menuText, m);
