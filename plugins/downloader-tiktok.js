@@ -19,37 +19,45 @@ let handler = async (m, { conn, args, usedPrefix, text, command }) => {
                 key: m.key,
             }
         })
-        var body = text.replace(/\s+/g, '+')
-        const wak = await (await fetch('https://api.raolprojects.my.id/api/v2/random/ba')).buffer()
+        
+    try {
+        const response = await fetch('https://api.raolprojects.my.id/api/v2/random/ba');
+        const blob = await response.blob();
+        const imageUrl = URL.createObjectURL(blob);
 
-        const response = `Silahkan di pilih sesuai keinginan kak!`;
-
-       await conn.sendMessage(m.key.remoteJid, {
-            image: { url: wak },
-            caption: response, 
+        const menuText = `Silahkan di pilih sesuai keinginan kak!`;
+        
+        await conn.sendMessage(m.key.remoteJid, {
+            image: { url: imageUrl },
+            caption: menuText,
             footer: "binzu-MD",
             buttons: [
-              { buttonId: `${usedPrefix}ttv ${args[0]}`, buttonText: { displayText: `Video/Gambar` }, type: 1 },
+                { buttonId: `${usedPrefix}ttv ${args[0]}`, buttonText: { displayText: `Video/Gambar` }, type: 1 },
                 { buttonId: `${usedPrefix}tta ${args[0]}`, buttonText: { displayText: `Audio` }, type: 1 },
             ],
             headerType: 1,
             viewOnce: true
-          }, { quoted: m });
+        }, { quoted: m });
 
+        URL.revokeObjectURL(imageUrl);
+    } catch (error) {
+        console.error('Failed to fetch menu image:', error);
+        await conn.reply(m.chat, menuText, m);
+    }
 }
 
-    handler.help = ['tiktok']
-    handler.tags = ['downloader'];
-    handler.command = ['tiktok', 'ttdl', 'tt'];
-    handler.xmaze = true;
-    export default handler
-    
-    function formatK(num) {
-        return new Intl.NumberFormat('en-US', {
-            notation: 'compact',
-            maximumFractionDigits: 1
-        }).format(num)
-    }
+handler.help = ['tiktok']
+handler.tags = ['downloader'];
+handler.command = ['tiktok', 'ttdl', 'tt'];
+handler.xmaze = true;
+export default handler
+
+function formatK(num) {
+    return new Intl.NumberFormat('en-US', {
+        notation: 'compact',
+        maximumFractionDigits: 1
+    }).format(num)
+}
 
 // helper function to re-encode video with ffmpeg
 async function processVideo(inputUrl) {
@@ -61,9 +69,6 @@ async function processVideo(inputUrl) {
         });
     });
 }
-
-
-
 
 /*try {
     const fetchs = await fetch(`https://api.vreden.my.id/api/tiktok?url=${args[0]}`);
