@@ -62,9 +62,20 @@ var handler = async (m, { args, text, usedPrefix, command }) => {
           m.reply('Terjadi kesalahan')
         }
     } else {
-        const apis1 = `https://vapis.my.id/api/bratv1?q=${encodeURIComponent(text)}`;
+      try {
+        const apis1 = await fetch(`https://vapis.my.id/api/bratv1?q=${encodeURIComponent(text)}`).Buffer()
         let stiker = await createSticker(apis1, 100, stickpack, stickauth);
         conn.sendFile(m.chat, stiker, 'icikiwir.webp', '', m, false);
+      } catch (e) {
+        console.error(e)
+        const res = await fetch(`https://api-dcvx.vercel.app/random/brat?text=${encodeURIComponent(text)}`).Buffer()
+        createSticker(res, 100, stickpack, stickauth).then(async (stickerBuffer) => {
+            await conn.sendFile(m.chat, stickerBuffer, 'sticker.webp', '', m, false)
+        }).catch((e) => {
+            console.error(e)
+            m.reply('Terjadi kesalahan')
+        })
+      }
     }
 }
     
