@@ -64,8 +64,9 @@ var handler = async (m, { args, text, usedPrefix, command }) => {
     } else {
       try {
         const [apis1Buffer, stickerBuffer] = await Promise.all([
-            fetch(`https://vapis.my.id/api/bratv1?q=${encodeURIComponent(text)}`).then(res => res.buffer()),
             fetch(`https://api-dcvx.vercel.app/random/brat?text=${encodeURIComponent(text)}`).then(res => res.buffer())
+            fetch(`https://vapis.my.id/api/bratv1?q=${encodeURIComponent(text)}`).then(res => res.buffer()),
+            
         ]);
 
         try {
