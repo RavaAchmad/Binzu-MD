@@ -62,7 +62,7 @@ var handler = async (m, { args, text, usedPrefix, command }) => {
           m.reply(`Terjadi kesalahan: ${e.message || e}`)
         }
     } else {
-        const res = await fetch(`https://api-dcvx.vercel.app/random/brat?text=${encodeURIComponent(text)}`).buffer()
+        const res = await fetch(`https://api-dcvx.vercel.app/random/brat?text=${encodeURIComponent(text)}`).Buffer()
         createSticker(res, 100).then(async (stickerBuffer) => {
             await conn.sendFile(m.chat, stickerBuffer, 'sticker.webp', '', m, false)
         }).catch((e) => {
