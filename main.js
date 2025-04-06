@@ -6,6 +6,7 @@ import { useMultiFileAuthState, fetchLatestBaileysVersion } from '@adiwajshing/b
 import * as WS from 'ws';
 import { readdirSync, statSync, unlinkSync, existsSync, readFileSync, watch } from 'fs';
 import yargs from 'yargs';
+import { hideBin } from 'yargs/helpers';
 import { spawn } from 'child_process';
 import _ from 'lodash';
 import CFonts from 'cfonts';
@@ -22,7 +23,7 @@ global.__filename = (url) => (fileURLToPath(url));
 global.__dirname = (url) => (dirname(__filename(url)));
 global.APIs = {}; // Tempat menyimpan API key
 global.APIKeys = {}; // Manajemen kunci API
-global.opts = new yargs().argv; // Parsing argumen CLI
+global.opts = yargs(hideBin(process.argv)).argv;
 global.prefix = opts.prefix || /^[!#.]/; // Prefix perintah
 global.db = new Low(new JSONFile('database.json')); // Database
 global.support = {}; // Status dependensi (ffmpeg, imagemagick, dll)
