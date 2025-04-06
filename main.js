@@ -5,7 +5,7 @@ import Pino from 'pino';
 import { useMultiFileAuthState, fetchLatestBaileysVersion } from '@adiwajshing/baileys';
 import * as WS from 'ws';
 import { readdirSync, statSync, unlinkSync, existsSync, readFileSync, watch } from 'fs';
-import Yargs from 'yargs';
+import yargs from 'yargs';
 import { spawn } from 'child_process';
 import _ from 'lodash';
 import CFonts from 'cfonts';
@@ -22,7 +22,7 @@ global.__filename = (url) => (fileURLToPath(url));
 global.__dirname = (url) => (dirname(__filename(url)));
 global.APIs = {}; // Tempat menyimpan API key
 global.APIKeys = {}; // Manajemen kunci API
-global.opts = new Yargs().argv; // Parsing argumen CLI
+global.opts = new yargs().argv; // Parsing argumen CLI
 global.prefix = opts.prefix || /^[!#.]/; // Prefix perintah
 global.db = new Low(new JSONFile('database.json')); // Database
 global.support = {}; // Status dependensi (ffmpeg, imagemagick, dll)
