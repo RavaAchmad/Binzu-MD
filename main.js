@@ -2,7 +2,7 @@
 import { makeWASocket, protoType, serialize } from './lib/simple.js';
 import { Low, JSONFile } from 'lowdb';
 import Pino from 'pino';
-import { useMultiFileAuthState, fetchLatestBaileysVersion } from '@fizzxydev/baileys-pro';
+import { useMultiFileAuthState, fetchLatestBaileysVersion } from '@adiwajshing/baileys';
 import * as WS from 'ws';
 import { readdirSync, statSync, unlinkSync, existsSync, readFileSync, watch } from 'fs';
 import Yargs from 'yargs';
