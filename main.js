@@ -45,7 +45,11 @@ global.serverStartTime = { start: new Date() };
 global.__dirname = function (_url = import.meta.url, useFileUrl = platform !== 'win32') {
   return useFileUrl ? /file:\/\/\//.test(_url) ? fileURLToPath(_url) : _url : pathToFileURL(_url).href;
 };
-global.opts = new Object(yargs(process.argv.slice(2)).exitProcess(false).argv());
+global.opts = new Object(
+  yargs(process.argv.slice(2))
+    .parserConfiguration({ exitProcess: false })
+    .argv // ✅ Access as a property, not a function
+);
 global.cache = new nodeCache({ stdTTL: 60, checkperiod: 120 });
 global.prefixRegex = new RegExp('^[' + (opts.prefix || '.')?.replace(/[|\\{}()[\]^$+*?.\-\^]/g, "\\$&") + ']');
 
