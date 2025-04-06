@@ -2,6 +2,8 @@
 import * as ws from 'ws';
 import { readdirSync, statSync, unlinkSync, existsSync, readFileSync, watch } from 'fs';
 import yargs from 'yargs';
+import { fileURLToPath, pathToFileURL } from 'url';
+import { platform } from 'process'; 
 import { spawn } from 'child_process';
 import lodash from 'lodash';
 import { clear } from 'console';
@@ -40,7 +42,9 @@ global.API = (platform, endpoint = '/', queryParams = {}, apiKeyParam) => {
 };
 
 global.serverStartTime = { start: new Date() };
-const __dirname = global.__dirname(import.meta.url);
+global.__dirname = function (_url = import.meta.url, useFileUrl = platform !== 'win32') {
+  return useFileUrl ? /file:\/\/\//.test(_url) ? fileURLToPath(_url) : _url : pathToFileURL(_url).href;
+};
 
 global.cache = new nodeCache({ stdTTL: 60, checkperiod: 120 });
 global.prefixRegex = new RegExp('^[' + (opts.prefix || '.')?.replace(/[|\\{}()[\]^$+*?.\-\^]/g, "\\$&") + ']');
