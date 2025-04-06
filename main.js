@@ -1,347 +1,169 @@
-// Import necessary modules
-import * as ws from 'ws';
-import { readdirSync, statSync, unlinkSync, existsSync, readFileSync, watch } from 'fs';
-import yargs from 'yargs';
-import { fileURLToPath, pathToFileURL } from 'url';
-import { platform } from 'process'; 
-import { spawn } from 'child_process';
-import lodash from 'lodash';
-import { clear } from 'console';
-import cfonts from 'cfonts';
-import nodeCache from 'node-cache';
-import syntaxError from 'syntax-error';
-import os from 'os';
-import chalk from 'chalk';
-import { format } from 'util';
+// Impor library yang diperlukan
 import { makeWASocket, protoType, serialize } from './lib/simple.js';
 import { Low, JSONFile } from 'lowdb';
-import pino from 'pino';
-import { mongoDB, mongoDBV2 } from './lib/mongoDB.js';
+import Pino from 'pino';
+import { useMultiFileAuthState, fetchLatestBaileysVersion } from '@fizzxydev/baileys-pro';
+import * as WS from 'ws';
+import { readdirSync, statSync, unlinkSync, existsSync, readFileSync, watch } from 'fs';
+import Yargs from 'yargs';
+import { spawn } from 'child_process';
+import _ from 'lodash';
+import CFonts from 'cfonts';
+import NodeCache from 'node-cache';
+import SyntaxError from 'syntax-error';
+import OS from 'os';
+import Chalk from 'chalk';
+import { format } from 'util';
+import { join, dirname } from 'path';
+import { fileURLToPath, pathToFileURL } from 'url';
 
-// Initialize constants and global variables
-const {
-  makeCacheableSignalKeyStore,
-  useMultiFileAuthState,
-  DisconnectReason,
-  fetchLatestBaileysVersion
-} = await import('@adiwajshing/baileys');
+// Konfigurasi global
+global.__filename = (url) => (fileURLToPath(url));
+global.__dirname = (url) => (dirname(__filename(url)));
+global.APIs = {}; // Tempat menyimpan API key
+global.APIKeys = {}; // Manajemen kunci API
+global.opts = new Yargs().argv; // Parsing argumen CLI
+global.prefix = opts.prefix || /^[!#.]/; // Prefix perintah
+global.db = new Low(new JSONFile('database.json')); // Database
+global.support = {}; // Status dependensi (ffmpeg, imagemagick, dll)
 
-const Device = os.platform() === 'win32' ? 'Windows' : os.platform() === 'darwin' ? 'MacOS' : 'Linux';
-const PORT = process.env.SERVER_PORT || process.env.PORT || 3000;
+async function connectToWhatsApp() {
+  const { state, saveCreds } = await useMultiFileAuthState('sessions');
+  const { version } = await fetchLatestBaileysVersion();
 
-protoType();
-serialize();
-
-global.API = (platform, endpoint = '/', queryParams = {}, apiKeyParam) => {
-  const baseApiUrl = global.APIs[platform] || platform;
-  const queryString = new URLSearchParams({
-    ...queryParams,
-    ...(apiKeyParam ? { [apiKeyParam]: global.APIKeys[platform] } : {})
-  }).toString();
-  return `${baseApiUrl}${endpoint}?${queryString}`;
-};
-
-global.serverStartTime = { start: new Date() };
-global.__dirname = function (_url = import.meta.url, useFileUrl = platform !== 'win32') {
-  return useFileUrl ? /file:\/\/\//.test(_url) ? fileURLToPath(_url) : _url : pathToFileURL(_url).href;
-};
-global.opts = new Object(
-  yargs(process.argv.slice(2))
-    .parserConfiguration({ exitProcess: false })
-    .argv // ✅ Access as a property, not a function
-);
-global.cache = new nodeCache({ stdTTL: 60, checkperiod: 120 });
-global.prefixRegex = new RegExp('^[' + (opts.prefix || '.')?.replace(/[|\\{}()[\]^$+*?.\-\^]/g, "\\$&") + ']');
-
-global.db = new Low(
-  /https?:\/\//.test(opts.db || '') 
-    ? new cloudDBAdapter(opts.db) 
-    : /mongodb(\+srv)?:\/\//i.test(opts.db) 
-      ? opts.mongodbv2 
-        ? new mongoDBV2(opts.db) 
-        : new mongoDB(opts.db) 
-      : new JSONFile((opts._[0] ? opts._[0] + '_' : '') + 'database.json')
-);
-
-global.loadDatabase = async function () {
-  if (global.db.READ) {
-    return new Promise(resolve => setInterval(async function () {
-      if (!global.db.READ) {
-        clearInterval(this);
-        resolve(global.db.READ ? global.loadDatabase() : global.db.data);
-      }
-    }, 1000));
-  }
-
-  if (global.db.data !== null) return;
-
-  global.db.READ = true;
-  try {
-    await global.db.read();
-  } catch (error) {
-    console.error(error);
-  }
-  global.db.READ = null;
-
-  global.db.data = {
-    users: {},
-    chats: {},
-    stats: {},
-    msgs: {},
-    banned: {},
-    sticker: {},
-    settings: {},
-    ...global.db.data
-  };
-
-  global.db.chain = lodash.chain(global.db.data);
-};
-
-await global.loadDatabase();
-
-global.authFile = opts._[0] || 'default-auth-file';
-console.log('Using Auth File:', global.authFile);
-
-const { state, saveCreds } = await useMultiFileAuthState(global.authFile);
-const { version, isLatest } = await fetchLatestBaileysVersion();
-console.log(`Using WA v${version.join('.')}, Latest: ${isLatest}`);
-
-const connectionOptions = {
+  const conn = makeWASocket({
     version: [ 2, 3000, 1015901307 ],
-    logger: pino({ level: 'silent' }),
-    printQRInTerminal: !process.env.PAIRING_CODE,
-    browser: [Device, 'Chrome', '20.0.04'],
-    generateHighQualityLinkPreview: true,
+    logger: Pino({ level: 'silent' }),
+    printQRInTerminal: true,
+    browser: ['Chrome', '20.0.04'],
     auth: {
-        creds: state.creds,
-        keys: makeCacheableSignalKeyStore(state.keys, pino({ level: 'silent', stream: process.stdout }))
+      creds: state.creds,
+      keys: makeCacheableSignalKeyStore(state.keys, Pino().child({ level: 'silent' })),
     },
-  patchMessageBeforeSending: message => {
-    const isViewOnce = !!message.viewOnceMessage || !!message.buttonsMessage || !!message.listMessage;
-    if (isViewOnce) {
-      return {
-        viewOnceMessage: {
-          message: {
-            messageContextInfo: {
-              deviceListMetadataVersion: 2,
-              deviceListMetadata: {}
-            },
-            ...message
-          }
-        }
-      };
+  });
+
+  // Listener untuk update koneksi
+  conn.ev.on('connection.update', async (update) => {
+    const { connection, lastDisconnect } = update;
+    if (connection === 'close') {
+      console.log('Koneksi terputus, mencoba reconnect...');
+      await connectToWhatsApp();
+    } else if (connection === 'open') {
+      console.log('Berhasil terhubung ke WhatsApp!');
     }
-    return message;
-  },
-  defaultQueryTimeoutMs: undefined,
-  syncFullHistory: false
-};
+  });
 
-global.conn = makeWASocket(connectionOptions);
-global.conn.isInit = false;
-
-if (!opts.test) {
-  setInterval(async () => {
-    if (global.db.data) {
-      try {
-        await global.db.write();
-      } catch (error) {
-        console.error(error);
-      }
-    }
-  }, 60000);
+  return conn;
 }
 
-if (opts.server) {
-  (await import('./server.js')).default(global.conn, PORT);
-}
-
-async function clearSession() {
-  const sessionFiles = readdirSync('sessions').filter(file => file.endsWith('.json'));
-  sessionFiles.forEach(file => unlinkSync(`sessions/${file}`));
-  console.log(chalk.green('All sessions cleared!'));
-}
-
-async function connectionUpdate(update) {
-  const { connection, isOnline, lastDisconnect } = update;
-
-  if (update.isNewLogin) {
-    global.conn.isInit = true;
-  }
-
-  if (connection === 'connecting') {
-    console.log(chalk.yellow('Connecting to WhatsApp...'));
-  }
-
-  if (connection === 'open') {
-    console.log(chalk.green('Connected to WhatsApp!'));
-  }
-
-  if (isOnline === true) {
-    console.log(chalk.green('Bot is now online!'));
-  }
-
-  if (isOnline === false) {
-    console.log(chalk.red('Bot is now offline!'));
-  }
-
-  if (lastDisconnect && lastDisconnect.error && lastDisconnect.error.output && lastDisconnect.error.output.statusCode !== DisconnectReason.loggedOut) {
-    console.log(chalk.red('Reconnecting...'));
-    await global.reloadConnection(true);
-  }
-
-  global.serverStartTime.lastConnect = new Date();
-}
-
-process.on('uncaughtException', error => console.error(error));
-
-global.reloadConnection = async function (forceReload = false) {
-  try {
-    const handler = await import('./handler.js?' + Date.now()).catch(console.error);
-    if (Object.keys(handler || {}).length) {
-      global.handler = handler;
-    }
-  } catch (error) {
-    console.error(error);
-  }
-
-  if (forceReload) {
-    try {
-      global.conn.ws.close();
-    } catch {}
-    global.conn.ev.removeAllListeners();
-    global.conn = makeWASocket(connectionOptions);
-    global.conn.isInit = true;
-  }
-
-  if (!global.conn.isInit) {
-    global.conn.ev.on('messages.upsert', global.handler.handleMessages);
-    global.conn.ev.on('group-participants.update', global.handler.handleGroupParticipantsUpdate);
-    global.conn.ev.on('groups.update', global.handler.handleGroupsUpdate);
-    global.conn.ev.on('chats.update', global.handler.handleChatsUpdate);
-    global.conn.ev.on('connection.update', connectionUpdate);
-    global.conn.ev.on('creds.update', saveCreds);
-
-    global.conn.welcome = '@user has joined the group!';
-    global.conn.bye = '@user has left the group!';
-    global.conn.spromote = '@user sekarang admin!';
-    global.conn.sdemote = '@user sekarang bukan admin!';
-    global.conn.sIcon = 'Icon grup telah diubah!';
-    global.conn.sRevoke = 'Link group telah diubah!';
-  }
-
-  global.conn.isInit = false;
-  return true;
-};
-
-await global.reloadConnection();
-
-const pluginFolder = global.__dirname(join(__dirname, 'plugins'));
-const pluginFilter = file => /\.js$/.test(file);
+const pluginFolder = join(__dirname, 'plugins');
+const pluginFilter = (file) => /\.js$/.test(file);
 
 global.plugins = {};
 
 async function loadPlugins() {
-  for (let plugin of readdirSync(pluginFolder).filter(pluginFilter)) {
+  readdirSync(pluginFolder).filter(file => /\.js$/.test(file)).forEach(async (file) => {
     try {
-      const pluginPath = join(pluginFolder, plugin);
-      const pluginModule = await import(pluginPath);
-      global.plugins[plugin] = pluginModule.default || pluginModule;
-    } catch (error) {
-      console.error(error);
-      delete global.plugins[plugin];
+      const pluginPath = join(pluginFolder, file);
+      const module = await import(pluginPath);
+      plugins[file] = module.default || module;
+    } catch (e) {
+      console.error(`Gagal memuat plugin ${file}:`, e);
+    }
+  });
+}
+
+// Watch perubahan plugin
+watch(pluginFolder, (eventType, filename) => {
+  if (eventType === 'change' && filename.endsWith('.js')) {
+    console.log(`Plugin ${filename} diperbarui, reloading...`);
+    delete require.cache[require.resolve(join(pluginFolder, filename))];
+    loadPlugins();
+  }
+});
+
+
+async function handleMessage(conn, message) {
+  // Logika pemrosesan pesan
+  const { body, from, sender } = message;
+  if (!body.startsWith(prefix)) return;
+
+  const command = body.slice(prefix.length).split(' ')[0];
+  const args = body.split(' ').slice(1);
+
+  // Cari plugin yang sesuai
+  const plugin = Object.values(plugins).find(p => p.command === command);
+  if (plugin) {
+    try {
+      await plugin.exec(conn, message, args);
+    } catch (e) {
+      console.error('Error executing plugin:', e);
     }
   }
 }
 
-loadPlugins().then(() => console.log(Object.keys(global.plugins))).catch(console.error);
+// Binding event handler
+conn.ev.on('messages.upsert', async (messages) => {
+  const message = messages[0];
+  handleMessage(conn, message);
+});
 
-global.reloadPlugin = async (pluginName, reload = false) => {
-  if (pluginFilter(pluginName)) {
-    const pluginPath = global.__filename(join(pluginFolder, pluginName), true);
-    if (pluginName in global.plugins) {
-      if (existsSync(pluginPath)) {
-        console.warn(`Reloading plugin '${pluginName}'`);
-      } else {
-        console.warn(`Deleting plugin '${pluginName}'`);
-        delete global.plugins[pluginName];
-        return;
-      }
-    } else {
-      console.info(`Loading new plugin '${pluginName}'`);
-    }
 
-    try {
-      const pluginModule = await import(pluginPath + '?' + Date.now());
-      global.plugins[pluginName] = pluginModule.default || pluginModule;
-    } catch (error) {
-      console.error(`Failed to reload plugin '${pluginName}':`, error);
-    }
-  }
-};
-
-Object.freeze(global.reloadPlugin);
-watch(pluginFolder, global.reloadPlugin);
-
-await global.reloadConnection();
-
-const readline = require('readline');
-const more = String.fromCharCode(0x200e);
-const readMore = more.repeat(8192);
-
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
-const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
-const question = prompt => new Promise(resolve => rl.question(prompt, resolve));
-
-if (process.env.PAIRING_CODE && !global.conn.authState.creds.registered) {
-  await sleep(5000);
-  clear();
-  cfonts.say('XM4ZE BOT', { font: 'block', align: 'center', gradient: ['red', 'yellow'] });
-  console.log(chalk.bold.green('Please enter your phone number:'));
-  const phoneNumber = await question(chalk.bgBlackBright.greenBright('> '));
-  const code = await global.conn.requestPairingCode(phoneNumber.replace(/[^0-9]/g, ''));
-  console.log(chalk.bold.green('Your pairing code:'), chalk.bold.yellow(code));
-  rl.close();
-}
-
-async function quickTest() {
-  const testResults = await Promise.all([
-    spawn('ffmpeg'),
+async function _quickTest() {
+  const tools = [
+    spawn('ffmpeg'), 
     spawn('ffprobe'),
-    spawn('ffmpeg', ['-hide_banner', '-loglevel', 'error', '-filter_complex', 'color', '1', '-f', 'webp', '-']),
+    spawn('ffmpeg', ['-hide_banner', '-loglevel', 'error', '-filter_complex', 'color', '-f', 'webp', '-']),
     spawn('convert'),
     spawn('magick'),
     spawn('gm'),
-    spawn('find', ['~'])
-  ].map(child => Promise.race([new Promise(resolve => child.on('exit', code => resolve(code !== -1))), new Promise(resolve => child.on('error', () => resolve(false)))])));
+    spawn('find', ['tmp'])
+  ];
 
-  const [
-    ffmpeg, ffprobe, ffmpegWebp, convert, magick, gm, find
-  ] = testResults;
+  const results = await Promise.all(
+    tools.map(tool => 
+      Promise.race([
+        new Promise(resolve => tool.on('exit', code => resolve(code !== 127))),
+        new Promise(resolve => tool.on('error', () => resolve(false)))
+      ])
+    )
+  );
 
-  global.support = Object.freeze({
-    ffmpeg,
-    ffprobe,
-    ffmpegWebp,
-    convert,
-    magick,
-    gm,
-    find
-  });
+  global.support = {
+    ffmpeg: results[0],
+    ffprobe: results[1],
+    ffmpegWebp: results[2],
+    convert: results[3],
+    magick: results[4],
+    gm: results[5],
+    find: results[6]
+  };
 
-  if (!global.support.ffmpeg) {
-    console.warn('Please install ffmpeg for sending videos (pkg install ffmpeg)');
-  }
-
-  if (global.support.ffmpeg && !global.support.ffmpegWebp) {
-    console.warn('Stickers may not be animated without libwebp on ffmpeg (--enable-libwebp while compiling ffmpeg)');
-  }
-
-  if (!global.support.magick && !global.support.gm) {
-    console.warn('Stickers may not work without imagemagick if libwebp on ffmpeg isn\'t installed (pkg install imagemagick)');
-  }
+  Object.freeze(global.support);
+  
+  // Tampilkan peringatan jika ada dependensi yang kurang
+  if (!global.support.ffmpeg) 
+    console.warn("Please install ffmpeg for sending videos");
+  if (global.support.ffmpeg && !global.support.ffmpegWebp) 
+    console.warn("Stickers may not animated without libwebp");
+  if (!global.support.convert && !global.support.magick && !global.support.gm) 
+    console.warn("Install ImageMagick/GraphicsMagick for stickers");
 }
 
-quickTest()
-  .then(() => console.log('Quick Test Done'))
-  .catch(console.error);
+function isCommandAvailable(command) {
+  return new Promise(resolve => {
+    const child = spawn(command, ['-version']);
+    child.on('error', () => resolve(false));
+    child.on('exit', (code) => resolve(code === 0));
+  });
+}
+
+
+async function startBot() {
+  await loadPlugins();
+  await _quickTest();
+  const conn = await connectToWhatsApp();
+  console.log('Bot aktif dan berjalan!');
+}
+
+startBot().catch(console.error);
