@@ -1,7 +1,7 @@
 import fetch from 'node-fetch'
 var handler = async (m, { args, text, usedPrefix, command }) => {
     if (!text) throw `Example : ${usedPrefix + command} https://kahoot.it/challenge/1234567`;
-    let id = text.replace("https://www.kahoot.com/it/challenge", "")
+    let id = text.replace("https://kahoot.com/it/challenge", "")
     const api = `https://kahoot.it/rest/challenges/${id}/answers`;
     const res = await fetch(api, {
         method: "GET",
@@ -17,15 +17,16 @@ var handler = async (m, { args, text, usedPrefix, command }) => {
         }
     })
     const json = await res.json()
+    console.log(json)
     const listQestion = json.challenge.kahoot.questions
-    const hasil = listQestion.map((v,i) => {
+    const hasil = await listQestion.map((v,i) => {
         const questions = v.question
         const answers = v.choices.filter((v) => v.correct).map((v) => v.answer)
         return `*Pertanyaan ${i + 1} :* ${questions}\n*Jawaban Benar :* ${answers.join(", ")}\n\n`
     }
     ).join("\n\n")
 
-    m.reply(`*Kahoot Challenge*\n\n${hasil}`)
+    await m.reply(`*Kahoot Challenge*\n\n${hasil}`)
 }
 
 handler.help = ['kahootans'].map((v) => v + ' <link>')
