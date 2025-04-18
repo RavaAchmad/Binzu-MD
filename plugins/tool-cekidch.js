@@ -4,8 +4,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
   if (!text) return m.reply(`Masukkan link channel\nContoh: *${usedPrefix + command}* https://whatsapp.com/channel/0029VaIulMyHbFV4zujwRv2S`);
   if (!text.includes("https://whatsapp.com/channel/")) return m.reply("Ups, harap masukkan URL Channel yang valid")
 
-  m.react("⌛");
-  
+
   let result = text.split('https://whatsapp.com/channel/')[1]
   let res = await conn.newsletterMetadata("invite", result)
   
