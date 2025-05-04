@@ -3,13 +3,6 @@
  * https://github.com/XM4ZE
  */
 import moment from 'moment-timezone'
-import {
-        youtubedl
-} from '@bochilteam/scraper';
-import {
-        toAudio
-} from '../lib/converter.js'
-import api from 'btch-downloader';
 import search from 'yt-search';
 import fetch from 'node-fetch';
 import ytdl from 'ytdl-core';
