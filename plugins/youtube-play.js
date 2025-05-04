@@ -88,7 +88,7 @@ SENT By
         //                         m.reply('An error occurred while sending the button message.');
         //                 }
         //         } catch (e) {
-        //                 console.log(e);
+        //                 console.log('betabotz emror = ' +e);
         //                 try {
         //                         let btch = await (await fetch(`https://api.botcahx.eu.org/api/dowloader/yt?url=${links}&apikey=${btc}`)).json()
         //                         await conn.sendMessage(m.chat, {
