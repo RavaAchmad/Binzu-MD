@@ -38,7 +38,7 @@
     },
     "license": "MIT",
     "dependencies": {
-        "baileys": "github:AxellNetwork/Baileys",
+        "@adiwajshing/baileys": "github:AxellNetwork/Baileys",
         "@bochilteam/scraper": "^4.2.4",
         "aki-api": "npm:aki-api@latest",
         "api-dylux": "^1.8.5",
