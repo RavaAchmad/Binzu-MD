@@ -59,7 +59,7 @@ var handler = async (m, { args, text, usedPrefix, command }) => {
           })
           if (fs.existsSync(fileListPath)) fs.unlinkSync(fileListPath)
           if (fs.existsSync(outputVideoPath)) fs.unlinkSync(outputVideoPath)
-          m.reply(`Terjadi kesalahan: ${e.message || e}`)
+          m.reply(`Perbaiki ketikannya kak contoh ".brat halo semua --gif", atau coba lagi nanti atau juga bisa lapor owner dengan screenshot error ini\n\n${e.message || e}`)
         }
     } else {
       const res = await fetch(`https://api.botcahx.eu.org/api/maker/brat?text=${encodeURIComponent(text)}&apikey=ravaja`)
