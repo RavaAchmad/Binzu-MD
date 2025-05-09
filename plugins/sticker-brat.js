@@ -79,7 +79,7 @@ text = text.slice(0, -5).trim();
         const buffer = await api.buffer()
         const stickerBuffer = await createSticker(buffer, 100)
         await conn.sendFile(m.chat, stickerBuffer, 'sticker.webp', '', m, false);
-        m.reply('Terjadi kesalahan');
+        console.error(`Error: ${e.message}`);
       }
     } else {
       const res = await fetch(`https://api.botcahx.eu.org/api/maker/brat?text=${encodeURIComponent(text)}&apikey=ravaja`)
