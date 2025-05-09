@@ -11,56 +11,74 @@ var handler = async (m, { args, text, usedPrefix, command }) => {
     if (!text) throw `Example : ${usedPrefix + command} Lagi Ruwet`;
 
     if (text.endsWith('--gif')) {
-        text = text.slice(0, -5).trim();
+text = text.slice(0, -5).trim();
       const words = text.split(" ").slice(0, 5);
-        const tempDir = path.join(process.cwd(), 'tmp')
-        if (!fs.existsSync(tempDir)) fs.mkdirSync(tempDir)
-        const framePaths = []
-        try {
-          for (let i = 0; i < words.length; i++) {
-            const currentText = words.slice(0, i + 1).join(" ")
-            const res = await axios.get(
-              `https://brat.caliphdev.com/api/brat?text=${encodeURIComponent(currentText)}`,
-              { responseType: "arraybuffer" }
-            ).catch((e) => e.response)
-            const framePath = path.join(tempDir, `frame${i}.mp4`)
-            fs.writeFileSync(framePath, res.data)
-            framePaths.push(framePath)
-          }
-          const fileListPath = path.join(tempDir, "filelist.txt")
-          let fileListContent = ""
-          for (let i = 0; i < framePaths.length; i++) {
-            fileListContent += `file '${framePaths[i]}'\n`
-            fileListContent += `duration 0.7\n`
-          }
-          fileListContent += `file '${framePaths[framePaths.length - 1]}'\n`
-          fileListContent += `duration 2\n`
-          fs.writeFileSync(fileListPath, fileListContent)
-          const outputVideoPath = path.join(tempDir, "output.mp4")
-          execSync(
-            `ffmpeg -y -f concat -safe 0 -i ${fileListPath} -vf "fps=30" -c:v libx264 -preset ultrafast -pix_fmt yuv420p ${outputVideoPath}`
-          )
-          const videoBuffer = fs.readFileSync(outputVideoPath)
-          const stickerBuffer = await mp4ToWebp(videoBuffer, {
-            pack: global.packname,
-            author: global.author,
-            crop: false
-        })
-        await conn.sendFile(m.chat, stickerBuffer, 'sticker.webp', '', m, false)
-          framePaths.forEach((frame) => {
-            if (fs.existsSync(frame)) fs.unlinkSync(frame)
-          })
-          if (fs.existsSync(fileListPath)) fs.unlinkSync(fileListPath)
-          if (fs.existsSync(outputVideoPath)) fs.unlinkSync(outputVideoPath)
-        } catch (e) {
-          console.error(e)
-          framePaths.forEach((frame) => {
-            if (fs.existsSync(frame)) fs.unlinkSync(frame)
-          })
-          if (fs.existsSync(fileListPath)) fs.unlinkSync(fileListPath)
-          if (fs.existsSync(outputVideoPath)) fs.unlinkSync(outputVideoPath)
-          m.reply(`Perbaiki ketikannya kak contoh ".brat halo semua --gif", atau coba lagi nanti atau juga bisa lapor owner dengan screenshot error ini\n\n${e.message || e}`)
+      const tempDir = path.join(process.cwd(), 'tmp');
+      if (!fs.existsSync(tempDir)) fs.mkdirSync(tempDir);
+      const framePaths = [];
+
+      let fileListPath; // Declare fileListPath here
+
+      try {
+        for (let i = 0; i < words.length; i++) {
+          const currentText = words.slice(0, i + 1).join(" ");
+          const res = await axios.get(
+            `https://brat.caliphdev.com/api/brat?text=${encodeURIComponent(currentText)}`,
+            { responseType: "arraybuffer" }
+          ).catch((e) => e.response);
+          const framePath = path.join(tempDir, `frame${i}.mp4`);
+          fs.writeFileSync(framePath, res.data);
+          framePaths.push(framePath);
         }
+
+        fileListPath = path.join(tempDir, "filelist.txt"); // Assign value inside try
+        let fileListContent = "";
+        for (let i = 0; i < framePaths.length; i++) {
+          fileListContent += `file '${framePaths[i]}'\n`;
+          fileListContent += `duration 0.7\n`;
+        }
+        fileListContent += `file '${framePaths[framePaths.length - 1]}'\n`;
+        fileListContent += `duration 2\n`;
+        fs.writeFileSync(fileListPath, fileListContent);
+
+        const outputVideoPath = path.join(tempDir, "output.mp4");
+        execSync(
+          `ffmpeg -y -f concat -safe 0 -i ${fileListPath} -vf "fps=30" -c:v libx264 -preset ultrafast -pix_fmt yuv420p ${outputVideoPath}`
+        );
+
+        const videoBuffer = fs.readFileSync(outputVideoPath);
+        const stickerBuffer = await mp4ToWebp(videoBuffer, {
+          pack: global.packname,
+          author: global.author,
+          crop: false
+        });
+
+        await conn.sendFile(m.chat, stickerBuffer, 'sticker.webp', '', m, false);
+
+        // Clean up files in the try block as well if successful
+        framePaths.forEach((frame) => {
+          if (fs.existsSync(frame)) fs.unlinkSync(frame);
+        });
+        if (fs.existsSync(fileListPath)) fs.unlinkSync(fileListPath);
+        if (fs.existsSync(outputVideoPath)) fs.unlinkSync(outputVideoPath);
+
+      } catch (e) {
+        console.error(e);
+        // Clean up files in the catch block if an error occurred
+        framePaths.forEach((frame) => {
+          if (fs.existsSync(frame)) fs.unlinkSync(frame);
+        });
+        // Check if fileListPath was assigned a value before trying to delete
+        if (fileListPath && fs.existsSync(fileListPath)) fs.unlinkSync(fileListPath);
+        // outputVideoPath is also declared inside try, need to handle similarly
+        // Declare outputVideoPath outside try as well, or handle potential ReferenceError here
+        // For simplicity, let's declare outputVideoPath outside try too for cleanup
+         let outputVideoPath; // Declare outputVideoPath here as well
+         if (outputVideoPath && fs.existsSync(outputVideoPath)) fs.unlinkSync(outputVideoPath);
+
+
+        m.reply('Terjadi kesalahan');
+      }
     } else {
       const res = await fetch(`https://api.botcahx.eu.org/api/maker/brat?text=${encodeURIComponent(text)}&apikey=ravaja`)
 
