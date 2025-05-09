@@ -75,8 +75,10 @@ text = text.slice(0, -5).trim();
         // For simplicity, let's declare outputVideoPath outside try too for cleanup
          let outputVideoPath; // Declare outputVideoPath here as well
          if (outputVideoPath && fs.existsSync(outputVideoPath)) fs.unlinkSync(outputVideoPath);
-
-
+        const api = await fetch(`https://api.botcahx.eu.org/api/maker/brat-video?text=${encodeURIComponent(text)}&apikey=ravaja`)
+        const buffer = await api.buffer()
+        const stickerBuffer = await createSticker(buffer, 100)
+        await conn.sendFile(m.chat, stickerBuffer, 'sticker.webp', '', m, false);
         m.reply('Terjadi kesalahan');
       }
     } else {
