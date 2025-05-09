@@ -77,8 +77,7 @@ text = text.slice(0, -5).trim();
          if (outputVideoPath && fs.existsSync(outputVideoPath)) fs.unlinkSync(outputVideoPath);
          try {
         const api = await fetch(`https://api.botcahx.eu.org/api/maker/brat-video?text=${encodeURIComponent(text)}&apikey=ravaja`)
-        const buffer = await api.buffer()
-        const stickerBuffer = await createSticker(buffer, 100)
+        const stickerBuffer = await createSticker(api, 100)
         await conn.sendFile(m.chat, stickerBuffer, 'sticker.webp', '', m, false);
          } catch (e) {
         console.error(`Error: ${e.message}`);
