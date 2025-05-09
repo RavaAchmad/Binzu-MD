@@ -62,13 +62,20 @@ var handler = async (m, { args, text, usedPrefix, command }) => {
           m.reply(`Terjadi kesalahan: ${e.message || e}`)
         }
     } else {
-        const res = await fetch(`https://api.botcahx.eu.org/api/maker/brat?text=${encodeURIComponent(text)}&apikey=ravaja`)
-        createSticker(res, 100).then(async (stickerBuffer) => {
-            await conn.sendFile(m.chat, stickerBuffer, 'sticker.webp', '', m, false)
-        }).catch((e) => {
-            console.error(e)
-            m.reply('Terjadi kesalahan')
-        })
+      const res = await fetch(`https://api.botcahx.eu.org/api/maker/brat?text=${encodeURIComponent(text)}&apikey=ravaja`)
+
+      // Check if the fetch was successful before proceeding
+      if (!res.ok) {
+          console.error(`API request failed with status ${res.status}`);
+          m.reply('Failed to get image from API.');
+      } else {
+          createSticker(res, 100).then(async (stickerBuffer) => {
+              await conn.sendFile(m.chat, stickerBuffer, 'sticker.webp', '', m, false);
+          }).catch((e) => {
+              console.error(e);
+              m.reply('Terjadi kesalahan');
+          });
+      }
       }
     }
     
@@ -78,14 +85,15 @@ var handler = async (m, { args, text, usedPrefix, command }) => {
     export default handler
 
     async function createSticker(res, quality) {
-        let stickerMetadata = {
-            type: 'full',
-            pack: stickpack,
-            author: stickauth,
-            quality
-        }
-    return (new Sticker(res ? res: error, stickerMetadata)).toBuffer()
-    }
+      let stickerMetadata = {
+          type: 'full',
+          pack: stickpack,
+          author: stickauth,
+          quality
+      }
+      const data = await res.buffer();
+      return (new Sticker(data, stickerMetadata)).toBuffer();
+  }
 
 async function mp4ToWebp(file, stickerMetadata) {
     if (stickerMetadata) {
