@@ -113,15 +113,17 @@ text = text.slice(0, -5).trim();
       return (new Sticker(data, stickerMetadata)).toBuffer();
   }
 
-async function mp4ToWebp(file, stickerMetadata) {
+  async function mp4ToWebp(file, stickerMetadata) {
     if (stickerMetadata) {
-        if (!stickerMetadata.pack) stickerMetadata.pack = stickpack
-        if (!stickerMetadata.author) stickerMetadata.author = stickauth
-        if (!stickerMetadata.crop) stickerMetadata.crop = false
-    } else if (!stickerMetadata) {
-        stickerMetadata = { pack: stickpack, author: stickauth, crop: false }
+        if (!stickerMetadata.pack) stickerMetadata.pack = stickpack;
+        if (!stickerMetadata.author) stickerMetadata.author = stickauth;
+        if (!stickerMetadata.crop) stickerMetadata.crop = false;
+    } else { // Simplified the else if to just else
+        stickerMetadata = { pack: stickpack, author: stickauth, crop: false };
     }
-    let getBase64 = file.toString('base64')
+
+    let getBase64 = file.toString('base64');
+
     const Format = {
         file: `data:video/mp4;base64,${getBase64}`,
         processOptions: {
@@ -162,20 +164,45 @@ async function mp4ToWebp(file, stickerMetadata) {
                 '--disable-offline-load-stale-cache',
                 '--disk-cache-size=0'
             ],
-            executablePath: 'C:\\\\Program Files (x86)\\\\Google\\\\Chrome\\\\Application\\\\chrome.exe',
+            executablePath: 'C:\\\\Program Files (x86)\\\\Google\\\\Chrome\\\\Application\\\\chrome.exe', // This path is likely incorrect for your environment (/root)
             skipBrokenMethodsCheck: true,
             stickerServerEndpoint: true
-         }
+        }
+    };
+
+    let res;
+    try {
+        res = await fetch('https://sticker-api.openwa.dev/convertMp4BufferToWebpDataUrl', {
+            method: 'post',
+            headers: {
+                'Accept': 'application/json, text/plain, */*', // Corrected Accept header
+                'Content-Type': 'application/json;charset=utf-8',
+            },
+            body: JSON.stringify(Format)
+        });
+
+        // Check if the response is OK (status in the range 200-299)
+        if (!res.ok) {
+            const errorText = await res.text(); // Get error details if available
+            throw new Error(`API request failed with status ${res.status}: ${errorText}`);
+        }
+
+        const responseText = await res.text();
+
+        // Check if the response text contains the expected delimiter
+        if (!responseText.includes(';base64,')) {
+            throw new Error(`API response did not contain ';base64,'. Response: ${responseText}`);
+        }
+
+        // Split and return the buffer
+        const base64Data = responseText.split(';base64,')[1];
+        return Buffer.from(base64Data, 'base64');
+
+    } catch (error) {
+        console.error("Error in mp4ToWebp:", error);
+        // Re-throw the error or handle it as needed by your application
+        throw error;
     }
-    let res = await fetch('https://sticker-api.openwa.dev/convertMp4BufferToWebpDataUrl', {
-        method: 'post',
-        headers: {
-            Accept: 'application/json, text/plain, /',
-            'Content-Type': 'application/json;charset=utf-8',
-        },
-        body: JSON.stringify(Format)
-    })
-    return Buffer.from((await res.text()).split(';base64,')[1], 'base64')
 }
 
 
