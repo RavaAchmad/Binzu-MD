@@ -5,8 +5,8 @@ import fs from 'fs'
 
 /*========= GLOBAL APIKEY =========*/
 // ISI APIKEY KALIAN DI BAGIAN 'ENTER YOUR APIKEY' SIMBOL JANGAN DI HAPUS
-global.btc = 'ravaja' // apikey Botchax
-global.lann = 'ravaja' // apikey Beta
+global.btc = '' // apikey Botchax
+global.lann = '' // apikey Beta
 
 
 
@@ -19,9 +19,9 @@ global.APIs = {
 } 
 
 global.APIKeys = {
-  'https://api.betabotz.eu.org': 'ravaja',
-  'https://api.botcahx.eu.org': 'ravaja',
-  'https://skizoasia.xyz/': 'ravaja'
+  'https://api.betabotz.eu.org': '',
+  'https://api.botcahx.eu.org': '',
+  'https://skizoasia.xyz/': ''
 }
 
 
